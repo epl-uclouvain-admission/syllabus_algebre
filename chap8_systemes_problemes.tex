@@ -1,0 +1,340 @@
+% ============================================================================
+% CHAPITRE 8 : MISE EN ÉQUATIONS ET SYSTÈMES ALGÉBRIQUES (PROBLÈMES TEXTUELS)
+% ============================================================================
+\chapter{Mise en Équations et Systèmes Algébriques (Problèmes Textuels)}
+
+La \textbf{Question~3} de l'épreuve d'Algèbre à l'examen d'admission de l'UCLouvain est une grande question de \textbf{modélisation mathématique} : un récit concret d'une demi-page à une page décrit une situation mettant souvent en scène \emph{Charles, Laurent, Aude, Sophie} ou un projet de l'EPL. Il s'agit de traduire méthodiquement chaque phrase de l'énoncé en une équation algébrique, puis de résoudre le système obtenu (linéaire, ensembliste ou bilinéaire) sans calculatrice.
+
+Ce chapitre expose la méthode de décodage en 5 étapes et analyse en détail \textbf{10 problèmes complets de Question~3 posés entre 2022 et 2026}.
+
+% ----------------------------------------------------------------------------
+\section{Méthodologie en 5 étapes pour décoder un problème textuel}
+% ----------------------------------------------------------------------------
+
+Face à un long texte, l'erreur la plus fréquente consiste à essayer de tout garder en tête ou à écrire des calculs numériques épars sans définir ses variables. Appliquez toujours ce protocole d'ingénieur :
+
+\begin{theoreme}[Protocole en 5 étapes pour réussir la Question 3]
+\begin{enumerate}
+    \item \textbf{Étape 1 -- Définition explicite des inconnues (et de leurs unités !) :}
+    Dès les premières lignes de votre copie, déclarez chaque variable par une phrase claire en précisant son \textbf{unité} (kg, €, m, $\text{m}^3$, nombre entier de sacs ou de sièges).
+    \emph{Conseil :} Choisissez des lettres parlantes ($F, B, V$ pour les ballons de \textbf{F}oot, \textbf{B}asket, \textbf{V}olley ; $p, d, b$ pour \textbf{p}lat, \textbf{d}essert, \textbf{b}oisson) plutôt que $x_1, x_2, x_3, x_4$ : vous éviterez ainsi de confondre vos variables en fin de calcul !
+    \item \textbf{Étape 2 -- Traduction phrase par phrase en équations numérotées $(1), (2), (3)\dots$ :}
+    Surlignez chaque donnée chiffrée ou relation de proportionnalité dans le texte (« trois fois plus que », « un sixième de moins », « la moyenne de », « un nombre impair dont la majorité est $\frac{N+1}{2}$ ») et écrivez l'équation correspondante.
+    \begin{itemize}
+        \item \textbf{Homogénéité des unités :} Vérifiez que les deux membres de chaque équation sont exprimés dans la \textbf{même unité} (ne mélangez pas des grammes avec des kilogrammes, ou des centilitres avec des litres : convertissez $30\text{ kg} = 30\,000\text{ g}$ et $94 \times 25\text{ cL} = 2350\text{ cL}$ !).
+    \end{itemize}
+    \item \textbf{Étape 3 -- Simplification immédiate et choix de la variable pivot :}
+    Avant de vous lancer dans de grandes substitutions, divisez chaque équation par son plus grand facteur commun (ex. $4p + 4d + 4b = 120 \implies p + d + b = 30$). Repérez si plusieurs inconnues s'expriment simplement en fonction d'une seule \textbf{variable pivot} (par exemple $E = 3C$, $D = 2B$, ou $B = 2V$ et $F = \frac{3}{2}V$).
+    \item \textbf{Étape 4 -- Résolution par substitution en cascade ou combinaisons linéaires :}
+    \begin{itemize}
+        \item Pour un \textbf{système linéaire} ($ax + by + cz = d$), procédez par \textbf{combinaisons linéaires} (soustraire deux équations ayant des termes identiques comme $(1) - (2)$ pour éliminer $c_0$ ou $p + d$) ou par substitution de la variable pivot.
+        \item Pour un \textbf{système bilinéaire} (comportant des produits d'inconnues comme $N \cdot p = 3240$ et $(N + 5)p = 3510$), développez $(N + 5)p = Np + 5p$ et remplacez le bloc $Np$ tout entier par sa valeur $3240$ !
+    \end{itemize}
+    \item \textbf{Étape 5 -- Contrôle final dans l'énoncé et report dans les cadres :}
+    En 30 secondes, vérifiez que vos valeurs numériques redonnent bien les totaux de l'énoncé, puis inscrivez lisiblement vos réponses (avec unités) dans les cadres prévus.
+\end{enumerate}
+\end{theoreme}
+
+% ----------------------------------------------------------------------------
+\section{Systèmes linéaires classiques et variable pivot (2022, 2023, 2024, 2025, 2026)}
+% ----------------------------------------------------------------------------
+
+\subsection{Élimination rapide par soustraction d'équations}
+
+\begin{exemple}[L'addition au restaurant à la Mer du Nord -- UCLouvain, Septembre 2022, Q3]
+\textbf{Résumé de l'énoncé :} Au restaurant, tous les plats principaux sont au même prix $p$, tous les desserts au prix $d$ et toutes les boissons au prix $b$.
+\begin{itemize}
+    \item Une affiche annonce : « Formule familiale : plat + boisson + dessert pour $4$ personnes à $100$\,€ au lieu de $120$\,€ ! » (le prix normal pour $4$ formules complètes est donc de $120$\,€).
+    \item Aude a pris $1$ plat et $2$ boissons. Laurent a pris $1$ plat, $1$ boisson et $1$ dessert. Charles a pris autant de boissons qu'Aude et Laurent ensemble (soit $2 + 1 = 3$ boissons) et $1$ dessert, sans plat.
+    \item Charles a réglé l'addition totale de $80$\,€ pour les trois amis.
+    \item Aude a remarqué : « Si on prend tous les trois un dessert, cela revient aussi cher que ton plat et le mien ! »
+\end{itemize}
+Combien chacun doit-il payer (et combien Aude et Laurent doivent-ils rembourser à Charles) ?
+
+\textbf{Résolution structurée :}
+\begin{enumerate}
+    \item \textbf{Inconnues :} $p$ = prix d'un plat (€), $d$ = prix d'un dessert (€), $b$ = prix d'une boisson (€).\\
+    Parts respectives : Laurent $= p + b + d$, Aude $= p + 2b$, Charles $= 3b + d$.
+    \item \textbf{Mise en équations :}
+    \begin{align}
+        \text{Prix normal (4 formules) :}\quad 4p + 4d + 4b = 120 &\iff p + d + b = 30 \label{eq:rest1}\\
+        \text{Facture totale (3 amis) :}\quad 2p + 2d + 6b = 80 &\iff p + d + 3b = 40 \label{eq:rest2}\\
+        \text{Remarque d'Aude (3 desserts = 2 plats) :}\quad 3d &= 2p \label{eq:rest3}
+    \end{align}
+    \item \textbf{Résolution éclair :}
+    \begin{itemize}
+        \item Notons d'emblée que l'équation~\eqref{eq:rest1} $p + d + b = 30$ donne \textbf{directement la part de Laurent : $30$\,€} !
+        \item En soustrayant \eqref{eq:rest2} $-$ \eqref{eq:rest1} : $(p + d + 3b) - (p + d + b) = 40 - 30 \iff 2b = 10 \iff \mathbf{b = 5\,\text{€}}$.
+        \item On remplace $b = 5$ dans \eqref{eq:rest1} : $p + d = 25$. Avec \eqref{eq:rest3} ($p = \frac{3}{2}d$), il vient $\frac{5}{2}d = 25 \iff \mathbf{d = 10\,\text{€}}$ et $\mathbf{p = 15\,\text{€}}$.
+    \end{itemize}
+    \item \textbf{Conclusion :} Laurent doit payer $p + b + d = 15 + 5 + 10 = \boxed{30\,\text{€}}$, Aude doit payer $p + 2b = 15 + 10 = \boxed{25\,\text{€}}$, et Charles a consommé pour $3b + d = 15 + 10 = \boxed{25\,\text{€}}$ (ayant payé les $80$\,€, il doit recevoir $30$\,€ de Laurent et $25$\,€ d'Aude).
+\end{enumerate}
+\end{exemple}
+
+\begin{exemple}[Logistique de brasserie : bouteilles, casiers, fûts et palettes -- UCLouvain, Juillet 2023 Série 1, Q3]
+\textbf{Résumé de l'énoncé :} Chez \emph{Eaux, Pils et Liqueurs (EPL)}, la bière ($1\text{ L} = 1\text{ kg}$) est vendue en casiers de $24$ bouteilles de $25\text{ cL}$ (soit $24 \times 0,25 = 6\text{ L} = 6\text{ kg}$ de bière par casier plein) ou en fûts de $50\text{ L}$ (soit $50\text{ kg}$ de bière par fût plein).
+\begin{itemize}
+    \item Charles rapporte $6$ casiers de bouteilles vides et repart avec $8$ casiers pleins : sa voiture pèse $66\text{ kg}$ de plus à la sortie.
+    \item Laurent se fait livrer $1$ palette de $8$ fûts pleins et $2$ palettes de $60$ casiers pleins chacune : le poids total (incluant les $3$ palettes) est de $2\,370\text{ kg}$.
+    \item Le poids d'un fût plein équivaut à celui de $4$ casiers pleins, et le poids d'un fût vide équivaut à celui de $40$ bouteilles vides.
+\end{itemize}
+Déterminer le poids d'une bouteille vide ($b$), d'un casier sans bouteilles ($c$), d'un fût vide ($f$) et d'une palette seule ($p$).
+
+\textbf{Résolution par variables agrégées (l'astuce qui simplifie tout !) :}
+Plutôt que d'écrire tout de suite des équations compliquées en $b, c, f, p$, introduisons d'abord les poids intermédiaires d'un \textbf{casier de vidanges} $C_{\text{vide}} = c + 24b$, d'un \textbf{casier plein} $C_{\text{plein}} = C_{\text{vide}} + 6$ (car il contient $6\text{ kg}$ de bière) et d'un \textbf{fût plein} $F_{\text{plein}} = f + 50$ :
+\begin{enumerate}
+    \item \textbf{Voiture de Charles :} $8\,C_{\text{plein}} - 6\,C_{\text{vide}} = 66 \iff 8(C_{\text{vide}} + 6) - 6\,C_{\text{vide}} = 66 \iff 2\,C_{\text{vide}} + 48 = 66 \iff \mathbf{C_{\text{vide}} = 9\text{ kg}}$, et donc $\mathbf{C_{\text{plein}} = 9 + 6 = 15\text{ kg}}$.
+    \item \textbf{Fût plein et fût vide :} $F_{\text{plein}} = 4\,C_{\text{plein}} = 4 \times 15 = \mathbf{60\text{ kg}}$. Comme il contient $50\text{ kg}$ de bière, le fût vide pèse $\mathbf{f = 60 - 50 = 10\text{ kg}}$.
+    \item \textbf{Bouteille vide et casier vide :} $f = 40b \iff 40b = 10 \iff \mathbf{b = 0,25\text{ kg}}$. Puis de $C_{\text{vide}} = c + 24b = 9$, on tire $c = 9 - 24(0,25) = 9 - 6 = \mathbf{3\text{ kg}}$.
+    \item \textbf{Camion de Laurent ($3$ palettes + $8$ fûts pleins + $120$ casiers pleins) :}
+    \[
+        3p + 8\,F_{\text{plein}} + 120\,C_{\text{plein}} = 2370 \iff 3p + 480 + 1800 = 2370 \iff 3p = 90 \iff \mathbf{p = 30\text{ kg}}.
+    \]
+\end{enumerate}
+Réponses : $\boxed{b = 0,25\text{ kg},\quad c = 3\text{ kg},\quad f = 10\text{ kg},\quad p = 30\text{ kg}}$.
+\end{exemple}
+
+\subsection{Utilisation d'une variable pivot dans les systèmes à 4, 5 ou 6 inconnues}
+
+\begin{exemple}[Les coalitions électorales à l'EPL -- UCLouvain, Juillet 2024, Q3]
+\textbf{Résumé de l'énoncé :} Cinq partis ($A$ = Arch, $B$ = Bio, $C$ = Chimie, $D$ = Data, $E$ = EPL) se partagent un nombre total impair $N = A + B + C + D + E$ de sièges. Pour avoir la majorité absolue, il faut au moins $M = \frac{N + 1}{2}$ sièges (le plus petit entier strictement supérieur à $N/2$).
+\begin{itemize}
+    \item La coalition Data + EPL dispose de $6$ sièges de plus que la majorité : $D + E = M + 6$.
+    \item La coalition Bio + Chimie + Data est tout juste à la majorité : $B + C + D = M$.
+    \item EPL a trois fois plus de sièges que Chimie ($E = 3C$), Data en a deux fois plus que Bio ($D = 2B$), et Bio + Data ensemble représentent les $\frac{2}{5}$ du total des sièges ($B + D = \frac{2}{5}N$).
+\end{itemize}
+Combien de sièges chaque parti a-t-il obtenus ?
+
+\textbf{Résolution par variable pivot (exprimer tout en fonction de $B$) :}
+\begin{enumerate}
+    \item \textbf{Exprimer $D$ et $N$ puis $M$ en fonction de $B$ :}
+    Puisque $D = 2B$, on a $B + D = 3B$. Or $B + D = \frac{2}{5}N$, donc :
+    \[
+        3B = \frac{2}{5}N \iff \mathbf{N = \frac{15}{2}B} \qquad \text{et} \qquad \mathbf{M = \frac{N + 1}{2} = \frac{15B + 2}{4}}.
+    \]
+    \item \textbf{Trouver $C$ et $E$ en soustrayant les deux équations de coalition :}
+    On sait que $D + E = M + 6$ et $B + C + D = M$. En soustrayant la seconde à la première ($D$ et $M$ s'éliminent !) :
+    \[
+        (D + E) - (B + C + D) = (M + 6) - M \iff E - B - C = 6.
+    \]
+    Comme $E = 3C$, cela donne $3C - B - C = 6 \iff 2C = B + 6 \iff \mathbf{C = \frac{B + 6}{2}}$.
+    \item \textbf{Calculer $B$ via l'équation $B + C + D = M$ :}
+    Remplaçons $D = 2B$, $C = \frac{B+6}{2}$ et $M = \frac{15B+2}{4}$ dans $B + D + C = M$ :
+    \[
+        3B + \frac{B + 6}{2} = \frac{15B + 2}{4} \xrightarrow{\times 4} 12B + 2B + 12 = 15B + 2 \iff \mathbf{B = 10}.
+    \]
+    \item \textbf{Déduction en cascade de toutes les autres inconnues :}
+    $D = 2B = \mathbf{20}$, $C = \frac{10 + 6}{2} = \mathbf{8}$, $E = 3C = \mathbf{24}$, $N = \frac{15}{2}(10) = \mathbf{75}$ (et $M = \frac{75+1}{2} = 38$), puis enfin $A = N - (B + C + D + E) = 75 - (10 + 8 + 20 + 24) = 75 - 62 = \mathbf{13}$.
+\end{enumerate}
+Réponses : $\boxed{A = 13,\quad B = 10,\quad C = 8,\quad D = 20,\quad E = 24 \quad (\text{total } N = 75,\text{ majorité } M = 38)}$.
+\end{exemple}
+
+\begin{exemple}[Trois autres problèmes de systèmes linéaires et flux (Juillet 2025, Septembre 2025, Septembre 2026)]
+\begin{enumerate}
+    \item \textbf{Juillet 2025, Q3 (Le stand de jus d'oranges aux Portes Ouvertes) :}
+    \emph{$94$ visiteurs boivent chacun un verre de $25\text{ cL}$ (volume total $= 94 \times 25 = 2\,350\text{ cL}$), pressé à partir de $185$ oranges pesant au total $30\text{ kg} = 30\,000\text{ g}$. Il y a trois variétés : Valencia ($x$ oranges à $150\text{ g}$ et $15\text{ cL}$/fruit), Navel ($y$ oranges à $200\text{ g}$ et $10\text{ cL}$/fruit) et Sanguines ($z$ oranges à $120\text{ g}$ et $10\text{ cL}$/fruit). Chaque sac d'oranges a le même poids $P$ (en kg), ne contient qu'une variété, et Laurent a utilisé $1$ sac de Valencia de plus que de Navel.}\\
+    \textbf{Étape 1 (Système $3 \times 3$ pour le nombre d'oranges $x, y, z$) :}
+    \[
+        \begin{cases}
+            x + y + z = 185 & (1) \text{ [Nombre d'oranges]} \\
+            15x + 10y + 10z = 2350 \iff 3x + 2(y + z) = 470 & (2) \text{ [Volume de jus en cL]} \\
+            150x + 200y + 120z = 30\,000 \iff 15x + 20y + 12z = 3000 & (3) \text{ [Masse totale en g]}
+        \end{cases}
+    \]
+    De $(1)$, $y + z = 185 - x$. En injectant dans $(2)$ : $3x + 2(185 - x) = 470 \iff x + 370 = 470 \iff \mathbf{x = 100\text{ Valencia}}$ !
+    Il reste $y + z = 85$ et, dans $(3)$, $20y + 12z = 3000 - 1500 = 1500 \iff 5y + 3z = 375$. Avec $z = 85 - y$ : $5y + 3(85 - y) = 375 \iff 2y = 120 \iff \mathbf{y = 60\text{ Navel}}$ et $\mathbf{z = 25\text{ Sanguines}}$.\\
+    \textbf{Étape 2 (Poids d'un sac $P$ et nombres de sacs) :} Les masses totales par variété sont $M_{\text{Val}} = 100 \times 0,15\text{ kg} = 15\text{ kg}$, $M_{\text{Nav}} = 60 \times 0,20\text{ kg} = 12\text{ kg}$ et $M_{\text{Sang}} = 25 \times 0,12\text{ kg} = 3\text{ kg}$.
+    La relation sur le nombre de sacs $n_{\text{Val}} = n_{\text{Nav}} + 1$ s'écrit $\dfrac{15}{P} = \dfrac{12}{P} + 1 \iff \boxed{P = 3\text{ kg}}$, d'où $\boxed{5\text{ sacs Valencia},\; 4\text{ sacs Navel et } 1\text{ sac Sanguines}}$.
+
+    \item \textbf{Septembre 2025, Q3 (Les filets de ballons de sport) :}
+    \emph{Soient $F, B, V$ les masses (en g) d'un ballon de foot, basket, volley, et $S$ celle d'un filet vide.
+    Relations entre ballons : $F = \frac{B + V}{2}$ (moyenne) et $2F + 3V = 3B$.
+    On remplit $10$ filets ($a$ filets de type A contenant $3F + 2B + 3V$, et $b$ filets de type B contenant $3B + 5V$, avec $a + b = 10$) de sorte qu'il y ait autant de ballons de volley que de foot et basket réunis. Un filet A pèse $150\text{ g}$ de plus qu'un filet B, et les $10$ filets remplis pèsent $34\,750\text{ g}$.}\\
+    \textbf{Résolution :}
+    \begin{itemize}
+        \item En remplaçant $2F = B + V$ dans $2F + 3V = 3B$, on obtient $B + 4V = 3B \iff \mathbf{B = 2V}$, puis $\mathbf{F = \frac{3}{2}V}$ ($V$ est la variable pivot !).
+        \item L'écart de poids entre un filet A et un filet B donne : $(3F + 2B + 3V + S) - (3B + 5V + S) = 150 \iff 3F - B - 2V = 150$. En remplaçant en fonction de $V$ : $\frac{9}{2}V - 2V - 2V = \frac{1}{2}V = 150 \implies \boxed{V = 300\text{ g}}$, $\boxed{B = 600\text{ g}}$ et $\boxed{F = 450\text{ g}}$.
+        \item Nombre de filets $a$ et $b$ ($a + b = 10$) : la condition $V_{\text{tot}} = F_{\text{tot}} + B_{\text{tot}}$ s'écrit $3a + 5b = 3a + (2a + 3b) \iff 2b = 2a \iff \mathbf{a = b = 5}$.
+        \item Masse d'un filet vide $S$ : un filet A (sans filet) pèse $3(450) + 2(600) + 3(300) = 3450\text{ g}$ et un filet B pèse $3(600) + 5(300) = 3300\text{ g}$. Pour $5$ filets A et $5$ filets B : $5(3450 + 3300) + 10S = 33\,750 + 10S = 34\,750 \implies 10S = 1000 \implies \boxed{S = 100\text{ g}}$.
+    \end{itemize}
+
+    \item \textbf{Septembre 2026, Q3 (L'incendie du bois de Lauzelle : débits et rotations) :}
+    \emph{$1\,060\text{ m}^3$ d'eau ont été prélevés en $149$ passages par des camions de pompiers (capacité $C$), des citernes agricoles (capacité $A$) et l'hélicoptère Charlie (capacité $H$). Le jour, les camions ont fait $3$ fois plus de passages que les citernes ($3a$ contre $a$). La nuit, seuls les camions ont fait $16$ passages. Charlie a fait $5$ passages au total. Le débit d'arrosage d'une citerne est le double de celui d'un camion ($2q$ contre $q$), mais elle se vide $3$ fois plus vite ($t/3$ contre $t$). Enfin, les $5$ passages de Charlie ont emporté autant d'eau que $8$ passages de camions.}\\
+    \textbf{Résolution en 2 temps :}
+    \begin{itemize}
+        \item \emph{1. Nombre de passages :} $a + 3a + 16 + 5 = 149 \iff 4a = 128 \iff \mathbf{a = 32}$. Les citernes ont donc effectué $\boxed{32\text{ passages}}$ et les camions $3(32) + 16 = \boxed{112\text{ passages}}$.
+        \item \emph{2. Capacités (avec $C = q\cdot t$ comme variable pivot) :}
+        La capacité d'une citerne vaut $A = \text{débit} \times \text{temps} = (2q)\cdot\frac{t}{3} = \frac{2}{3}qt = \mathbf{\frac{2}{3}C}$.
+        Pour l'hélicoptère : $5H = 8C \iff \mathbf{H = \frac{8}{5}C}$.
+        L'équation du volume total $112C + 32A + 5H = 1060$ devient :
+        \[
+            112C + \frac{64}{3}C + 8C = 1060 \iff \frac{424}{3}C = 1060 \implies C = \frac{3180}{424} = \boxed{7,5\text{ m}^3},
+        \]
+        d'où $A = \frac{2}{3}(7,5) = \boxed{5\text{ m}^3}$ et $H = \frac{8}{5}(7,5) = \boxed{12\text{ m}^3}$.
+    \end{itemize}
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Problèmes ensemblistes (Diagramme de Venn), bilinéaires et suites}
+% ----------------------------------------------------------------------------
+
+\subsection{Problème de dénombrement par diagramme de Venn à 3 ensembles}
+
+Lorsqu'un problème répartit une population de $N$ individus selon leur appartenance à trois catégories qui se chevauchent (ex. les fans photographiés avec les trois membres d'un groupe de rock), \textbf{dessinez immédiatement un diagramme de Venn à 3 cercles} et inscrivez une variable dans chacune des \textbf{7 régions disjointes} !
+
+\begin{exemple}[Les autographes du groupe de rock \emph{The EPLighters} -- UCLouvain, Juillet 2023 Série 2, Q3]
+\textbf{Résumé de l'énoncé :} Chaque fan ($N$ fans au total) repart avec exactement une photo prise avec une ou plusieurs des trois stars du groupe : Charles ($C$), Aude ($A$) et Laurent ($L$).
+\begin{itemize}
+    \item Charles signe au total $200$ photos, soit deux fois plus qu'Aude ($100$ photos au total pour Aude).
+    \item Si Laurent avait signé $6$ fois plus de photos au total, il lui en aurait encore manqué $10$ pour couvrir tous les fans : $N = 6\,\text{Tot}_L + 10$. De plus, Laurent apparaît \textbf{seul} sur $35$ clichés.
+    \item Le nombre de photos avec Charles et Aude (sans Laurent) est le double du nombre de photos avec Charles et Laurent (sans Aude). Aude et Laurent n'apparaissent \textbf{jamais} ensemble sans Charles ($0$ photo). Enfin, $5$ photos réunissent le groupe au complet ($C, A$ et $L$).
+\end{itemize}
+Combien y avait-il de fans $N$ à cette soirée ?
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    % Cercle Charles
+    \draw[very thick, uclblue, fill=ucllightblue, fill opacity=0.35] (-1.2, 0.7) circle (1.8);
+    % Cercle Aude
+    \draw[very thick, defgreen, fill=deflightgreen, fill opacity=0.35] (1.2, 0.7) circle (1.8);
+    % Cercle Laurent
+    \draw[very thick, exorange, fill=exlightorange, fill opacity=0.35] (0, -1.2) circle (1.8);
+
+    \node[uclblue, font=\bfseries] at (-2.7, 2.3) {Charles ($\text{Tot}_C = 200$)};
+    \node[defgreen, font=\bfseries] at (2.7, 2.3) {Aude ($\text{Tot}_A = 100$)};
+    \node[exorange, font=\bfseries] at (0, -3.35) {Laurent ($\text{Tot}_L = 40 + x$)};
+
+    % Les 7 régions disjointes
+    \node[font=\bfseries] at (-1.8, 1.1) {$c = 165$};
+    \node[font=\bfseries] at (1.8, 1.1) {$a = 75$};
+    \node[font=\bfseries] at (0, -1.8) {$35$};
+    \node[uclblue, font=\bfseries] at (0, 1.35) {$2x = 20$};
+    \node[exorange, font=\bfseries] at (-0.95, -0.35) {$x = 10$};
+    \node[defgreen, font=\bfseries] at (0.95, -0.35) {$0$};
+    \node[warnred, font=\bfseries] at (0, 0.25) {$5$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Résolution avec le diagramme de Venn :}
+Notons $x = CL$ le nombre de photos avec Charles et Laurent seuls (donc $2x$ avec Charles et Aude seuls), $c$ le nombre de photos avec Charles seul et $a$ avec Aude seule. Les $7$ régions disjointes contiennent donc $c,\; a,\; 35,\; 2x,\; x,\; 0,\; 5$ :
+\begin{enumerate}
+    \item \textbf{Total du cercle de Charles :} $c + 2x + x + 5 = 200 \iff \mathbf{c = 195 - 3x}$.
+    \item \textbf{Total du cercle d'Aude :} $a + 2x + 0 + 5 = 100 \iff \mathbf{a = 95 - 2x}$.
+    \item \textbf{Total du cercle de Laurent :} $\text{Tot}_L = 35 + x + 0 + 5 = \mathbf{40 + x}$.
+    \item \textbf{Nombre total de fans $N$ (somme des 7 régions disjointes) :}
+    \[
+        N = c + a + 35 + 2x + x + 0 + 5 = (195 - 3x) + (95 - 2x) + 3x + 40 = \mathbf{330 - 2x}.
+    \]
+    \item \textbf{Équation sur le total de Laurent :} $N = 6\,\text{Tot}_L + 10 = 6(40 + x) + 10 = \mathbf{250 + 6x}$.
+    \item \textbf{Égalisation des deux expressions de $N$ :}
+    \[
+        330 - 2x = 250 + 6x \iff 8x = 80 \iff \mathbf{x = 10} \implies N = 330 - 2(10) = \boxed{310\text{ fans}}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+\subsection{Systèmes bilinéaires (Quantité $\times$ Rendement ou Longueur $\times$ Prix unitaire)}
+
+\begin{exemple}[Deux problèmes bilinéaires avec astuce de bloc (Septembre 2024 \& Juillet 2026)]
+\begin{enumerate}
+    \item \textbf{Septembre 2024, Q3 (Charles l'électricien : voie rapide vs voie algébrique) :}
+    \emph{Charles utilise des rouleaux de $50\text{ m}$ de fil (rouge, bleu, noir, tous au même prix $x$\,€/m). Chaque circuit utilise deux fils de couleurs différentes de même longueur.
+    Chez Aude (facture $2\,000$\,€) : uniquement des circuits rouge-bleu (longueur $y$ de rouge, donc $y$ de bleu).
+    Chez Laurent (facture $6\,000$\,€) : circuits rouge-bleu et noir-bleu, avec $2$ fois plus de rouge que chez Aude ($2y$) et autant de noir que de rouge chez Aude ($y$), donc la longueur de bleu vaut $2y + y = 3y$.
+    Chez Sophie (facture $14\,000$\,€) : circuits rouge-noir et bleu-noir, avec autant de bleu que chez Laurent ($3y$, donc total de fil chez Sophie $= 2z + 6y$ où $z$ est la longueur de rouge chez Sophie).
+    Au total, Charles a utilisé $44$ rouleaux toutes couleurs confondues, dont $14$ rouleaux de fil rouge.}\\
+    \textbf{La « voie royale » en 3 lignes :}
+    \begin{itemize}
+        \item Les $44$ rouleaux ($44 \times 50 = 2\,200\text{ m}$ de câble au total) ont été facturés au total $2\,000 + 6\,000 + 14\,000 = 22\,000$\,€. Le prix d'un mètre de câble est donc immédiatement :
+        \[
+            x = \frac{22\,000\,\text{€}}{2\,200\text{ m}} = \boxed{10\,\text{€/m}} \quad (\text{soit } 500\,\text{€ le rouleau}).
+        \]
+        \item Chez Aude ($2\,000$\,€, soit $200\text{ m}$ de fil moitié rouge, moitié bleu), la longueur de fil rouge vaut donc $\boxed{y = 100\text{ m}}$ ($2$ rouleaux).
+        \item Laurent a deux fois plus de rouge qu'Aude, soit $200\text{ m}$ ($4$ rouleaux). Comme $14$ rouleaux rouges ($700\text{ m}$) ont été utilisés au total, il reste pour Sophie $700 - 100 - 200 = \boxed{z = 400\text{ m}}$ ($8$ rouleaux rouges) !
+    \end{itemize}
+
+    \item \textbf{Juillet 2026, Q3 (Les ruches de Charles l'apiculteur : système bilinéaire en $N \cdot p$) :}
+    \emph{Soient $N$ le nombre initial de ruches, $p$ le nombre de pots produits par une ruche saine, $v$ la perte par ruche due au varroa et $f$ la perte par ruche due aux frelons asiatiques.
+    Année 1 : la moitié des ruches ($\frac{N}{2}$) a le varroa $\implies$ perte totale de $180$ pots.
+    Année 2 : toutes les ruches subissent les frelons $\implies$ perte d'un sixième de la production normale $Np$.
+    Année 3 : $\frac{1}{4}$ des ruches est éliminé (il reste $\frac{3}{4}N$ ruches), toutes touchées par le varroa ET les frelons (production $p - v - f$ par ruche) $\implies$ récolte de $1\,755$ pots.
+    Année 4 : exploitation reconstituée avec $5$ ruches de plus ($N + 5$ ruches toutes saines) $\implies$ récolte doublée par rapport à l'année 3 ($2 \times 1755 = 3\,510$ pots).}\\
+    \textbf{Mise en équations et résolution par le bloc $Np$ :}
+    \begin{itemize}
+        \item Année 1 : $\dfrac{N}{2} v = 180 \iff \mathbf{Nv = 360}$.
+        \item Année 2 : $Nf = \dfrac{1}{6}Np \iff \mathbf{f = \frac{p}{6}}$ (une ruche touchée par les frelons perd $\frac{1}{6}$ de sa production, il lui reste donc $\frac{5}{6}p$).
+        \item Année 3 : $\dfrac{3}{4}N(p - v - f) = 1755 \iff \dfrac{3}{4}N\left(\frac{5}{6}p - v\right) = 1755$. En développant le produit par $N$ pour faire apparaître les blocs connus $\mathbf{Np}$ et $\mathbf{Nv = 360}$ :
+        \[
+            \frac{5}{8}(Np) - \frac{3}{4}(360) = 1755 \iff \frac{5}{8}(Np) = 1755 + 270 = 2025 \implies \mathbf{Np = 3240}.
+        \]
+        \item Année 4 : $(N + 5)p = 3510 \iff Np + 5p = 3510$. En remplaçant le bloc $Np = 3240$ :
+        \[
+            3240 + 5p = 3510 \iff 5p = 270 \iff \boxed{p = 54\text{ pots/ruche saine}}.
+        \]
+        \item On déduit aussitôt : $N = \dfrac{3240}{54} = \boxed{60\text{ ruches}}$, puis $v = \dfrac{360}{60} = 6$ (ruche avec varroa : $p - v = 54 - 6 = \boxed{48\text{ pots}}$) et $f = \dfrac{54}{6} = 9$ (ruche avec frelons : $p - f = 54 - 9 = \boxed{45\text{ pots}}$).
+    \end{itemize}
+\end{enumerate}
+\end{exemple}
+
+\subsection{Problèmes combinant systèmes d'équations et suites (Juillet 2022 \& Septembre 2023)}
+
+\begin{exemple}[Deux problèmes mêlant suites et systèmes (Juillet 2022 \& Septembre 2023)]
+\begin{enumerate}
+    \item \textbf{Juillet 2022, Q3 (Les panneaux photovoltaïques de Charles et Laurent) :}
+    \emph{Un panneau neuf produit $P = 300\text{ kWh/an}$. Les panneaux polycristallins de Charles (coût unitaire $c_p$) perdent $5\,\%$ de production par an (raison géométrique $r = 0,95$). Charles installe le plus petit nombre entier $S$ de panneaux pour que la production de la $10$\ieme{} année ($P_{10} = S \cdot 300 \cdot 0,95^9$, avec $300 \times 0,95^9 = 189,0\text{ kWh}$) couvre sa consommation $W = 2600\text{ kWh}$. Sur $10$ ans, au prix $c_e$\,€/kWh et avec un coût fixe d'installation $c_0$, Charles réalise un bénéfice net $c_C = 1560$\,€ à l'achat, ou $c_R = 300$\,€ en leasing (loyer annuel de $12\,\%$ du prix des panneaux pendant $10$ ans, soit $10 \times 0,12 = 1,2$ fois le prix d'achat des panneaux). Laurent installe $S$ panneaux monocristallins (sans dégradation, $30\,\%$ plus chers : $c_m = 1,3\,c_p$) et réalise un bénéfice net $c_L = 3390$\,€ sur $10$ ans.}\\
+    \textbf{Résolution :}
+    \begin{itemize}
+        \item \emph{Nombre de panneaux $S$ :} À la $10$\ieme{} année, $189 \cdot S \ge 2600 \iff S \ge \frac{2600}{189} \approx 13,75 \implies \boxed{S = 14\text{ panneaux}}$.
+        \item \emph{Productions sur $10$ ans :} Pour Laurent (sans dégradation), $W_L = 10 \times 14 \times 300 = \mathbf{42\,000\text{ kWh}}$. Pour Charles (suite géométrique), $W_C = 14 \times 300 \times \frac{1 - 0,95^{10}}{1 - 0,95} = \mathbf{33\,706\text{ kWh}}$.
+        \item \emph{Système linéaire pour $c_p, c_m, c_e, c_0$ :}
+        \[
+            \begin{cases}
+                c_C = W_C c_e - c_0 - S c_p = 1560 & (1) \\
+                c_R = W_C c_e - c_0 - 1,2\,S c_p = 300 & (2) \\
+                c_L = W_L c_e - c_0 - 1,3\,S c_p = 3390 & (3)
+            \end{cases}
+        \]
+        En soustrayant $(1) - (2)$, $W_C c_e$ et $c_0$ s'éliminent d'un coup : $0,2\,S c_p = 1560 - 300 = 1260 \implies c_p = \frac{1260}{2,8} = \boxed{450\,\text{€}}$, d'où $c_m = 1,3 \times 450 = \boxed{585\,\text{€}}$.
+        Puis $(3) - (1)$ élimine $c_0$ : $(W_L - W_C)c_e - 0,3\,S c_p = 3390 - 1560 = 1830 \iff 8294\,c_e = 1830 + 1890 = 3720 \implies c_e = \boxed{0,45\,\text{€/kWh}}$, et enfin $(1)$ donne $c_0 = \boxed{7\,257\,\text{€}}$.
+    \end{itemize}
+
+    \item \textbf{Septembre 2023, Q3 (Rénovation du living et escalier suspendu) :}
+    \emph{Pièce rectangulaire de dimensions $x$ et $y$ (hauteur sous plafond $h$) avec $2$ portes ($2\text{ m} \times 1\text{ m}$ chacune) et $1$ fenêtre ($1,6\text{ m}$ de haut sur toute la longueur $y$ de la pièce).
+    Parquet au sol : surface $xy = 36\text{ m}^2$.
+    Plinthes au bas des 4 murs (sauf les 2 portes de $1\text{ m}$ de large) : $2x + 2y - 2 = 23 \iff 2x + 2y = 25\text{ m}$.
+    Escalier central de $16$ marches régulièrement espacées : les $15$ premières marches sont suspendues chacune par $2$ barres descendant du plafond (la $16$\ieme{} est au niveau du plafond, donc $0\text{ m}$ de barre). La longueur totale des $30$ barres est de $42\text{ m}$ (donc $21\text{ m}$ pour une rangée de $15$ barres).
+    Quelle quantité de peinture (en kg) faut-il pour peindre les $4$ murs (hors portes et fenêtre) en $2$ couches avec un rendement de $4\text{ m}^2/\text{kg}$ ?}\\
+    \textbf{Résolution :}
+    \begin{itemize}
+        \item \emph{1. Hauteur sous plafond $h$ (suite arithmétique des barres d'escalier) :} La hauteur $h$ est divisée en $16$ hauteurs de marche égales à $r = \frac{h}{16}$. Les longueurs d'une rangée de $15$ barres forment la suite arithmétique $u_1 = r,\; u_2 = 2r,\; \dots,\; u_{15} = 15r$, dont la somme vaut $\frac{42}{2} = 21\text{ m}$ :
+        \[
+            S_{15} = \frac{15 \times 16}{2}\,r = 120\,r = 21 \implies r = \frac{21}{120} = \frac{7}{40}\text{ m} \implies h = 16\,r = \frac{14}{5} = \mathbf{2,8\text{ m}}.
+        \]
+        \item \emph{2. Dimensions $x$ et $y$ de la pièce (Somme-Produit !) :} On a $x + y = \frac{25}{2} = 12,5$ et $xy = 36$. Les dimensions sont les racines de $Y^2 - \frac{25}{2}Y + 36 = 0 \iff 2Y^2 - 25Y + 72 = 0$ ($\Delta = 625 - 576 = 49 = 7^2$), ce qui donne $\mathbf{y = 8\text{ m}}$ (la longueur) et $\mathbf{x = 4,5\text{ m}}$ (la largeur).
+        \emph{Astuce remarquable :} pour la surface des 4 murs $2h(x + y) = 2,8 \times 25 = 70\text{ m}^2$, on avait déjà $2(x + y) = 25\text{ m}$ sans même résoudre le second degré, mais il fallait connaître la longueur $y = 8\text{ m}$ pour calculer la surface de la fenêtre !
+        \item \emph{3. Surface à peindre et masse de peinture :}
+        $S_{\text{murs}} = 2h(x + y) - S_{\text{fenêtre}} - 2\,S_{\text{porte}} = 2,8 \times 25 - (1,6 \times 8) - 2(2 \times 1) = 70 - 12,8 - 4 = \mathbf{53,2\text{ m}^2} = \frac{266}{5}\text{ m}^2$.
+        Pour $2$ couches (soit $2 \times 53,2 = 106,4\text{ m}^2$) à $4\text{ m}^2/\text{kg}$, il faut $\dfrac{106,4}{4} = \boxed{26,6\text{ kg de peinture}}$.
+    \end{itemize}
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 8}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 8.\arabic* :}, leftmargin=*]
+    \item \textbf{(UCLouvain -- Septembre 2021, Q3 : La collecte des déchets des trois voisins)} Trois voisins, Laurent ($L$), Nadine ($N$) et Bruno ($B$), paient ensemble une facture annuelle totale de $P = 251,60$\,€ pour la collecte de leurs déchets ménagers. Laurent et Nadine ont souscrit un petit forfait annuel à $50$\,€ (utilisant un conteneur de $5\text{ kg}$, qui couvre jusqu'à $50\text{ kg}$ de déchets par an et $12$ levées par an). Bruno a souscrit un grand forfait annuel à $80$\,€ (conteneur de $10\text{ kg}$, couvrant jusqu'à $70\text{ kg}$ de déchets par an et $12$ levées par an). Tout kilogramme au-delà du forfait est facturé $0,40$\,€/kg et toute levée au-delà des $12$ levées incluses est facturée $1,20$\,€/levée.
+    Sur l'année, les trois voisins ont produit au total $290\text{ kg}$ de déchets et ont totalisé $43$ levées. Chacun ne sort son conteneur que lorsqu'il est intégralement rempli, et Laurent est le seul à ne pas avoir dépassé son forfait. Déterminer les quantités annuelles de déchets $Q_L, Q_N, Q_B$ (en kg) produites par chacun des trois voisins.
+    \item \textbf{(Problème d'alliages et de proportions type Question 3)} Un atelier de métallurgie de l'EPL dispose de trois lingots d'alliages de cuivre, de zinc et d'étain :
+    \begin{itemize}
+        \item Lingot A : $60\,\%$ de cuivre, $30\,\%$ de zinc et $10\,\%$ d'étain ;
+        \item Lingot B : $50\,\%$ de cuivre, $20\,\%$ de zinc et $30\,\%$ d'étain ;
+        \item Lingot C : $40\,\%$ de cuivre, $50\,\%$ de zinc et $10\,\%$ d'étain.
+    \end{itemize}
+    Quelle masse (en kg) faut-il prélever et refondre de chacun des trois lingots pour obtenir $100\text{ kg}$ d'un nouvel alliage contenant exactement $52\,\%$ de cuivre, $31\,\%$ de zinc et $17\,\%$ d'étain ?
+    \item \textbf{(Problème de diagramme de Venn type Question 3)} Parmi les $250$ étudiants inscrits à une journée de préparation à l'EPL, chacun suit au moins l'un des trois ateliers (Algèbre, Analyse, Trigonométrie) : $140$ suivent l'Algèbre, $130$ suivent l'Analyse et $110$ suivent la Trigonométrie. On sait que $30$ étudiants suivent les trois ateliers, que le nombre d'étudiants suivant uniquement l'Algèbre et l'Analyse est le double de ceux qui suivent uniquement l'Analyse et la Trigonométrie, et que $25$ étudiants suivent uniquement l'Algèbre et la Trigonométrie. Combien d'étudiants suivent \emph{uniquement} l'atelier d'Algèbre ?
+\end{enumerate}

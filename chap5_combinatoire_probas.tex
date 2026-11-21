@@ -1,0 +1,422 @@
+% ============================================================================
+% CHAPITRE 5 : ANALYSE COMBINATOIRE, BINÔME DE NEWTON ET PROBABILITÉS
+% ============================================================================
+\chapter{Analyse Combinatoire, Binôme de Newton et Probabilités}
+
+Ce chapitre couvre pas moins de \textbf{deux à trois sous-questions sur les sept} de la Question~1 à chaque session de l'examen d'Algèbre de l'UCLouvain ! Vous y trouverez systématiquement :
+\begin{itemize}
+    \item une question sur le \textbf{développement du binôme de Newton} $(a + b)^n$ (calcul d'un coefficient précis, du terme constant d'ordre nul en $x^0$, ou réduction de $(x+1)^n \pm (x-1)^n$) ;
+    \item une ou deux questions de \textbf{dénombrement et de calcul de probabilités} (lancers de dés, tirages de cartes ou de boules dans une urne, files d'attente, sélection d'ouvrages ou de questions d'examen), ainsi que les paramètres statistiques élémentaires (moyenne et écart-type).
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\section{Principes fondamentaux du dénombrement (Analyse combinatoire)}
+% ----------------------------------------------------------------------------
+
+\subsection{Principe multiplicatif (« ET ») et principe additif (« OU »)}
+
+\begin{theoreme}[Les deux règles d'or du dénombrement]
+\begin{enumerate}
+    \item \textbf{Principe multiplicatif (étapes successives reliées par « ET ») :} Si une opération globale se décompose en $k$ étapes successives telles que la 1\iere{} étape offre $n_1$ choix possibles, la 2\ieme{} étape offre $n_2$ choix possibles (quel que soit le choix précédent), \dots, et la $k$-ième étape offre $n_k$ choix possibles, alors le nombre total de configurations est le \textbf{produit} :
+    \[
+        \boxed{N = n_1 \times n_2 \times \dots \times n_k}.
+    \]
+    \item \textbf{Principe additif (cas disjoints reliés par « OU exclusif ») :} Si l'ensemble des configurations se partitionne en plusieurs cas mutuellement exclusifs (disjoints) comportant respectivement $N_1, N_2, \dots, N_p$ possibilités, alors le nombre total de possibilités est la \textbf{somme} :
+    \[
+        \boxed{N = N_1 + N_2 + \dots + N_p}.
+    \]
+    \item \textbf{Principe du complémentaire (« au moins un ») :} Pour dénombrer les configurations vérifiant \emph{« au moins une fois la condition $C$ »}, il est presque toujours plus rapide de calculer le nombre total de configurations sans contrainte et d'en \textbf{soustraire} celles qui ne vérifient \emph{aucune} fois la condition $C$ :
+    \[
+        \boxed{N(\text{au moins un}) = N_{\text{total}} - N(\text{aucun})}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Permutations, arrangements et combinaisons : quel outil choisir ?}
+
+Lorsqu'on choisit $k$ éléments parmi $n$ éléments distincts, posez-vous toujours \textbf{deux questions} :
+\begin{enumerate}
+    \item \textbf{L'ordre des éléments choisis a-t-il de l'importance ?} (Ex. un podium Or-Argent-Bronze ou un code de cadenas $\implies$ \textbf{OUI} ; une main de cartes ou un comité de 3 personnes $\implies$ \textbf{NON}).
+    \item \textbf{Peut-on répéter un même élément plusieurs fois (tirage avec remise) ou non (sans remise) ?}
+\end{enumerate}
+
+\begin{theoreme}[Formulaire complet de l'analyse combinatoire ($n, k \in \N$)]
+\begin{enumerate}
+    \item \textbf{Factorielle $n!$ et Permutations de $n$ objets distincts :} Le nombre de façons d'ordonner $n$ objets distincts en file indienne est :
+    \[
+        \boxed{P_n = n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1} \qquad \text{avec par convention } \boxed{0! = 1}.
+    \]
+    \emph{Valeurs à connaître par cœur :} $1! = 1$, $2! = 2$, $3! = 6$, $4! = 24$, $5! = 120$, $6! = 720$.\\
+    \emph{Permutations avec répétitions :} Si parmi les $n$ objets, il y a $n_1$ objets identiques de type~1, \dots, $n_r$ objets identiques de type~$r$ ($n_1 + \dots + n_r = n$), le nombre d'anagrammes distincts vaut $\dfrac{n!}{n_1!\,n_2!\dots n_r!}$.
+    \item \textbf{Arrangements avec répétition (ordre important, avec remise) :} Nombre de listes ordonnées de longueur $k$ formées à partir d'un alphabet à $n$ éléments :
+    \[
+        \boxed{n^k = \underbrace{n \times n \times \dots \times n}_{k \text{ facteurs}}}.
+    \]
+    \item \textbf{Arrangements sans répétition $A_n^k$ (ordre important, sans remise, $0 \le k \le n$) :} Nombre de podiums ou listes ordonnées de $k$ éléments \textbf{distincts} choisis parmi $n$ :
+    \[
+        \boxed{A_n^k = n \times (n-1) \times \dots \times (n - k + 1) = \frac{n!}{(n - k)!}}.
+    \]
+    \item \textbf{Combinaisons sans répétition $C_n^k = \binom{n}{k}$ (ordre SANS importance, sans remise, $0 \le k \le n$) :} Nombre de sous-ensembles (poignées simultanées) de $k$ éléments choisis parmi $n$ (obtenu en divisant $A_n^k$ par les $k!$ ordres possibles des $k$ éléments choisis) :
+    \[
+        \boxed{C_n^k = \binom{n}{k} = \frac{A_n^k}{k!} = \frac{n!}{k!\,(n - k)!} = \frac{n \times (n-1) \times \dots \times (n - k + 1)}{k \times (k-1) \times \dots \times 2 \times 1}}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{astuce}[Calcul mental rapide de $\binom{n}{k}$ sans calculatrice]
+Ne calculez \textbf{jamais} $n!$ en entier ! Écrivez les $k$ facteurs décroissants à partir de $n$ au numérateur, les $k$ facteurs de $k!$ au dénominateur, et \textbf{simplifiez avant de multiplier}. De plus, si $k > \frac{n}{2}$, utilisez la symétrie $\binom{n}{k} = \binom{n}{n-k}$ :
+\begin{align*}
+    \binom{10}{3} &= \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 10 \times 3 \times 4 = 120, \qquad \binom{8}{6} = \binom{8}{2} = \frac{8 \times 7}{2} = 28, \\
+    \binom{12}{4} &= \frac{12 \times 11 \times 10 \times 9}{4 \times 3 \times 2 \times 1} = 11 \times 5 \times 9 = 495.
+\end{align*}
+\end{astuce}
+
+\subsection{Propriétés des coefficients binomiaux et triangle de Pascal}
+
+\begin{theoreme}[Identités de symétrie et de Pascal]
+Pour tous entiers $0 \le k \le n$ :
+\begin{enumerate}
+    \item \textbf{Valeurs aux bords :}
+    \[
+        \boxed{C_n^0 = \binom{n}{0} = 1, \quad C_n^n = \binom{n}{n} = 1, \quad C_n^1 = \binom{n}{1} = n, \quad C_n^2 = \binom{n}{2} = \frac{n(n-1)}{2}}.
+    \]
+    \item \textbf{Symétrie :}Choisir les $k$ éléments que l'on prend revient à choisir les $n - k$ éléments que l'on laisse :
+    \[
+        \boxed{C_n^k = C_n^{n-k} \qquad \text{soit} \qquad \binom{n}{k} = \binom{n}{n-k}}.
+    \]
+    \item \textbf{Relation de récurrence de Pascal :} Chaque coefficient du triangle de Pascal est la somme des deux coefficients situés juste au-dessus de lui :
+    \[
+        \boxed{C_n^k = C_{n-1}^{k-1} + C_{n-1}^k \qquad \Longleftrightarrow \qquad C_n^k - C_{n-1}^{k-1} = C_{n-1}^k}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c|ccccccccc}
+$n \setminus k$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ \\
+\hline
+$n = 0$ & $1$ & & & & & & & & \\
+$n = 1$ & $1$ & $1$ & & & & & & & \\
+$n = 2$ & $1$ & $2$ & $1$ & & & & & & \\
+$n = 3$ & $1$ & $3$ & $3$ & $1$ & & & & & \\
+$n = 4$ & $1$ & $4$ & $\mathbf{6}$ & $4$ & $1$ & & & & \\
+$n = 5$ & $1$ & $5$ & $10$ & $10$ & $5$ & $1$ & & & \\
+$n = 6$ & $1$ & $6$ & $15$ & $\mathbf{20}$ & $15$ & $6$ & $1$ & & \\
+$n = 7$ & $1$ & $7$ & $21$ & $35$ & $35$ & $21$ & $7$ & $1$ & \\
+$n = 8$ & $1$ & $8$ & $28$ & $56$ & $\mathbf{70}$ & $56$ & $28$ & $8$ & $1$ \\
+\end{tabular}
+\end{center}
+
+\begin{exemple}[Les six problèmes de dénombrement des annales (2021--2024)]
+\begin{enumerate}
+    \item \textbf{Juillet 2021, Q1.3 :} \emph{Simplifier l'opération $C_n^k - C_{n-1}^{k-1}$.}\\
+    Par la relation du triangle de Pascal $C_n^k = C_{n-1}^{k-1} + C_{n-1}^k$, on obtient immédiatement $\boxed{C_{n-1}^k = \binom{n-1}{k}}$.
+
+    \item \textbf{Septembre 2021, Q1.4 :} \emph{Sur un cadenas à $5$ chiffres (de $0$ à $9$), combien peut-on former de combinaisons où le chiffre $1$ ne figure qu'une seule fois ?}\\
+    Décomposons en deux étapes par le principe multiplicatif :
+    \begin{itemize}
+        \item \emph{Étape 1 :} Choisir laquelle des $5$ positions du cadenas est occupée par l'unique chiffre $1$ $\implies \binom{5}{1} = 5$ choix.
+        \item \emph{Étape 2 :} Pour chacune des $4$ autres positions, choisir librement un chiffre parmi les $9$ chiffres restants $\{0, 2, 3, 4, 5, 6, 7, 8, 9\}$ (avec répétition autorisée) $\implies 9^4$ choix.
+    \end{itemize}
+    Comme $9^2 = 81$ et $9^4 = 81^2 = (80 + 1)^2 = 6400 + 160 + 1 = 6561$, le nombre total vaut :
+    \[
+        N = 5 \times 9^4 = 5 \times 6561 = \boxed{32\,805}.
+    \]
+
+    \item \textbf{Juillet 2022, Q1.6 :} \emph{Si un étudiant doit répondre à $4$ des $8$ questions que comporte un examen tout en choisissant (exactement) $2$ questions parmi les $5$ premières, combien a-t-il de possibilités ?}\\
+    Pour former son ensemble de $4$ questions, l'étudiant doit :
+    \begin{itemize}
+        \item choisir $2$ questions parmi les $5$ premières : $\binom{5}{2} = \frac{5 \times 4}{2} = 10$ possibilités ;
+        \item \textbf{ET} choisir les $4 - 2 = 2$ questions restantes parmi les $8 - 5 = 3$ dernières questions : $\binom{3}{2} = \binom{3}{1} = 3$ possibilités.
+    \end{itemize}
+    Par le principe multiplicatif : $N = \binom{5}{2} \times \binom{3}{2} = 10 \times 3 = \boxed{30}$.
+
+    \item \textbf{Juillet 2023 -- Série 1, Q1.2 :} \emph{On compose un livret de quatre feuilles recto-verso, soit huit pages de texte. Combien y a-t-il de compositions possibles, selon l'ordre et l'orientation (recto ou verso) des pages ?}\\
+    \begin{itemize}
+        \item Il y a $4! = 24$ façons d'ordonner les $4$ feuilles les unes à la suite des autres.
+        \item Pour chacune des $4$ feuilles, il y a $2$ orientations possibles (placer la feuille côté recto ou la retourner côté verso), soit $2^4 = 16$ choix d'orientation.
+    \end{itemize}
+    Par le principe multiplicatif : $N = 2^4 \cdot 4! = 16 \times 24 = \boxed{384}$.
+
+    \item \textbf{Septembre 2023, Q1.3 :} \emph{Cinq athlètes participent à une compétition pour laquelle des médailles d'or, d'argent et de bronze sont attribuées aux trois meilleurs scores. Combien y a-t-il de façons différentes de décerner ces médailles ?}\\
+    L'ordre compte (Or $\neq$ Argent $\neq$ Bronze) et un athlète ne reçoit qu'une médaille (sans remise). C'est un arrangement de $3$ éléments parmi $5$ :
+    \[
+        A_5^3 = 5 \times 4 \times 3 = \boxed{60}.
+    \]
+
+    \item \textbf{Septembre 2024, Q1.3 :} \emph{Une bibliothécaire veut présenter $3$ ouvrages parmi un ensemble de $8$. L'ordre n'a pas d'importance, mais elle doit obligatoirement inclure \textbf{au moins un} des deux ouvrages les plus récents. De combien de manières peut-elle faire sa sélection ?}\\
+    \textbf{Méthode 1 (Complémentaire -- la plus rapide !) :}
+    \begin{itemize}
+        \item Nombre total de sélections de $3$ livres parmi $8$ sans contrainte : $\binom{8}{3} = \frac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56$.
+        \item Nombre de sélections interdites (ne contenant \textbf{aucun} des $2$ livres récents, donc choisies uniquement parmi les $8 - 2 = 6$ livres anciens) : $\binom{6}{3} = \frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$.
+    \end{itemize}
+    Par soustraction : $N = \binom{8}{3} - \binom{6}{3} = 56 - 20 = \boxed{36}$.\\
+    \textbf{Méthode 2 (Disjonction des cas) :} Soit exactement $1$ livre récent et $2$ anciens ($\binom{2}{1}\binom{6}{2} = 2 \times 15 = 30$), soit les $2$ livres récents et $1$ ancien ($\binom{2}{2}\binom{6}{1} = 1 \times 6 = 6$), d'où $30 + 6 = 36$.
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{La formule du binôme de Newton et ses applications à l'examen}
+% ----------------------------------------------------------------------------
+
+\begin{theoreme}[Formule du binôme de Newton]
+Pour tous nombres réels ou complexes $a$ et $b$, et tout entier naturel $n \in \N$ :
+\[
+    \boxed{(a + b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k}}.
+\]
+Le \textbf{terme général} de rang $k$ ($0 \le k \le n$) dans le développement de $(a + b)^n$ est donc :
+\[
+    \boxed{T_k = \binom{n}{k} a^{n-k} b^k}.
+\]
+\end{theoreme}
+
+\begin{astuce}[Méthode universelle pour trouver le coefficient de $x^p$ (ou le terme constant en $x^0$)]
+À l'examen, lorsqu'on vous demande le coefficient de $x^p$ (ou le \emph{terme constant / terme d'ordre nul / de degré zéro}, c'est-à-dire $p = 0$) dans une expression de la forme $\left(\alpha x^r + \beta x^s\right)^n$ (où $\frac{1}{x} = x^{-1}$) :
+\begin{enumerate}
+    \item Écrivez le \textbf{terme général} $T_k = \binom{n}{k} \bigl(\alpha x^r\bigr)^{n-k} \bigl(\beta x^s\bigr)^k$.
+    \item Séparez les constantes numériques (avec leurs signes !) et la puissance de $x$ :
+    \[
+        T_k = \underbrace{\binom{n}{k} \alpha^{n-k} \beta^k}_{\text{coefficient numérique}} \cdot \, x^{r(n-k) + sk}.
+    \]
+    \item Résolvez la petite équation du premier degré sur l'exposant : $\boxed{r(n - k) + sk = p}$ pour trouver l'entier $k \in \{0, \dots, n\}$.
+    \item Remplacez cette valeur de $k$ dans le coefficient numérique $\binom{n}{k} \alpha^{n-k} \beta^k$.
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Les dix questions sur le binôme de Newton des annales (2021--2026)]
+Regroupons les trois types d'exercices posés à la Question~1 entre 2021 et 2026 :
+
+\paragraph{Type A : Coefficient d'un monôme $x^p$ dans $(ax + b)^n$.}
+\begin{enumerate}
+    \item \textbf{Juillet 2021, Q1.2 :} \emph{Coefficient du terme en $a^5 b^4$ du polynôme $(a + 2b)^9$.}\\
+    Le terme général est $\binom{9}{k} a^{9-k} (2b)^k = \binom{9}{k} 2^k a^{9-k} b^k$. Pour avoir $a^5 b^4$, il faut $k = 4$ :
+    \[
+        \text{Coeff} = \binom{9}{4} \cdot 2^4 = \frac{9 \times 8 \times 7 \times 6}{4 \times 3 \times 2 \times 1} \times 16 = 126 \times 16 = \boxed{2016}.
+    \]
+    \item \textbf{Juillet 2022, Q1.2 :} \emph{Coefficient du terme de degré $9$ pour $x$ du binôme $(x - 2)^{12}$.}\\
+    Terme général : $\binom{12}{k} x^{12-k} (-2)^k$. Pour avoir $x^9$, on prend $12 - k = 9 \iff k = 3$ (n'oubliez pas le signe de $(-2)^3 = -8$ !) :
+    \[
+        \text{Coeff} = \binom{12}{3} (-2)^3 = \frac{12 \times 11 \times 10}{3 \times 2 \times 1} \times (-8) = 220 \times (-8) = \boxed{-1760}.
+    \]
+    \item \textbf{Septembre 2022, Q1.1 :} \emph{Coefficient du terme de degré $14$ pour $x$ de $(3x^2 + 2x^3)^6$.}\\
+    Terme général : $\binom{6}{k} (3x^2)^{6-k} (2x^3)^k = \binom{6}{k} 3^{6-k} 2^k \, x^{2(6-k) + 3k} = \binom{6}{k} 3^{6-k} 2^k \, x^{12 + k}$.
+    On veut l'exposant $12 + k = 14 \iff k = 2$ :
+    \[
+        \text{Coeff} = \binom{6}{2} \cdot 3^4 \cdot 2^2 = 15 \times 81 \times 4 = 60 \times 81 = \boxed{4860}.
+    \]
+    \item \textbf{Septembre 2023, Q1.2 :} \emph{Coefficient du terme de degré $7$ dans $(x - 2)^{10}$.}\\
+    Pour $x^7$, il faut $10 - k = 7 \iff k = 3$, d'où $\binom{10}{3} (-2)^3 = 120 \times (-8) = \boxed{-960}$.
+    \item \textbf{Juillet 2024, Q1.3 :} \emph{Coefficient du terme en $x^4$ de $(x + 2)^7 + (x - 1)^7$.}\\
+    Dans $(x + a)^7$, le coefficient de $x^4$ ($7 - k = 4 \iff k = 3$) vaut $\binom{7}{3} a^3$. En additionnant pour $a = 2$ et $a = -1$ :
+    \[
+        \text{Coeff} = \binom{7}{3} 2^3 + \binom{7}{3} (-1)^3 = \binom{7}{3}\bigl(8 - 1\bigr) = 35 \times 7 = \boxed{245}.
+    \]
+    \item \textbf{Septembre 2026, Q1.5 :} \emph{Coefficient du terme en $x^2$ dans $(x + 2)^6$.}\\
+    Pour $x^2$, le terme $\binom{6}{2} x^2 \cdot 2^{6-2}$ donne $\binom{6}{2} \cdot 2^4 = 15 \times 16 = \boxed{240}$.
+\end{enumerate}
+
+\paragraph{Type B : Terme constant (d'ordre nul / de degré zéro en $x^0$) dans $\left(ax^p + \frac{b}{x}\right)^n$.}
+\begin{enumerate}[resume]
+    \item \textbf{Juillet 2023 -- Série 2, Q1.3 :} \emph{Terme constant du développement de $\left(x + \dfrac{1}{x}\right)^8$.}\\
+    Terme général : $\binom{8}{k} x^{8-k} (x^{-1})^k = \binom{8}{k} x^{8-2k}$. Terme constant ($x^0$) : $8 - 2k = 0 \iff k = 4$, d'où $\binom{8}{4} = \boxed{70}$.
+    \item \textbf{Septembre 2024, Q1.5 :} \emph{Terme de degré zéro du développement de $\left(x + \dfrac{2}{x}\right)^6$.}\\
+    Terme général : $\binom{6}{k} x^{6-k} (2x^{-1})^k = \binom{6}{k} 2^k x^{6-2k}$. Pour $6 - 2k = 0 \iff k = 3$ :
+    \[
+        T_3 = \binom{6}{3} \cdot 2^3 = 20 \times 8 = \boxed{160}.
+    \]
+    \item \textbf{Septembre 2025, Q1.5 :} \emph{Terme d'ordre nul résultant du développement de $\left(x^2 + \dfrac{1}{x}\right)^6$.}\\
+    Terme général : $\binom{6}{k} (x^2)^{6-k} (x^{-1})^k = \binom{6}{k} x^{12-3k}$. Pour $12 - 3k = 0 \iff k = 4$ (ou $k = 2$ en inversant les rôles) :
+    \[
+        \binom{6}{4} = \binom{6}{2} = \boxed{15}.
+    \]
+    \item \textbf{Juillet 2026, Q1.5 :} \emph{Coefficient du terme d'ordre nul dans $\left(2x + \dfrac{1}{x}\right)^8$.}\\
+    Terme général : $\binom{8}{k} (2x)^{8-k} (x^{-1})^k = \binom{8}{k} 2^{8-k} x^{8-2k}$. Pour $8 - 2k = 0 \iff k = 4$ :
+    \[
+        \binom{8}{4} \cdot 2^4 = 70 \times 16 = \boxed{1120}.
+    \]
+\end{enumerate}
+
+\paragraph{Type C : Simplification de $(x + 1)^n + (x - 1)^n$ et $(x + 1)^n - (x - 1)^n$.}
+\begin{itemize}
+    \item Lorsqu'on \textbf{additionne} $(x + 1)^n + (x - 1)^n$, tous les termes où $(-1)^k$ est impair s'annulent et les termes où $k$ est pair doublent !
+    \item Lorsqu'on \textbf{soustrait} $(x + 1)^n - (x - 1)^n$, tous les termes où $k$ est pair s'annulent et les termes où $k$ est impair doublent !
+\end{itemize}
+\begin{enumerate}[resume]
+    \item \textbf{Juillet 2023 -- Série 1, Q1.3 :} \emph{Forme polynomiale de $(x + 1)^5 + (x - 1)^5$.}\\
+    La ligne $n = 5$ du triangle de Pascal est $1, 5, 10, 10, 5, 1$. En additionnant $(x+1)^5 + (x-1)^5$, seuls les termes de degrés impairs ($x^5, x^3, x^1$) survivent et sont multipliés par $2$ :
+    \[
+        (x + 1)^5 + (x - 1)^5 = 2\left(\binom{5}{0}x^5 + \binom{5}{2}x^3 + \binom{5}{4}x\right) = 2(x^5 + 10x^3 + 5x) = \boxed{2x^5 + 20x^3 + 10x}.
+    \]
+    \item \textbf{Juillet 2025, Q1.5 :} \emph{Réduisez $P(x) = (x + 1)^6 - (x - 1)^6 - 12x(x^2 + 1)^2$ à sa plus simple expression.}\\
+    La ligne $n = 6$ de Pascal est $1, 6, 15, 20, 15, 6, 1$. Dans la différence $(x + 1)^6 - (x - 1)^6$, seuls les termes de puissances impaires ($k = 1, 3, 5$, soit $x^5, x^3, x^1$) survivent, multipliés par $2$ :
+    \[
+        (x + 1)^6 - (x - 1)^6 = 2\bigl(6x^5 + 20x^3 + 6x\bigr) = 12x^5 + 40x^3 + 12x.
+    \]
+    Or, d'autre part, $12x(x^2 + 1)^2 = 12x(x^4 + 2x^2 + 1) = 12x^5 + 24x^3 + 12x$. En soustrayant les deux expressions :
+    \[
+        P(x) = (12x^5 + 40x^3 + 12x) - (12x^5 + 24x^3 + 12x) = \boxed{16x^3}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Calcul des probabilités et paramètres statistiques}
+% ----------------------------------------------------------------------------
+
+\subsection{Loi de Laplace (équiprobabilité) et règles de probabilité}
+
+\begin{theoreme}[Formule de Laplace et probabilités fondamentales]
+Lorsqu'une expérience aléatoire possède un univers fini $\Omega$ d'issues \textbf{équiprobables} (dés équilibrés, cartes bien battues, boules indiscernables au toucher), la probabilité d'un événement $A \subset \Omega$ est le rapport :
+\[
+    \boxed{P(A) = \frac{\text{Nombre de cas favorables à } A}{\text{Nombre total de cas possibles}} = \frac{\text{card}(A)}{\text{card}(\Omega)}}.
+\]
+\textbf{Attention à la cohérence du modèle :} Si vous comptez les cas possibles au dénominateur \textbf{avec ordre} (par exemple $6^k$ pour $k$ dés numérotés de $1$ à $k$), vous devez impérativement compter les cas favorables au numérateur \textbf{avec ordre également} ! Si vous comptez au dénominateur \textbf{sans ordre} (par exemple $\binom{N}{k}$ pour un tirage simultané sans remise), comptez aussi le numérateur \textbf{sans ordre}.
+\begin{itemize}
+    \item \textbf{Événement contraire $\bar{A}$ :} $\boxed{P(\bar{A}) = 1 - P(A)}$ (idéal pour « au moins un »).
+    \item \textbf{Union de deux événements :} $\boxed{P(A \cup B) = P(A) + P(B) - P(A \cap B)}$.
+    \item \textbf{Événements indépendants :} $A$ et $B$ sont indépendants ssi $\boxed{P(A \cap B) = P(A)\cdot P(B)}$.
+\end{itemize}
+\end{theoreme}
+
+\begin{exemple}[Les neuf problèmes de probabilités des annales (2021--2026)]
+Étudions méthodiquement toutes les questions de probabilités posées à l'examen d'admission de 2021 à 2026 :
+
+\paragraph{1. Lancers de pièces et de dés (toujours distinguer les dés au dénominateur : $6^n$ issues équiprobables !).}
+\begin{enumerate}
+    \item \textbf{Juillet 2021, Q1.4 :} \emph{Probabilité que trois pièces de monnaie équilibrées lancées simultanément tombent du même côté.}\\
+    Il y a $2^3 = 8$ issues équiprobables au total ($\text{PPP}, \text{PPF}, \dots, \text{FFF}$). Seules $2$ issues sont favorables ($\text{PPP}$ et $\text{FFF}$), d'où :
+    \[
+        P = \frac{2}{2^3} = \frac{2}{8} = \boxed{\frac{1}{4}}.
+    \]
+
+    \item \textbf{Septembre 2023, Q1.5 :} \emph{On lance deux pièces simultanément. Quelle est la probabilité d'obtenir un « double face » ($\text{FF}$) en un maximum de quatre lancers ?}\\
+    Lors d'un lancer de deux pièces, il y a $4$ issues équiprobables ($\text{PP}, \text{PF}, \text{FP}, \text{FF}$), donc $P(\text{FF}) = \frac{1}{4}$ et la probabilité de \textbf{ne pas} obtenir un double face sur un lancer vaut $P(\overline{\text{FF}}) = 1 - \frac{1}{4} = \frac{3}{4}$.
+    Par passage à l'\textbf{événement contraire} : ne pas obtenir un seul double face au cours des $4$ lancers indépendants a pour probabilité $\left(\frac{3}{4}\right)^4 = \frac{81}{256}$. La probabilité d'en obtenir \textbf{au moins un} en $4$ lancers vaut donc :
+    \[
+        P = 1 - \left(\frac{3}{4}\right)^4 = 1 - \frac{81}{256} = \boxed{\frac{175}{256}}.
+    \]
+
+    \item \textbf{Septembre 2022, Q1.2 :} \emph{On lance deux fois d'affilée deux dés non distinguables. Quelle est la probabilité que les deux tirages soient identiques (l'ordre des deux dés n'ayant pas d'importance) ?}\\
+    \emph{Attention au piège d'équiprobabilité :} même si l'on ne regarde pas l'ordre des deux dés d'un lancer, un « double » comme $\{3, 3\}$ n'a qu'$1$ chance sur $36$ de sortir, alors qu'une paire de chiffres différents comme $\{2, 5\}$ correspond à $2$ issues ordonnées $(2,5)$ et $(5,2)$, soit $\frac{2}{36}$ !
+    Au premier lancer de deux dés, deux cas disjoints se présentent :
+    \begin{itemize}
+        \item \emph{Cas 1 : Le 1\ier{} lancer est un double} (probabilité $\frac{6}{36} = \frac{1}{6}$). Pour que le 2\ieme{} lancer soit identique, il doit reproduire exactement ce même double (probabilité $\frac{1}{36}$). Contribution : $\frac{6}{36} \times \frac{1}{36} = \frac{6}{1296}$.
+        \item \emph{Cas 2 : Le 1\ier{} lancer donne deux chiffres distincts} (probabilité $\frac{30}{36} = \frac{5}{6}$). Pour que le 2\ieme{} lancer donne les deux mêmes chiffres (dans n'importe quel ordre), il y a $2$ issues favorables sur $36$ (probabilité $\frac{2}{36}$). Contribution : $\frac{30}{36} \times \frac{2}{36} = \frac{60}{1296}$.
+    \end{itemize}
+    En additionnant : $P = \frac{6 + 60}{1296} = \frac{66}{1296} = \boxed{\dfrac{11}{216}}$.
+
+    \item \textbf{Juillet 2024, Q1.1 :} \emph{On lance $5$ dés à six faces équilibrés. Quelle est la probabilité d'obtenir un \textbf{full} (c'est-à-dire $3$ dés identiques d'une valeur et $2$ autres dés identiques d'une autre valeur, ex. 3-3-3-5-5) ?}\\
+    Au dénominateur, en distinguant les $5$ dés, il y a $6^5 = 7776$ issues équiprobables.
+    Au numérateur, construisons un full étape par étape (principe multiplicatif) :
+    \begin{itemize}
+        \item Choisir la valeur faciale (parmi $6$) du brelan ($3$ dés identiques) : $6$ choix.
+        \item Choisir la valeur faciale (parmi les $5$ restantes) de la paire ($2$ dés identiques) : $5$ choix.
+        \item Choisir lesquels des $5$ dés forment la paire (les $3$ autres formant automatiquement le brelan) : $\binom{5}{2} = \binom{5}{3} = 10$ choix.
+    \end{itemize}
+    D'où :
+    \[
+        P(\text{full}) = \frac{6 \times 5 \times \binom{5}{2}}{6^5} = \frac{30 \times 10}{6^5} = \frac{5 \times 10}{6^4} = \frac{50}{1296} = \boxed{\frac{25}{648}} \quad \left(\text{ou } \frac{300}{7776}\right).
+    \]
+
+    \item \textbf{Juillet 2026, Q1.4 :} \emph{On lance $3$ dés équilibrés à six faces. Quelle est la probabilité d'obtenir \textbf{exactement une paire} de dés identiques ?}\\
+    Nombre total d'issues : $6^3 = 216$. Pour former exactement une paire (2 dés d'une valeur et le 3\ieme{} dé d'une valeur différente) :
+    \begin{itemize}
+        \item Choisir lesquels des $3$ dés portent la paire : $\binom{3}{2} = 3$ choix.
+        \item Choisir la valeur faciale de la paire : $6$ choix.
+        \item Choisir la valeur faciale du 3\ieme{} dé (différente de la paire) : $5$ choix.
+    \end{itemize}
+    D'où : $P = \dfrac{3 \times 6 \times 5}{6^3} = \dfrac{15}{36} = \boxed{\dfrac{5}{12}}$.
+\end{enumerate}
+
+\paragraph{2. Tirages simultanés sans remise (urnes, cartes, chaussettes) et files d'attente.}
+\begin{enumerate}[resume]
+    \item \textbf{Juillet 2022, Q1.3 :} \emph{Une file d'attente est formée au hasard avec $n$ personnes ($n \ge 2$). Quelle est la probabilité que Jean et Alice soient situés directement l'un à la suite de l'autre ?}\\
+    Il y a $n!$ façons d'ordonner les $n$ personnes. Si l'on « soude » Jean et Alice en un seul bloc $[JA]$, il reste $(n - 1)$ objets à permuter, soit $(n - 1)!$ ordres, à multiplier par $2$ car le bloc peut être $[JA]$ ou $[AJ]$. D'où :
+    \[
+        P = \frac{2 \cdot (n - 1)!}{n!} = \boxed{\frac{2}{n}}.
+    \]
+
+    \item \textbf{Juillet 2023 -- Série 2, Q1.2 :} \emph{Une manne contient $4$ paires de chaussettes mélangées (soit $8$ chaussettes). On en tire $4$ au hasard. Quelle est la probabilité de tirer quatre chaussettes de paires toutes différentes ?}\\
+    \begin{itemize}
+        \item Nombre total de poignées de $4$ chaussettes parmi $8$ : $\binom{8}{4} = \frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = 70$.
+        \item Pour avoir $4$ chaussettes issues des $4$ paires différentes, on doit prendre exactement $1$ chaussette dans la paire~1 ($2$ choix : gauche ou droite), $1$ dans la paire~2 ($2$ choix), $1$ dans la paire~3 ($2$ choix) et $1$ dans la paire~4 ($2$ choix), soit $2^4 = 16$ poignées favorables.
+    \end{itemize}
+    D'où : $P = \dfrac{2^4}{\binom{8}{4}} = \dfrac{16}{70} = \boxed{\dfrac{8}{35}}$.
+
+    \item \textbf{Juillet 2025, Q1.4 :} \emph{Une urne contient $6$ boules rouges et $4$ boules vertes (soit $10$ boules). On tire $3$ boules simultanément sans remise. Quelle est la probabilité d'obtenir exactement $2$ rouges et $1$ verte ?}\\
+    On choisit $2$ rouges parmi $6$ \textbf{et} $1$ verte parmi $4$, sur un total de $\binom{10}{3}$ tirages possibles :
+    \[
+        P = \frac{\binom{6}{2} \cdot \binom{4}{1}}{\binom{10}{3}} = \frac{15 \times 4}{120} = \frac{60}{120} = \boxed{\frac{1}{2}}.
+    \]
+
+    \item \textbf{Septembre 2025, Q1.4 :} \emph{On tire sans remise $4$ cartes d'un jeu ne contenant que les figures (rois, dames, valets) des quatre couleurs (soit $3 \times 4 = 12$ cartes). Quelle est la probabilité de tirer la même figure dans les quatre couleurs (un carré de rois, de dames ou de valets) ?}\\
+    Il y a $\binom{12}{4} = \frac{12 \times 11 \times 10 \times 9}{24} = 495$ mains de $4$ cartes possibles, et seulement $3$ mains favorables (les 4 rois, les 4 dames ou les 4 valets) :
+    \[
+        P = \frac{3}{\binom{12}{4}} = \frac{3}{495} = \boxed{\frac{1}{165}}.
+    \]
+
+    \item \textbf{Septembre 2026, Q1.4 :} \emph{On tire simultanément $2$ cartes d'un jeu complet de $52$ cartes. Quelle est la probabilité d'obtenir deux as ?}\\
+    Il y a $4$ as dans le jeu de $52$ cartes, donc $\binom{4}{2} = 6$ paires d'as favorables sur $\binom{52}{2} = \frac{52 \times 51}{2} = 26 \times 51 = 1326$ paires de cartes possibles :
+    \[
+        P = \frac{\binom{4}{2}}{\binom{52}{2}} = \frac{6}{26 \times 51} = \frac{1}{13 \times 17} = \boxed{\frac{1}{221}}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+\subsection{Paramètres statistiques : moyenne et écart-type d'une distribution}
+
+\begin{theoreme}[Moyenne $\bar{x}$, variance $\sigma^2$ et écart-type $\sigma$]
+Soit une distribution statistique où les valeurs $x_1, x_2, \dots, x_k$ apparaissent avec les effectifs respectifs $n_1, n_2, \dots, n_k$ (effectif total $N = \sum_{i=1}^k n_i$) :
+\begin{enumerate}
+    \item \textbf{Moyenne arithmétique pondérée :}
+    \[
+        \boxed{\bar{x} = \frac{1}{N}\sum_{i=1}^k n_i x_i = \frac{n_1 x_1 + n_2 x_2 + \dots + n_k x_k}{n_1 + n_2 + \dots + n_k}}.
+    \]
+    \item \textbf{Variance $\sigma^2$ et écart-type $\sigma$ (formule de définition et formule de König-Huygens) :}
+    \[
+        \boxed{\sigma^2 = \frac{1}{N}\sum_{i=1}^k n_i (x_i - \bar{x})^2 = \left(\frac{1}{N}\sum_{i=1}^k n_i x_i^2\right) - \bar{x}^2} \qquad \text{et} \qquad \boxed{\sigma = \sqrt{\sigma^2}}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{exemple}[Calcul de moyenne et d'écart-type -- UCLouvain, Septembre 2021, Q1.2]
+\textbf{Énoncé :} Une étude sur Louvain-la-Neuve a relevé la distribution suivante de la superficie des chambres d'étudiants :
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Superficie $x_i$ [$\text{m}^2$] & $6$ & $9$ & $12$ & $15$ & $18$ \\ \hline
+Nombre de chambres $n_i$ [-] & $500$ & $1400$ & $1200$ & $800$ & $300$ \\ \hline
+\end{tabular}
+\end{center}
+Déterminer la moyenne et l'écart-type de la superficie des chambres.
+
+\textbf{Résolution :} Simplifions d'abord tous les effectifs par $100$ (les fréquences $f_i = \frac{n_i}{N}$ ne changent pas !) : les poids réduits sont $5, 14, 12, 8, 3$, de somme $N' = 5 + 14 + 12 + 8 + 3 = 42$.
+\begin{itemize}
+    \item \textbf{Moyenne :}
+    \[
+        \bar{x} = \frac{5(6) + 14(9) + 12(12) + 8(15) + 3(18)}{42} = \frac{30 + 126 + 144 + 120 + 54}{42} = \frac{474}{42} = \frac{79}{7} \approx \boxed{11,29\text{ m}^2}.
+    \]
+    \item \textbf{Variance et écart-type :} Par König-Huygens, $\frac{1}{42}\sum n'_i x_i^2 = \frac{5(36) + 14(81) + 12(144) + 8(225) + 3(324)}{42} = \frac{180 + 1134 + 1728 + 1800 + 972}{42} = \frac{5814}{42} = \frac{969}{7} \approx 138,43$. D'où $\sigma^2 = \frac{969}{7} - \left(\frac{79}{7}\right)^2 = \frac{6783 - 6241}{49} = \frac{542}{49} \approx 11,06$ et $\sigma = \sqrt{\frac{542}{49}} = \frac{\sqrt{542}}{7} \approx \boxed{3,33\text{ m}^2}$.
+\end{itemize}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 5}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 5.\arabic* :}, leftmargin=*]
+    \item \textbf{(UCLouvain -- Septembre 2021, Q1.5)} Soit un jeu de $52$ cartes que l'on distribue en quatre paquets de $13$ cartes. Quelle est la probabilité que l'un (au moins) des quatre paquets comporte $13$ des $26$ cartes rouges que compte le jeu ?
+    \item \textbf{(Binôme de Newton)}
+    \begin{enumerate}[label=(\alph*)]
+        \item Déterminer le coefficient du terme en $x^5$ dans le développement de $(2x - 1)^8$.
+        \item Déterminer le terme constant (d'ordre nul en $x^0$) dans le développement de $\left(3x^2 - \dfrac{1}{3x}\right)^9$.
+    \end{enumerate}
+    \item \textbf{(Probabilités aux dés et aux cartes)}
+    \begin{enumerate}[label=(\alph*)]
+        \item On lance $4$ dés équilibrés à $6$ faces. Quelle est la probabilité d'obtenir un \textbf{carré} ($4$ dés identiques) ? Et celle d'obtenir \textbf{quatre chiffres tous différents} ?
+        \item On tire simultanément $3$ boules d'une urne contenant $5$ boules blanches, $3$ boules noires et $2$ boules rouges. Quelle est la probabilité d'obtenir $3$ boules de la même couleur ? Et celle d'obtenir $1$ boule de chaque couleur ?
+    \end{enumerate}
+\end{enumerate}

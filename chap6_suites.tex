@@ -1,0 +1,253 @@
+% ============================================================================
+% CHAPITRE 6 : SUITES ARITHMÉTIQUES ET GÉOMÉTRIQUES
+% ============================================================================
+\chapter{Suites Arithmétiques et Géométriques}
+
+À chaque session de l'examen d'admission d'Algèbre de l'UCLouvain, la Question~1 se termine (en Q1.5, Q1.6 ou Q1.7) par un problème concret ou direct sur les \textbf{suites arithmétiques} ou les \textbf{suites géométriques}. De plus, la Question~3 (le grand problème textuel) mobilise très souvent une suite géométrique (dégradation annuelle de panneaux photovoltaïques en Juillet~2022, perte de capacité d'une batterie de robot-tondeuse en Juillet~2021) ou une suite arithmétique (barres de suspension d'un escalier en Septembre~2023).
+
+% ----------------------------------------------------------------------------
+\section{Suites arithmétiques (progression linéaire à pas constant $+r$)}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition, terme général et moyenne arithmétique}
+
+\begin{definition}[Suite arithmétique de raison $r$]
+Une suite de nombres réels $(u_n)_{n \ge 1}$ est dite \textbf{arithmétique} si l'on passe d'un terme au suivant en \textbf{ajoutant toujours la même constante} $r \in \R$, appelée la \textbf{raison} de la suite :
+\[
+    \boxed{\forall n \ge 1 : u_{n+1} = u_n + r \quad \Longleftrightarrow \quad u_{n+1} - u_n = r = \text{constante}}.
+\]
+\begin{itemize}
+    \item Si $r > 0$, la suite est strictement \textbf{croissante}.
+    \item Si $r < 0$, la suite est strictement \textbf{décroissante}.
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Terme général et moyenne arithmétique]
+Soit $(u_n)$ une suite arithmétique de raison $r$ :
+\begin{enumerate}
+    \item \textbf{Terme général à partir de $u_1$ (ou à partir d'un terme quelconque $u_p$) :}
+    \[
+        \boxed{u_n = u_1 + (n - 1)r} \qquad \text{et plus généralement} \qquad \boxed{u_n = u_p + (n - p)r}.
+    \]
+    \emph{Remarque :} Si la suite est indexée à partir de $u_0$, alors $u_n = u_0 + n r$.
+    \item \textbf{Propriété caractéristique (Moyenne arithmétique) :} Trois nombres consécutifs $a, b, c$ sont en progression arithmétique si et seulement si le terme du milieu est la \textbf{moyenne arithmétique} des deux termes qui l'encadrent :
+    \[
+        \boxed{b = \frac{a + c}{2} \quad \Longleftrightarrow \quad a + c = 2b}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Somme des $n$ premiers termes d'une suite arithmétique (Formule de Gauss)}
+
+\begin{theoreme}[Somme de $n$ termes consécutifs d'une suite arithmétique]
+La somme $S_n = u_1 + u_2 + \dots + u_n = \sum_{k=1}^n u_k$ des $n$ premiers termes d'une suite arithmétique est égale au \textbf{nombre de termes} multiplié par la \textbf{moyenne du premier et du dernier terme} :
+\[
+    \boxed{S_n = n \cdot \frac{u_1 + u_n}{2} = \frac{n}{2}\bigl(2u_1 + (n - 1)r\bigr)}.
+\]
+\textbf{Cas particuliers indispensables pour le calcul mental :}
+\begin{itemize}
+    \item \textbf{Somme des $n$ premiers entiers naturels :}
+    \[
+        \boxed{1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}}.
+    \]
+    \item \textbf{Somme des $n$ premiers entiers pairs :}
+    \[
+        \boxed{2 + 4 + 6 + \dots + 2n = 2(1 + 2 + \dots + n) = n(n + 1)}.
+    \]
+    \item \textbf{Somme des $n$ premiers entiers impairs :}
+    \[
+        \boxed{1 + 3 + 5 + \dots + (2n - 1) = n^2}.
+    \]
+\end{itemize}
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.65, >=Stealth]
+    % Illustration visuelle de la formule de Gauss : escalier retourné
+    \foreach \i in {1,...,5} {
+        \pgfmathsetmacro\h{0.6*\i + 0.4}
+        \fill[uclblue!75, draw=white, thick] (\i-1, 0) rectangle (\i, \h);
+        \pgfmathsetmacro\htop{0.6*6 + 0.8}
+        \fill[uclaccent!35, draw=white, thick] (\i-1, \h) rectangle (\i, \htop);
+    }
+    \draw[thick, darkgray] (0,0) rectangle (5, 4.4);
+    \draw[<->, thick, warnred] (-0.4, 0) -- (-0.4, 1.0) node[midway, left] {\small $u_1$};
+    \draw[<->, thick, warnred] (-0.4, 1.0) -- (-0.4, 4.4) node[midway, left] {\small $u_n$};
+    \draw[<->, thick, uclblue] (5.4, 0) -- (5.4, 4.4) node[midway, right] {\small $u_1 + u_n$};
+    \draw[<->, thick, darkgray] (0, -0.5) -- (5, -0.5) node[midway, below] {\small $n$ colonnes : $2 S_n = n(u_1 + u_n)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{exemple}[Les cinq problèmes de suites arithmétiques des annales (2022--2026)]
+\begin{enumerate}
+    \item \textbf{Juillet 2022, Q1.7 :} \emph{La somme de $12$ termes d'une suite arithmétique de raison égale à $3$ vaut $2022$. Quel est le premier terme de cette suite ?}\\
+    On applique la formule de la somme avec $n = 12$, $r = 3$ et $S_{12} = 2022$ :
+    \[
+        S_{12} = \frac{12}{2}\bigl(2u_1 + (12 - 1)\cdot 3\bigr) = 6\bigl(2u_1 + 33\bigr) = 2022.
+    \]
+    Divisons par $6$ : $2u_1 + 33 = \dfrac{2022}{6} = 337 \iff 2u_1 = 304 \iff \boxed{u_1 = 152}$.
+
+    \item \textbf{Juillet 2023 -- Série 2, Q1.6 (L'échelle du menuisier) :} \emph{Un menuisier construit une échelle en bois avec $9$ échelons dont la taille décroît linéairement depuis le bas de l'échelle jusqu'à son sommet. Quelle est la largeur du dernier échelon si le premier (en bas) mesure $50\text{ cm}$ et que l'ensemble des échelons est coupé sans déchet à partir d'une latte longue de $3,6\text{ m}$ ?}\\
+    Les longueurs $u_1, u_2, \dots, u_9$ des $9$ échelons forment une suite arithmétique avec $n = 9$, $u_1 = 50\text{ cm}$ et une somme totale $S_9 = 3,6\text{ m} = 360\text{ cm}$.
+    Utilisons directement la formule $S_9 = 9 \cdot \dfrac{u_1 + u_9}{2}$ sans même avoir besoin de calculer la raison $r$ :
+    \[
+        9 \cdot \frac{50 + u_9}{2} = 360 \iff 50 + u_9 = \frac{360 \times 2}{9} = 40 \times 2 = 80 \iff \boxed{u_9 = 30\text{ cm}}.
+    \]
+
+    \item \textbf{Septembre 2024, Q1.7 :} \emph{Quel est le premier terme d'une suite arithmétique de raison $3$ dont la somme des $10$ premiers termes vaut $185$ ?}\\
+    Avec $n = 10$, $r = 3$ et $S_{10} = 185$ :
+    \[
+        S_{10} = \frac{10}{2}\bigl(2u_1 + 9\cdot 3\bigr) = 5(2u_1 + 27) = 185 \iff 2u_1 + 27 = 37 \iff \boxed{u_1 = 5}.
+    \]
+
+    \item \textbf{Juillet 2025, Q1.6 (La soirée étudiante chantante) :} \emph{Lors d'une soirée étudiante, les participants chantent à intervalles réguliers. Après chaque période de trois quarts d'heure ($45\text{ min}$), deux étudiants quittent la fête de sorte que les deux derniers clôturent la fête après $9\text{ heures}$. À chaque période, chaque étudiant encore présent entame à son tour une chanson. Combien de chansons ont été entonnées durant la soirée et combien d'étudiants ont pris part à la fête ?}\\
+    \begin{itemize}
+        \item \emph{Nombre de périodes :} Une durée de $9\text{ h}$ divisée par des périodes de $\frac{3}{4}\text{ h}$ ($45\text{ min}$) donne $n = \frac{9}{3/4} = 9 \times \frac{4}{3} = 12$ périodes.
+        \item \emph{Nombre initial d'étudiants :} À la $12$\ieme{} et dernière période, il reste $u_{12} = 2$ étudiants. Comme $2$ étudiants sont partis après chacune des $11$ périodes précédentes ($r = -2$), le nombre initial d'étudiants à la 1\iere{} période était :
+        \[
+            u_1 = u_{12} + 11 \times 2 = 2 + 22 = \boxed{24\text{ étudiants}}.
+        \]
+        \item \emph{Nombre total de chansons :} C'est la somme des $12$ termes de cette suite arithmétique :
+        \[
+            S_{12} = 12 \cdot \frac{u_1 + u_{12}}{2} = 6 \times (24 + 2) = 6 \times 26 = \boxed{156\text{ chansons}}.
+        \]
+    \end{itemize}
+
+    \item \textbf{Juillet 2026, Q1.7 (Les tronçons de corde) :} \emph{On a $240\text{ m}$ de corde. On coupe des tronçons de tailles croissantes successives de $2, 4, 6, \dots\text{ m}$. Combien de tronçons entiers pourra-t-on couper ?}\\
+    La longueur totale de $n$ tronçons est la somme des $n$ premiers entiers pairs :
+    \[
+        S_n = 2 + 4 + 6 + \dots + 2n = n(n + 1).
+    \]
+    On cherche le plus grand entier $n$ tel que $n(n + 1) \le 240$. Or $15 \times 16 = 240$ tombe pile ! On peut donc couper exactement $\boxed{15\text{ tronçons}}$.
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Suites géométriques (progression exponentielle à facteur constant $\times q$)}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition, terme général et moyenne géométrique}
+
+\begin{definition}[Suite géométrique de raison $q$]
+Une suite de nombres réels $(u_n)_{n \ge 1}$ est dite \textbf{géométrique} si l'on passe d'un terme au suivant en \textbf{multipliant toujours par la même constante non nulle} $q \in \R_0$, appelée la \textbf{raison} de la suite :
+\[
+    \boxed{\forall n \ge 1 : u_{n+1} = q \cdot u_n \quad \Longleftrightarrow \quad \frac{u_{n+1}}{u_n} = q = \text{constante}}.
+\]
+\textbf{Attention aux évolutions en pourcentage :}
+\begin{itemize}
+    \item Une grandeur qui \textbf{augmente de $p\,\%$} chaque année est une suite géométrique de raison $\boxed{q = 1 + \frac{p}{100}}$.
+    \item Une grandeur qui \textbf{diminue (se dégrade) de $p\,\%$} chaque année est une suite géométrique de raison $\boxed{q = 1 - \frac{p}{100}}$ (par exemple, une baisse de $5\,\%$/an correspond à $q = 0,95$).
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Terme général et moyenne géométrique]
+Soit $(u_n)$ une suite géométrique de raison $q \neq 0$ :
+\begin{enumerate}
+    \item \textbf{Terme général à partir de $u_1$ (ou à partir d'un terme quelconque $u_p$) :}
+    \[
+        \boxed{u_n = u_1 \cdot q^{n-1}} \qquad \text{et plus généralement} \qquad \boxed{u_n = u_p \cdot q^{n-p}}.
+    \]
+    \item \textbf{Propriété caractéristique (Moyenne géométrique) :} Trois nombres strictement positifs $a, b, c$ sont en progression géométrique si et seulement si :
+    \[
+        \boxed{b^2 = a \cdot c \quad \Longleftrightarrow \quad b = \sqrt{a \cdot c}}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Somme des $n$ premiers termes d'une suite géométrique}
+
+\begin{theoreme}[Somme de $n$ termes consécutifs d'une suite géométrique ($q \neq 1$)]
+Pour toute suite géométrique de premier terme $u_1$ et de raison $q \neq 1$, la somme des $n$ premiers termes $S_n = u_1 + u_2 + \dots + u_n = u_1(1 + q + q^2 + \dots + q^{n-1})$ vaut :
+\[
+    \boxed{S_n = u_1 \cdot \frac{1 - q^n}{1 - q} = u_1 \cdot \frac{q^n - 1}{q - 1}}.
+\]
+\textbf{Astuce de signe pour le calcul mental :}
+\begin{itemize}
+    \item Si $\mathbf{q > 1}$ (ex. $q = 2$ ou $q = 3/2$), utilisez la seconde forme $\boxed{S_n = u_1 \cdot \frac{q^n - 1}{q - 1}}$ pour que le numérateur et le dénominateur soient tous deux \textbf{positifs} ! En particulier, pour $q = 2$ : $\boxed{1 + 2 + 4 + \dots + 2^{n-1} = 2^n - 1}$.
+    \item Si $\mathbf{0 < q < 1}$ (ex. $q = 3/5$ ou $q = 0,95$), utilisez la première forme $\boxed{S_n = u_1 \cdot \frac{1 - q^n}{1 - q}}$.
+\end{itemize}
+\end{theoreme}
+
+\begin{astuce}[Valeurs des puissances de $2$ et de $3$ à connaître par cœur le jour de l'examen]
+Sans calculatrice, reconnaître instantanément les puissances de $2$ et de $3$ fait gagner un temps précieux :
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lcccccccccc@{}}
+\toprule
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ \\
+\midrule
+$2^n$ & $2$ & $4$ & $8$ & $16$ & $32$ & $64$ & $128$ & $256$ & $512$ & $1024$ \\
+$3^n$ & $3$ & $9$ & $27$ & $81$ & $243$ & $729$ & $2187$ & & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+Ainsi, dans les problèmes où une quantité double chaque heure ou chaque année ($q = 2$), la somme sur $n$ périodes vaut $S_n = u_1(2^n - 1)$ :
+\begin{itemize}
+    \item Sur $7$ heures ($n = 7$) : $2^7 - 1 = 128 - 1 = \mathbf{127}$.
+    \item Sur $10$ ans ($n = 10$) : $2^{10} - 1 = 1024 - 1 = \mathbf{1023}$.
+\end{itemize}
+\end{astuce}
+
+\begin{exemple}[Les six problèmes de suites géométriques des annales (2021--2026)]
+\begin{enumerate}
+    \item \textbf{Septembre 2021, Q1.3 :} \emph{Donner la valeur du premier terme $u_1$ et la raison $q$ d'une suite géométrique dont les $11$\ieme{} et $21$\ieme{} termes valent respectivement $3\,072$ et $3\,145\,728$.}\\
+    Utilisons la relation entre $u_{21}$ et $u_{11}$ :
+    \[
+        u_{21} = u_{11} \cdot q^{21-11} \iff q^{10} = \frac{u_{21}}{u_{11}} = \frac{3\,145\,728}{3\,072} = 1\,024 = 2^{10},
+    \]
+    ce qui donne $q = 2$ (ou $q = \pm 2$). Ensuite, à partir de $u_{11} = u_1 \cdot q^{10} = 1024\,u_1 = 3072$ :
+    \[
+        u_1 = \frac{3072}{1024} = 3 \implies \boxed{u_1 = 3 \quad \text{et} \quad q = 2}.
+    \]
+
+    \item \textbf{Septembre 2022, Q1.5 :} \emph{La somme des six premiers termes d'une série géométrique de raison $3/2$ vaut $1\,330$. Quel est le premier terme de cette série ?}\\
+    Appliquons la formule de la somme avec $n = 6$, $q = \dfrac{3}{2} > 1$ et $S_6 = 1330$. Comme $q - 1 = \dfrac{1}{2}$ et $q^6 - 1 = \dfrac{3^6}{2^6} - 1 = \dfrac{729 - 64}{64} = \dfrac{665}{64}$ :
+    \[
+        S_6 = u_1 \cdot \frac{\left(\frac{3}{2}\right)^6 - 1}{\frac{3}{2} - 1} = u_1 \cdot \frac{665 / 64}{1 / 2} = u_1 \cdot \frac{665}{32} = 1330.
+    \]
+    Or $1330 = 2 \times 665$ ! En simplifiant par $665$, il vient $\dfrac{u_1}{32} = 2 \iff \boxed{u_1 = 64}$.
+
+    \item \textbf{Juillet 2023 -- Série 1, Q1.5 (L'attraction du parc touristique) :} \emph{Le nombre de personnes ayant visité l'attraction pendant l'heure écoulée doublait par rapport à l'heure précédente. À la fin de la journée, qui a duré $7$ heures, un total de $12\,700$ personnes ont visité l'attraction. Combien de personnes étaient présentes lors de la première heure ?}\\
+    C'est une suite géométrique de raison $q = 2$ sur $n = 7$ heures, avec $S_7 = 12\,700$ :
+    \[
+        S_7 = u_1 \cdot \frac{2^7 - 1}{2 - 1} = u_1(128 - 1) = 127\,u_1 = 12\,700 \implies \boxed{u_1 = \frac{12\,700}{127} = 100\text{ personnes}}.
+    \]
+
+    \item \textbf{Juillet 2024, Q1.6 (La collection de pierres de Laurent) :} \emph{La première année, Laurent achète un certain nombre de pierres, puis chaque année suivante, il double la quantité achetée l'année précédente. Au bout de dix ans, il possède un total de $5\,115$ pierres. Combien de pierres a-t-il achetées la première année ?}\\
+    Suite géométrique de raison $q = 2$ sur $n = 10$ ans, avec $S_{10} = 5115$ :
+    \[
+        S_{10} = u_1(2^{10} - 1) = 1023\,u_1 = 5115 \implies \boxed{u_1 = \frac{5115}{1023} = 5\text{ pierres}}.
+    \]
+
+    \item \textbf{Septembre 2025, Q1.7 :} \emph{Soit une série géométrique de raison $3/2$. La somme des cinq premiers termes donne $211$. Quel est le premier terme de cette série ?}\\
+    Avec $n = 5$ et $q = \dfrac{3}{2}$, on a $q^5 - 1 = \dfrac{3^5}{2^5} - 1 = \dfrac{243 - 32}{32} = \dfrac{211}{32}$ et $q - 1 = \dfrac{1}{2}$. D'où :
+    \[
+        S_5 = u_1 \cdot \frac{211 / 32}{1 / 2} = u_1 \cdot \frac{211}{16} = 211 \implies \boxed{u_1 = 16}.
+    \]
+
+    \item \textbf{Septembre 2026, Q1.7 (Les prix du concours) :} \emph{Lors d'un concours, le premier classé reçoit un prix de $5\,000$\,€ et les suivants reçoivent chacun un prix égal aux $3/5$ du précédent. Calculez le montant total des prix pour les cinq premiers (sachant que $6^5 = 7\,776$).}\\
+    Ici $u_1 = 5000$, $q = \dfrac{3}{5} = 0,6 < 1$ et $n = 5$. Pourquoi l'énoncé donne-t-il $6^5 = 7776$ ? Parce que $q = 0,6 = \dfrac{6}{10}$, donc $q^5 = 0,6^5 = \dfrac{6^5}{10^5} = 0,07776$ !
+    Appliquons la formule de la somme avec $1 - q = 1 - \dfrac{3}{5} = \dfrac{2}{5}$ :
+    \[
+        S_5 = 5000 \cdot \frac{1 - (3/5)^5}{1 - 3/5} = \frac{5000}{2/5}\bigl(1 - 0,07776\bigr) = 12\,500 \times 0,92224 = \frac{92\,224}{8} = \boxed{11\,528\,\text{€}}.
+    \]
+    \emph{Calcul fractionnaire encore plus rapide sans décimales :} Comme $(3/5)^5 = \frac{243}{3125}$, on a $S_5 = 5000 \cdot \frac{5}{2} \cdot \frac{3125 - 243}{3125} = \frac{25\,000}{2 \times 3125} \times 2882 = 4 \times 2882 = 11\,528$\,€ !
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 6}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 6.\arabic* :}, leftmargin=*]
+    \item \textbf{(Suite arithmétique)} Le $4$\ieme{} terme d'une suite arithmétique vaut $14$ et le $11$\ieme{} terme vaut $35$. Déterminer la raison $r$, le premier terme $u_1$ ainsi que la somme $S_{20}$ des $20$ premiers termes.
+    \item \textbf{(Suite géométrique)} La somme des trois premiers termes d'une suite géométrique strictement croissante vaut $26$ et leur produit vaut $216$. Déterminer ces trois termes.
+    \item \textbf{(Problème mixte : puits de forage)} Pour forer un puits, une entreprise facture $100$\,€ pour le premier mètre, puis chaque mètre supplémentaire coûte $15$\,€ de plus que le mètre précédent. Quelle profondeur maximale peut-on forer avec un budget de $5\,200$\,€ ?
+    \item \textbf{(UCLouvain -- Juillet 2021, Q3 : Le robot-tondeuse)} Une tondeuse automatique tond une pelouse à la vitesse $v_t = 1\text{ dm}^3/\text{h}$, tandis que l'herbe pousse en continu à la vitesse $v_p = 0,1\text{ dm}^3/\text{h}$. La batterie a une capacité initiale $C_{b,0} = 100\text{ Wh}$ au cycle $n = 1$, mais perd $d_b = 0,5\,\%$ de sa capacité maximale à chaque cycle : $C_b(n) = C_{b,0}(1 - d_b)^{n-1}$. La tondeuse consomme une puissance $p_t = 5\text{ W}$ pendant la tonte et retourne se charger dès qu'il ne lui reste plus que $C_{b,m} = 5\text{ Wh}$. Le temps de charge est fixe et vaut $t_c = 1\text{ h}$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Exprimer la durée de tonte $t_t(n)$ au cycle $n$, puis déterminer l'équation donnant le cycle limite $n_\ell$ à partir duquel le temps d'attente après la charge tombe à zéro (la tondeuse ne parvient plus à compenser la pousse de l'herbe).
+        \item Exprimer sous forme close (via la somme d'une suite géométrique) le temps total d'utilisation sur les $n_\ell$ cycles.
+    \end{enumerate}
+\end{enumerate}

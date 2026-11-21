@@ -1,0 +1,358 @@
+% ============================================================================
+% CHAPITRE 4 : NOMBRES COMPLEXES DANS C
+% ============================================================================
+\chapter{Nombres Complexes dans $\C$}
+
+Les nombres complexes sont systématiquement présents à l'examen d'admission d'Algèbre de l'UCLouvain (chaque session de 2021 à 2026 comporte une sous-question de la Question~1 sur $\C$, et parfois une question complète en Question~2 comme en Juillet 2021). Le programme exige une maîtrise parfaite du passage entre la \textbf{forme cartésienne (algébrique)} $z = a + bi$ et la \textbf{forme trigonométrique (polaire)} $z = \rho(\cos\theta + i\sin\theta) = \rho e^{i\theta}$, ainsi que la résolution d'équations avec le conjugué $z^*$ et le calcul des racines $n$-ièmes d'un nombre complexe.
+
+% ----------------------------------------------------------------------------
+\section{Forme cartésienne (algébrique), conjugué et opérations dans $\C$}
+% ----------------------------------------------------------------------------
+
+\subsection{L'unité imaginaire $i$ et l'écriture $z = a + bi$}
+
+\begin{definition}[Nombre complexe, partie réelle et partie imaginaire]
+L'ensemble $\C$ des \textbf{nombres complexes} est constitué de tous les nombres de la forme :
+\[
+    \boxed{z = a + bi \qquad \text{avec } a \in \R,\; b \in \R \text{ et } i^2 = -1}.
+\]
+\begin{itemize}
+    \item Cette écriture unique s'appelle la \textbf{forme cartésienne} (ou \emph{forme algébrique}, ou \emph{forme rectangulaire}) de $z$.
+    \item Le réel $a = \Reop(z)$ est la \textbf{partie réelle} de $z$, et le réel $b = \Imop(z)$ est la \textbf{partie imaginaire} de $z$ (\textbf{attention :} la partie imaginaire $\Imop(z) = b$ est un \emph{nombre réel}, sans le $i$ !).
+    \item Si $b = 0$, $z = a \in \R$ est un \textbf{réel}. Si $a = 0$, $z = bi$ est dit \textbf{imaginaire pur} (ensemble $i\R$).
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Égalité de deux nombres complexes et puissances cycliques de $i$]
+\begin{enumerate}
+    \item \textbf{Principe d'identification (parties réelle et imaginaire) :} Deux nombres complexes $a + bi$ et $c + di$ (avec $a,b,c,d \in \R$) sont égaux \textbf{si et seulement si} leurs parties réelles sont égales \textbf{et} leurs parties imaginaires sont égales :
+    \[
+        \boxed{a + bi = c + di \iff \begin{cases} a = c \\ b = d \end{cases}} \quad \text{et en particulier } \; a + bi = 0 \iff a = 0 \text{ et } b = 0.
+    \]
+    \item \textbf{Cycle de période 4 des puissances de $i$ :} Pour tout entier $k \in \Z$ :
+    \[
+        \boxed{i^{4k} = 1, \qquad i^{4k+1} = i, \qquad i^{4k+2} = -1, \qquad i^{4k+3} = -i \qquad \left(\text{et } \frac{1}{i} = -i\right)}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Nombre complexe conjugué $z^*$ et division en forme cartésienne}
+
+\begin{definition}[Conjugué $z^*$ d'un nombre complexe]
+Dans les énoncés d'examen de l'UCLouvain, le \textbf{conjugué} du nombre complexe $z = a + bi$ ($a, b \in \R$) est noté $z^*$ (on rencontre aussi la notation $\bar{z}$ dans la littérature). Il est défini en changeant le signe de la partie imaginaire :
+\[
+    \boxed{z^* = a - bi}.
+\]
+Géométriquement, dans le plan complexe de Gauss, le point image de $z^*$ est le \textbf{symétrique} du point image de $z$ par rapport à l'\textbf{axe réel horizontal}.
+\end{definition}
+
+\begin{theoreme}[Propriétés algébriques du conjugué $z^*$]
+Pour tous nombres complexes $z = a + bi$ et $w \in \C$, et tout entier $n \in \Z$ :
+\begin{enumerate}
+    \item \textbf{Somme et différence de $z$ et $z^*$ :}
+    \[
+        \boxed{z + z^* = 2a = 2\Reop(z) \in \R} \qquad \text{et} \qquad \boxed{z - z^* = 2bi = 2i\Imop(z)}.
+    \]
+    En particulier : $z \in \R \iff z^* = z$, et $z$ est imaginaire pur $\iff z^* = -z$.
+    \item \textbf{Produit d'un complexe par son conjugué (toujours réel positif !) :}
+    \[
+        \boxed{z \cdot z^* = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2 \ge 0}.
+    \]
+    \item \textbf{Compatibilité avec toutes les opérations :}
+    \[
+        (z^*)^* = z, \quad (z \pm w)^* = z^* \pm w^*, \quad (z \cdot w)^* = z^* \cdot w^*, \quad \left(\frac{z}{w}\right)^* = \frac{z^*}{w^*}, \quad (z^n)^* = (z^*)^n.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{astuce}[Comment diviser deux nombres complexes en forme cartésienne ?]
+Pour mettre un quotient $\dfrac{z_1}{z_2} = \dfrac{a + bi}{c + di}$ sous forme cartésienne $X + Yi$, \textbf{multipliez le numérateur et le dénominateur par le conjugué $z_2^* = c - di$ du dénominateur} afin de rendre le dénominateur réel ($c^2 + d^2$) :
+\[
+    \boxed{\frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \frac{(ac + bd) + (bc - ad)i}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2}\,i}.
+\]
+\end{astuce}
+
+\begin{exemple}[Calculs avec le conjugué et équations cartésiennes -- UCLouvain, Juillet 2021 Q1.7, Septembre 2023 Q1.1 \& Juillet 2024 Q1.7]
+\begin{enumerate}
+    \item \textbf{Juillet 2021, Q1.7 :} \emph{Soit $z = 1 - i$. Donner le module et l'argument du produit de $z$ avec son conjugué.}\\
+    Le produit vaut $P = z \cdot z^* = (1 - i)(1 + i) = 1^2 + (-1)^2 = 2$. Comme $2$ est un nombre \textbf{réel strictement positif}, son module vaut $\boxed{|P| = 2}$ et son argument vaut $\boxed{\arg(P) = 0 \pmod{2\pi}}$.
+    \item \textbf{Septembre 2023, Q1.1 :} \emph{Soit $z = 3 + 4i$, et $z^*$ le complexe conjugué de $z$. Que vaut $\dfrac{z z^*}{z + z^*}$ ?}\\
+    Sans aucun calcul compliqué, utilisons les deux formules du théorème pour $z = a + bi$ ($a = 3, b = 4$) :
+    \[
+        z z^* = a^2 + b^2 = 3^2 + 4^2 = 9 + 16 = 25 \qquad \text{et} \qquad z + z^* = 2a = 2 \times 3 = 6,
+    \]
+    d'où immédiatement : $\dfrac{z z^*}{z + z^*} = \boxed{\dfrac{25}{6}}$.
+    \item \textbf{Juillet 2024, Q1.7 :} \emph{Résoudre dans $\C$ l'équation $(z - 2)z^* = -iz$. Exprimez les solutions sous forme cartésienne.}\\
+    Posons $z = a + bi$ avec $a, b \in \R$ (donc $z^* = a - bi$ et $z z^* = a^2 + b^2$). Développons l'équation $(z - 2)z^* = -iz \iff z z^* - 2z^* = -iz$ :
+    \[
+        (a^2 + b^2) - 2(a - bi) = -i(a + bi) \iff (a^2 + b^2 - 2a) + 2bi = b - ai.
+    \]
+    Par identification des parties réelle et imaginaire :
+    \[
+        \begin{cases} a^2 + b^2 - 2a = b & (1) \\ 2b = -a \iff a = -2b & (2) \end{cases}
+    \]
+    Remplaçons $a = -2b$ dans l'équation $(1)$ :
+    \[
+        (-2b)^2 + b^2 - 2(-2b) = b \iff 5b^2 + 3b = 0 \iff b(5b + 3) = 0.
+    \]
+    On obtient deux valeurs réelles pour $b$ :
+    \begin{itemize}
+        \item Si $b = 0$, alors $a = -2(0) = 0$, ce qui donne la première solution $z_1 = 0$.
+        \item Si $b = -\dfrac{3}{5}$, alors $a = -2\left(-\dfrac{3}{5}\right) = \dfrac{6}{5}$, ce qui donne la seconde solution $z_2 = \dfrac{6}{5} - \dfrac{3}{5}i$.
+    \end{itemize}
+    L'ensemble des solutions est donc $\boxed{S = \left\{0,\; \frac{6}{5} - \frac{3}{5}i\right\}}$.
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Forme trigonométrique (polaire), module, argument et formule de De Moivre}
+% ----------------------------------------------------------------------------
+
+\subsection{Module $\rho = |z|$ et argument $\theta = \arg(z)$ dans le plan de Gauss}
+
+Dans le plan complexe muni d'un repère orthonormé $(O; \vec{e}_1, \vec{e}_2)$, tout nombre complexe $z = a + bi$ est représenté par le point $M(a, b)$ (ou le vecteur $\overrightarrow{OM}$). Ses coordonnées polaires $(\rho, \theta)$ définissent son \textbf{module} et son \textbf{argument}.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.15, >=Stealth]
+    \draw[step=0.5, gray!20, very thin] (-1.2,-0.8) grid (3.3,2.6);
+    \draw[->, thick, darkgray] (-1.3,0) -- (3.5,0) node[right] {$\Reop(z)$};
+    \draw[->, thick, darkgray] (0,-0.9) -- (0,2.7) node[above] {$\Imop(z)$};
+
+    \coordinate (O) at (0,0);
+    \coordinate (M) at (2.6,1.8);
+    \coordinate (Mx) at (2.6,0);
+    \coordinate (My) at (0,1.8);
+
+    \fill[uclaccent!15] (0,0) -- (0.85,0) arc (0:34.7:0.85) -- cycle;
+    \draw[thick, uclaccent, ->] (0.85,0) arc (0:34.7:0.85);
+    \node[uclaccent] at (17.5:1.15) {$\theta = \arg(z)$};
+
+    \draw[dashed, gray] (M) -- (Mx);
+    \draw[dashed, gray] (M) -- (My);
+    \draw[very thick, exorange] (O) -- (Mx) node[midway, below] {$a = \rho\cos\theta$};
+    \draw[very thick, defgreen] (O) -- (My) node[midway, left] {$b = \rho\sin\theta$};
+    \draw[very thick, uclblue, ->] (O) -- (M) node[midway, above left] {$\rho = |z| = \sqrt{a^2+b^2}$};
+
+    \fill[warnred] (M) circle (2.2pt) node[above right] {$M(z = a+bi = \rho e^{i\theta})$};
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}[Module, argument et formes trigonométrique / exponentielle]
+Soit $z = a + bi \in \C_0$ un nombre complexe non nul :
+\begin{enumerate}
+    \item Le \textbf{module} de $z$, noté $\rho = |z|$, est la distance $\overline{OM} > 0$ :
+    \[
+        \boxed{\rho = |z| = \sqrt{a^2 + b^2} = \sqrt{z z^*}}.
+    \]
+    \item L'\textbf{argument} de $z$, noté $\theta = \arg(z)$ (défini à $2k\pi$ près, $k \in \Z$), est l'angle orienté entre le demi-axe réel positif et le vecteur $\overrightarrow{OM}$, caractérisé par le système :
+    \[
+        \boxed{\begin{cases} \cos\theta = \dfrac{a}{\rho} = \dfrac{a}{\sqrt{a^2+b^2}} \\[1.5ex] \sin\theta = \dfrac{b}{\rho} = \dfrac{b}{\sqrt{a^2+b^2}} \end{cases}}
+    \]
+    \item La \textbf{forme trigonométrique} et la \textbf{forme exponentielle (ou polaire)} de $z$ s'écrivent :
+    \[
+        \boxed{z = \rho(\cos\theta + i\sin\theta) = \rho e^{i\theta}} \qquad \text{où } e^{i\theta} = \cos\theta + i\sin\theta \text{ est la formule d'Euler}.
+    \]
+\end{enumerate}
+\end{definition}
+
+\begin{attention}[Ne calculez JAMAIS $\theta = \arctan(b/a)$ les yeux fermés sans regarder le quadrant !]
+La fonction $\arctan(b/a)$ renvoie toujours un angle compris dans $\left]-\frac{\pi}{2}, \frac{\pi}{2}\right[$ (quadrants I et IV). Si la partie réelle $a$ est \textbf{négative} ($a < 0$, quadrants II et III), il faut \textbf{ajouter $\pi$ (ou retrancher $\pi$)} à $\arctan(b/a)$ !
+Le moyen le plus sûr et le plus rapide sans calculatrice est d'\textbf{identifier directement le couple $(\cos\theta, \sin\theta) = \left(\frac{a}{\rho}, \frac{b}{\rho}\right)$ sur le cercle trigonométrique} :
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+\textbf{Complexe de base} & $1$ & $i$ & $-1$ & $-i$ & $1 + i$ & $1 - i$ & $1 + i\sqrt{3}$ & $\sqrt{3} + i$ \\
+\midrule
+\textbf{Module $\rho$} & $1$ & $1$ & $1$ & $1$ & $\sqrt{2}$ & $\sqrt{2}$ & $2$ & $2$ \\
+\textbf{Argument $\theta$} & $0$ & $\dfrac{\pi}{2}$ & $\pi$ & $-\dfrac{\pi}{2}$ & $\dfrac{\pi}{4}$ & $-\dfrac{\pi}{4}$ & $\dfrac{\pi}{3}$ & $\dfrac{\pi}{6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{attention}
+
+\subsection{Opérations en forme polaire et formule de De Moivre}
+
+Si la forme cartésienne $a + bi$ est idéale pour les additions et soustractions, la forme polaire $\rho e^{i\theta}$ est d'une puissance redoutable pour les \textbf{produits}, les \textbf{quotients}, les \textbf{puissances} et les \textbf{racines} !
+
+\begin{theoreme}[Produit, quotient et formule de De Moivre en forme polaire]
+Soient $z_1 = \rho_1 e^{i\theta_1}$ et $z_2 = \rho_2 e^{i\theta_2}$ deux nombres complexes non nuls, et $n \in \Z$ :
+\begin{enumerate}
+    \item \textbf{Produit (on multiplie les modules, on additionne les arguments) :}
+    \[
+        \boxed{z_1 \cdot z_2 = \rho_1 \rho_2 \, e^{i(\theta_1 + \theta_2)}} \implies |z_1 z_2| = |z_1|\cdot|z_2| \;\text{ et }\; \arg(z_1 z_2) = \arg(z_1) + \arg(z_2).
+    \]
+    \item \textbf{Quotient (on divise les modules, on soustrait les arguments) :}
+    \[
+        \boxed{\frac{z_1}{z_2} = \frac{\rho_1}{\rho_2} \, e^{i(\theta_1 - \theta_2)}} \implies \left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|} \;\text{ et }\; \arg\left(\frac{z_1}{z_2}\right) = \arg(z_1) - \arg(z_2).
+    \]
+    \item \textbf{Puissance $n$-ième et formule de De Moivre :}
+    \[
+        \boxed{z^n = \rho^n e^{in\theta} = \rho^n\bigl(\cos(n\theta) + i\sin(n\theta)\bigr)} \implies |z^n| = |z|^n \;\text{ et }\; \arg(z^n) = n\arg(z).
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{astuce}[L'astuce magique $(1 \pm i)^2 = \pm 2i$ pour les puissances de $(1 \pm i)$]
+Pour calculer rapidement $(1 + i)^n$, $(1 - i)^n$ ou $(i - 1)^n$ en forme cartésienne sans même passer par la trigonométrie, retenez par cœur que le carré de $(1 \pm i)$ est \textbf{imaginaire pur} :
+\[
+    \boxed{(1 + i)^2 = 1 + 2i + i^2 = 2i} \qquad \text{et} \qquad \boxed{(1 - i)^2 = (i - 1)^2 = 1 - 2i + i^2 = -2i}.
+\]
+Ainsi, $(1 + i)^{10} = \bigl((1 + i)^2\bigr)^5 = (2i)^5 = 32 i^5 = 32i$ en trois secondes chrono !
+\end{astuce}
+
+\begin{exemple}[Les sept questions de puissances et formes polaires des annales (2022--2026)]
+\begin{enumerate}
+    \item \textbf{Juillet 2022, Q1.4 :} \emph{Donner le module et l'argument de $z = (1 + \sqrt{3}i)^4$.}\\
+    Posons $w = 1 + \sqrt{3}i$. Son module vaut $|w| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{4} = 2$, et comme $\cos\theta = \frac{1}{2}$ et $\sin\theta = \frac{\sqrt{3}}{2}$, son argument vaut $\arg(w) = \frac{\pi}{3}$.
+    Par la formule de De Moivre pour $z = w^4$ :
+    \[
+        |z| = |w|^4 = 2^4 = 16 \qquad \text{et} \qquad \arg(z) = 4\arg(w) = \frac{4\pi}{3} \equiv -\frac{2\pi}{3} \pmod{2\pi}.
+    \]
+    Réponse : $\boxed{\text{module} = 16, \quad \text{argument} = -\dfrac{2\pi}{3} \text{ (ou } \dfrac{4\pi}{3}\text{)}}$.
+
+    \item \textbf{Septembre 2022, Q1.3 :} \emph{Donner le module et l'argument de $z = (1 - i)^6$.}\\
+    \textbf{Méthode 1 (Polaire) :} $|1 - i| = \sqrt{2}$ et $\arg(1 - i) = -\frac{\pi}{4}$. Donc $|z| = (\sqrt{2})^6 = 2^3 = 8$ et $\arg(z) = 6\left(-\frac{\pi}{4}\right) = -\frac{3\pi}{2} \equiv \frac{\pi}{2} \pmod{2\pi}$.\\
+    \textbf{Méthode 2 (Carré $(1-i)^2 = -2i$) :} $(1 - i)^6 = \bigl((1 - i)^2\bigr)^3 = (-2i)^3 = -8i^3 = 8i = 8e^{i\pi/2}$.\\
+    Réponse : $\boxed{\text{module} = 8 \quad \text{et} \quad \text{argument} = \dfrac{\pi}{2}}$.
+
+    \item \textbf{Juillet 2023 -- Série 2, Q1.1 :} \emph{Valeur sous forme cartésienne $(a + bi)$ de $E = (i - 1)^6 + (i - 1)^4 + (i - 1)^2$.}\\
+    Utilisons l'astuce $(i - 1)^2 = i^2 - 2i + 1 = -2i$ :
+    \begin{itemize}
+        \item $(i - 1)^2 = -2i$
+        \item $(i - 1)^4 = (-2i)^2 = 4i^2 = -4$
+        \item $(i - 1)^6 = (-2i)^3 = -8i^3 = 8i$
+    \end{itemize}
+    En additionnant : $E = 8i - 4 - 2i = \boxed{-4 + 6i}$.
+
+    \item \textbf{Septembre 2024, Q1.4 :} \emph{Donnez le module $\rho$ et l'argument $\theta$ de $z = \dfrac{1 + i\sqrt{3}}{i + \sqrt{3}}$.}\\
+    \textbf{Méthode 1 (Quotient des formes polaires) :} Au numérateur, $z_1 = 1 + i\sqrt{3}$ a pour module $\rho_1 = 2$ et argument $\theta_1 = \frac{\pi}{3}$. Au dénominateur, $z_2 = \sqrt{3} + i$ a pour module $\rho_2 = 2$ et argument $\theta_2 = \frac{\pi}{6}$. Par division :
+    \[
+        \rho = \frac{\rho_1}{\rho_2} = \frac{2}{2} = 1 \qquad \text{et} \qquad \theta = \theta_1 - \theta_2 = \frac{\pi}{3} - \frac{\pi}{6} = \frac{\pi}{6}.
+    \]
+    \textbf{Méthode 2 (Astuce de factorisation par $i$) :} Remarquons que $1 + i\sqrt{3} = i(\sqrt{3} - i)$... ou encore mieux : calculons en cartésien $\frac{(1+i\sqrt{3})(\sqrt{3}-i)}{3+1} = \frac{2\sqrt{3} + 2i}{4} = \frac{\sqrt{3}}{2} + \frac{1}{2}i = e^{i\pi/6}$.\\
+    Réponse : $\boxed{\rho = 1 \quad \text{et} \quad \theta = \dfrac{\pi}{6}}$.
+
+    \item \textbf{Juillet 2025, Q1.1 :} \emph{Exprimez $z = \dfrac{-6i}{1 + i}$ sous forme trigonométrique (module et argument).}\\
+    Multiplions haut et bas par le conjugué $1 - i$ du dénominateur :
+    \[
+        z = \frac{-6i(1 - i)}{(1 + i)(1 - i)} = \frac{-6i + 6i^2}{1^2 + 1^2} = \frac{-6 - 6i}{2} = -3 - 3i = -3(1 + i).
+    \]
+    Le point $(-3, -3)$ est situé dans le \textbf{troisième quadrant} ($a < 0$ et $b < 0$). Son module et son argument valent :
+    \[
+        |z| = \sqrt{(-3)^2 + (-3)^2} = \sqrt{18} = 3\sqrt{2} \quad \text{et} \quad \arg(z) = -\frac{3\pi}{4} \;\left(\cos\theta = \sin\theta = -\frac{\sqrt{2}}{2}\right).
+    \]
+    Réponse : $\boxed{\text{module} = 3\sqrt{2}, \quad \text{argument} = -\dfrac{3\pi}{4}}$.
+
+    \item \textbf{Juillet 2026, Q1.3 :} \emph{Calculer dans $\C$ : $z = (i - \sqrt{3})^4$ (forme rectangulaire ou polaire au choix).}\\
+    Posons $w = -\sqrt{3} + i$ (deuxième quadrant : $a = -\sqrt{3} < 0, b = 1 > 0$). On a $|w| = \sqrt{3 + 1} = 2$, $\cos\theta = -\frac{\sqrt{3}}{2}$ et $\sin\theta = \frac{1}{2}$, donc $\theta = \frac{5\pi}{6}$.
+    En élevant à la puissance $4$ par De Moivre :
+    \[
+        z = w^4 = 2^4 e^{i \cdot 4 \cdot \frac{5\pi}{6}} = 16 e^{i \frac{4\pi}{3}} = 16\left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right) = \boxed{-8 - 8\sqrt{3}\,i \;\;\left(\text{ou } 16 e^{i\frac{4\pi}{3}}\right)}.
+    \]
+
+    \item \textbf{Septembre 2026, Q1.3 :} \emph{Donnez la forme cartésienne de $(1 + i)^{10}$.}\\
+    Avec $(1 + i)^2 = 2i$, on a directement $(1 + i)^{10} = \bigl((1 + i)^2\bigr)^5 = (2i)^5 = 32 i^5 = \boxed{32i}$.
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Racines $n$-ièmes d'un nombre complexe (Équations $z^n = w$)}
+% ----------------------------------------------------------------------------
+
+\begin{theoreme}[Les $n$ racines $n$-ièmes d'un nombre complexe non nul]
+Soit $w = R e^{i\alpha}$ un nombre complexe non nul ($R = |w| > 0$, $\alpha = \arg(w)$) et $n \in \N_0$ un entier naturel non nul. L'équation $\boxed{z^n = w}$ possède exactement \textbf{$n$ solutions distinctes dans $\C$}, données par :
+\[
+    \boxed{z_k = \sqrt[n]{R} \, e^{i\left(\frac{\alpha}{n} + \frac{2k\pi}{n}\right)} = \sqrt[n]{R}\left[\cos\left(\frac{\alpha + 2k\pi}{n}\right) + i\sin\left(\frac{\alpha + 2k\pi}{n}\right)\right], \quad k \in \{0, \dots, n-1\}}.
+\]
+\textbf{Interprétation géométrique dans le plan complexe :} Pour $n \ge 3$, les points images des $n$ racines $z_0, z_1, \dots, z_{n-1}$ sont les sommets d'un \textbf{polygone régulier à $n$ côtés} (triangle équilatéral pour $n=3$, carré pour $n=4$, hexagone régulier pour $n=6$) inscrit dans le cercle centré à l'origine de rayon $\rho = \sqrt[n]{R}$, obtenu en tournant de $\dfrac{2\pi}{n}$ en $\dfrac{2\pi}{n}$ à partir de la première racine $z_0$.
+\end{theoreme}
+
+\begin{exemple}[Racines cubiques et quatrièmes -- UCLouvain, Septembre 2021 Q1.7, Juillet 2023 Série 1 Q1.1 \& Septembre 2025 Q1.3]
+\begin{enumerate}
+    \item \textbf{Septembre 2021, Q1.7 :} \emph{Représenter dans le plan complexe les solutions de $z^4 + (3\sqrt{2})^4 = 0$.}\\
+    Écrivons l'équation sous la forme $z^4 = -(3\sqrt{2})^4 = (3\sqrt{2})^4 \cdot e^{i\pi}$ (car $-1 = e^{i\pi}$).
+    Le module commun des $4$ racines vaut $\rho = \sqrt[4]{(3\sqrt{2})^4} = 3\sqrt{2}$, et les arguments valent $\theta_k = \frac{\pi}{4} + \frac{2k\pi}{4} = \frac{\pi}{4} + k\frac{\pi}{2}$ pour $k \in \{0, 1, 2, 3\}$ (soit $\frac{\pi}{4}, \frac{3\pi}{4}, \frac{5\pi}{4}, \frac{7\pi}{4}$).
+    Comme $\cos\left(\pm\frac{\pi}{4}\right) = \frac{\sqrt{2}}{2}$, la conversion en forme cartésienne est immédiate :
+    \[
+        z_k = 3\sqrt{2}\left(\pm\frac{\sqrt{2}}{2} \pm i\frac{\sqrt{2}}{2}\right) = \boxed{\pm 3 \pm 3i \;\in\; \{3+3i,\; -3+3i,\; -3-3i,\; 3-3i\}},
+    \]
+    qui forment le carré de sommets $(\pm 3, \pm 3)$ sur la grille du plan complexe.
+
+    \item \textbf{Juillet 2023 -- Série 1, Q1.1 :} \emph{Résoudre dans $\C$ l'équation $z^3 + 8i = 0$ sous forme cartésienne $(a + bi)$.}\\
+    On isole $z^3$ et on met le second membre sous forme polaire :
+    \[
+        z^3 = -8i = 8 \cdot (-i) = 2^3 e^{-i\frac{\pi}{2}}.
+    \]
+    On applique la formule des racines cubiques ($n = 3$) avec $\rho = \sqrt[3]{2^3} = 2$ et $\theta_k = -\frac{\pi}{6} + \frac{2k\pi}{3}$ ($k \in \{0, 1, 2\}$) :
+    \begin{itemize}
+        \item Pour $k = 0$ ($\theta_0 = -\frac{\pi}{6}$) : $z_0 = 2\left(\cos\left(-\frac{\pi}{6}\right) + i\sin\left(-\frac{\pi}{6}\right)\right) = 2\left(\frac{\sqrt{3}}{2} - \frac{1}{2}i\right) = \sqrt{3} - i$.
+        \item Pour $k = 1$ ($\theta_1 = -\frac{\pi}{6} + \frac{2\pi}{3} = \frac{\pi}{2}$) : $z_1 = 2\left(\cos\frac{\pi}{2} + i\sin\frac{\pi}{2}\right) = 2i$.
+        \item Pour $k = 2$ ($\theta_2 = -\frac{\pi}{6} + \frac{4\pi}{3} = \frac{7\pi}{6} \equiv -\frac{5\pi}{6}$) : $z_2 = 2\left(-\frac{\sqrt{3}}{2} - \frac{1}{2}i\right) = -\sqrt{3} - i$.
+    \end{itemize}
+    \emph{Alternative algébrique :} Comme $(2i)^3 = -8i$, on factorise $z^3 - (2i)^3 = (z - 2i)(z^2 + 2iz - 4) = 0$.\\
+    Réponse : $\boxed{S = \bigl\{\sqrt{3} - i,\; -\sqrt{3} - i,\; 2i\bigr\}}$.
+
+    \item \textbf{Septembre 2025, Q1.3 :} \emph{Résoudre dans $\C$ : $z^4 + 2 - 2\sqrt{3}i = 0$ (forme rectangulaire ou polaire).}\\
+    On écrit $z^4 = -2 + 2\sqrt{3}i$. Le complexe $w = -2 + 2\sqrt{3}i$ (quadrant II : $a = -2 < 0, b = 2\sqrt{3} > 0$) a pour module $R = \sqrt{4 + 12} = 4 = (\sqrt{2})^4$ et pour argument $\alpha = \frac{2\pi}{3}$ (car $\cos\alpha = -\frac{1}{2}$ et $\sin\alpha = \frac{\sqrt{3}}{2}$).
+    Les $4$ racines quatrièmes ont donc pour module $\rho = \sqrt[4]{4} = \sqrt{2}$ et pour arguments $\theta_k = \frac{2\pi/3}{4} + \frac{2k\pi}{4} = \frac{\pi}{6} + k\frac{\pi}{2}$ :
+    \[
+        \boxed{\text{Forme polaire : } z_k = \sqrt{2}\, e^{i\left(\frac{\pi}{6} + k\frac{\pi}{2}\right)} \quad (k \in \{0, 1, 2, 3\})}.
+    \]
+    En forme rectangulaire, comme $z_0 = \sqrt{2}\left(\frac{\sqrt{3}}{2} + i\frac{1}{2}\right) = \frac{\sqrt{6}}{2} + i\frac{\sqrt{2}}{2}$ et que multiplier par $e^{i\pi/2} = i$ fait tourner de $90\degree$ ($z_{k+1} = i z_k$) :
+    \[
+        \boxed{S = \left\{\frac{\sqrt{6}}{2} + i\frac{\sqrt{2}}{2},\;\; -\frac{\sqrt{2}}{2} + i\frac{\sqrt{6}}{2},\;\; -\frac{\sqrt{6}}{2} - i\frac{\sqrt{2}}{2},\;\; \frac{\sqrt{2}}{2} - i\frac{\sqrt{6}}{2}\right\}}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+\begin{exemple}[Équation polynomiale de degré $2n$ dans $\C$ -- UCLouvain, Juillet 2021, Q2.1]
+\textbf{Énoncé :} Soit $z \in \C$ et $n \in \N_0$, résoudre $(z^2 + 1)^n = (z - i)^{2n}$.
+
+\textbf{Résolution :} Dans $\C$, la somme de deux carrés $z^2 + 1 = z^2 - i^2$ se factorise en $(z - i)(z + i)$ ! L'équation devient :
+\[
+    (z - i)^n (z + i)^n - (z - i)^{2n} = 0 \iff (z - i)^n \Bigl[(z + i)^n - (z - i)^n\Bigr] = 0.
+\]
+Par la règle du produit nul, on distingue deux cas :
+\begin{itemize}
+    \item \textbf{Cas 1 :} $(z - i)^n = 0 \iff \mathbf{z = i}$ (solution valable pour tout $n \in \N_0$).
+    \item \textbf{Cas 2 :} $(z + i)^n = (z - i)^n$ avec $z \neq i$. En divisant par $(z - i)^n \neq 0$, on se ramène aux \textbf{racines $n$-ièmes de l'unité} :
+    \[
+        \left(\frac{z + i}{z - i}\right)^n = 1 = e^{i \cdot 2k\pi} \iff \frac{z + i}{z - i} = e^{i\frac{2k\pi}{n}} \qquad \text{pour } k \in \{1, 2, \dots, n - 1\}
+    \]
+    (la valeur $k = 0$ donnerait $\frac{z+i}{z-i} = 1 \iff i = -i$, impossible). Isolons $z$ :
+    \[
+        z + i = (z - i)e^{i\frac{2k\pi}{n}} \iff z\left(1 - e^{i\frac{2k\pi}{n}}\right) = -i\left(1 + e^{i\frac{2k\pi}{n}}\right) \iff z_k = -i\,\frac{1 + e^{i\frac{2k\pi}{n}}}{1 - e^{i\frac{2k\pi}{n}}}.
+    \]
+    \emph{Remarque (factorisation par l'angle moitié d'Euler) :} En mettant $e^{i\frac{k\pi}{n}}$ en évidence en haut et en bas, $z_k = -i\frac{e^{-ik\pi/n} + e^{ik\pi/n}}{e^{-ik\pi/n} - e^{ik\pi/n}} = -i\frac{2\cos(k\pi/n)}{-2i\sin(k\pi/n)} = \cotg\left(\frac{k\pi}{n}\right) \in \R$ !
+\end{itemize}
+L'ensemble des solutions est donc :
+\[
+    \boxed{S = \{i\} \cup \left\{-i\,\frac{1 + e^{i\frac{2k\pi}{n}}}{1 - e^{i\frac{2k\pi}{n}}} = \cotg\left(\frac{k\pi}{n}\right) \;\middle|\; k \in \{1, \dots, n-1\}\right\}}.
+\]
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 4}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 4.\arabic* :}, leftmargin=*]
+    \item \textbf{(Formes cartésienne et polaire)} Déterminer le module, l'argument principal et la forme cartésienne des nombres complexes suivants :
+    \begin{enumerate}[label=(\alph*)]
+        \item $z_1 = \dfrac{(1 + i)^8}{(1 - i\sqrt{3})^3}$
+        \item $z_2 = \dfrac{2 - 2i}{1 + i\sqrt{3}}$
+    \end{enumerate}
+    \item \textbf{(Équations avec conjugué $z^*$)} Résoudre dans $\C$ (et donner les solutions sous forme cartésienne $a + bi$) :
+    \begin{enumerate}[label=(\alph*)]
+        \item $2z + iz^* = 5 - 4i$
+        \item $z^2 + 2z^* + 1 = 0$
+    \end{enumerate}
+    \item \textbf{(Racines $n$-ièmes dans $\C$)} Résoudre dans $\C$ sous forme polaire et sous forme cartésienne :
+    \begin{enumerate}[label=(\alph*)]
+        \item $z^3 - 27 = 0$
+        \item $z^4 + 16 = 0$
+        \item $z^2 - (3 + 4i) = 0$ (astuce : poser $z = a + bi$ et utiliser $a^2 - b^2 = 3$, $2ab = 4$ et $a^2 + b^2 = \sqrt{3^2+4^2} = 5$).
+    \end{enumerate}
+\end{enumerate}

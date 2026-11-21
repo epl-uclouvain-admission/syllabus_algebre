@@ -1,0 +1,400 @@
+% ============================================================================
+% CHAPITRE 9 : FORMULAIRE SYNTHÉTIQUE ET AIDE-MÉMOIRE (VERSION IMPRIMABLE 4 PAGES)
+% ============================================================================
+\cleardoublepage
+\newgeometry{top=1.3cm,bottom=1.4cm,left=1.4cm,right=1.4cm}
+\refstepcounter{chapter}
+\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}Formulaire Synthétique et Aide-Mémoire (Imprimable -- 4 pages)}
+\chaptermark{Formulaire Synthétique et Aide-Mémoire}
+
+% ============================================================================
+% PAGE 1/4 : POLYNÔMES, ÉQUATIONS, RADICAUX, EXP & LOG (1 PAGE A4 IMPRIMABLE)
+% ============================================================================
+\thispagestyle{plain}
+\refstepcounter{section}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Polynômes, Équations, Radicaux, Exponentielles et Logarithmes}
+
+\begin{center}
+    {\LARGE\bfseries\color{uclblue} Formulaire d'Algèbre : Polynômes, Exp \& Log}\\[2pt]
+    {\small\color{darkgray} Examen d'entrée Ingénieur Civil -- UCLouvain (Fiche récapitulative imprimable 1/4)}
+    \vspace{2pt}
+    \hrule height 1pt
+\end{center}
+\vspace{-6pt}
+
+{\fontsize{9.5pt}{11.5pt}\selectfont
+\setlength{\columnsep}{18pt}
+\begin{multicols}{2}
+
+\noindent{\large\bfseries\color{uclblue} 1. Identités Remarquables}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item $(a \pm b)^2 = a^2 \pm 2ab + b^2$
+    \item $a^2 - b^2 = (a - b)(a + b)$
+    \item $(a \pm b)^3 = a^3 \pm 3a^2b + 3ab^2 \pm b^3$
+    \item $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$
+    \item $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$
+    \item $a^4 + 4b^4 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2)$
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 2. Second Degré \& Viète ($ax^2 + bx + c = 0$)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Discriminant :} $\Delta = b^2 - 4ac$
+    \item \textbf{Racines ($\Delta \ge 0$) :} $x_{1,2} = \dfrac{-b \pm \sqrt{\Delta}}{2a}$
+    \item \textbf{Factorisation :} $a(x - x_1)(x - x_2)$
+    \item \textbf{Signe :} Du signe de $a$ à l'\textbf{extérieur} des racines ($x < x_1$ ou $x > x_2$), du signe de $-a$ entre les racines. Si $\Delta < 0$, toujours du signe de $a$ sur $\R$.
+    \item \textbf{Somme et Produit (Viète) :}
+    \[
+        S = x_1 + x_2 = -\frac{b}{a}, \qquad P = x_1 x_2 = \frac{c}{a}
+    \]
+    Trinôme de somme $S$ et produit $P$ : $a(x^2 - Sx + P) = 0$.
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 3. Division Euclidienne de Polynômes}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Écriture unique :} $P(x) = D(x)\cdot Q(x) + R(x)$ avec $\deg(R) < \deg(D)$.
+    \item \textbf{Divisibilité :} $P$ est divisible par $D \iff R(x) = 0$.
+    \item \textbf{Loi du reste (division par $x - \alpha$) :} Le reste vaut la constante $R = P(\alpha)$. En particulier :
+    \[
+        P(x) \text{ divisible par } (x - \alpha) \iff P(\alpha) = 0.
+    \]
+    \item \textbf{Divisibilité de $x^4 + ax + b$ par $x^2 + px + q$ :} Poser $x^4 + ax + b = (x^2 + px + q)(x^2 + ux + v)$, développer et identifier les coefficients de $x^3, x^2, x^1, x^0$.
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 4. Valeurs Absolues \& Équations Irrationnelles}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item $\sqrt{x^2} = |x|$ ($= x$ si $x \ge 0$, $= -x$ si $x < 0$).
+    \item $|A(x)| < k \;(k > 0) \iff -k < A(x) < k$ (intersection).
+    \item $|A(x)| > k \;(k \ge 0) \iff A(x) < -k \text{ ou } A(x) > k$.
+    \item \textbf{Équation avec racine carrée :}
+    \[
+        \boxed{\sqrt{A(x)} = B(x) \iff \begin{cases} B(x) \ge 0 \\ A(x) = \bigl(B(x)\bigr)^2 \end{cases}}
+    \]
+    \emph{Attention aux solutions parasites où $B(x) < 0$ !}
+\end{itemize}
+
+\columnbreak
+
+\noindent{\large\bfseries\color{uclblue} 5. Conditions d'Existence (Domaines)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item Fraction $\dfrac{N(x)}{D(x)}$ : $D(x) \neq 0$.
+    \item Racine $\sqrt{A(x)}$ : $A(x) \ge 0$ (si en bas $\frac{1}{\sqrt{A(x)}}$ : $A(x) > 0$).
+    \item Logarithme $\log_a\bigl(U(x)\bigr)$ : $U(x) > 0$ (et base $a > 0, a \neq 1$).
+    \item \textbf{Cas composés fréquents à l'examen :}
+    \begin{align*}
+        \dom\sqrt{\ln\bigl(U(x)\bigr)} &: \ln\bigl(U(x)\bigr) \ge 0 \iff \boxed{U(x) \ge 1} \\
+        \dom\frac{1}{\sqrt{\ln\bigl(U(x)\bigr)}} &: \ln\bigl(U(x)\bigr) > 0 \iff \boxed{U(x) > 1}
+    \end{align*}
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 6. Exponentielles \& Logarithmes}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Puissances ($a,b > 0$) :} $a^0 = 1$, $a^{-x} = \frac{1}{a^x}$, $a^{x+y} = a^x a^y$, $a^{x-y} = \frac{a^x}{a^y}$, $(a^x)^y = a^{xy}$, $a^{p/n} = \sqrt[n]{a^p}$.
+    \item \textbf{Réciprocité ($a > 0, a \neq 1, y > 0$) :}
+    \[
+        y = a^x \iff x = \log_a(y), \quad \log_a(1) = 0, \quad \log_a(a) = 1
+    \]
+    \[
+        \log_a(a^x) = x \qquad \text{et} \qquad a^{\log_a(y)} = y.
+    \]
+    \item \textbf{Lois logarithmiques ($u > 0, v > 0$) :}
+    \begin{align*}
+        \log_a(u \cdot v) &= \log_a(u) + \log_a(v) \\
+        \log_a\left(\frac{u}{v}\right) &= \log_a(u) - \log_a(v) \\
+        \log_a(u^p) &= p\cdot\log_a(u)
+    \end{align*}
+    \item \textbf{Changement de base :}
+    \[
+        \boxed{\log_a(u) = \frac{\ln(u)}{\ln(a)} = \frac{\log_b(u)}{\log_b(a)}}, \quad \log_a(b)\log_b(a) = 1.
+    \]
+    \item \textbf{Monotonie et inéquations :}
+    \begin{itemize}[leftmargin=1em, itemsep=1pt]
+        \item Si $\mathbf{a > 1}$ (\textbf{croissante}, ordre conservé) :\\
+        $\log_a(u) > 0 \iff u > 1$ ; \; $\log_a(u) < 0 \iff 0 < u < 1$.
+        \item Si $\mathbf{0 < a < 1}$ (\textbf{décroissante}, ordre inversé !) :\\
+        $\log_a(u) > 0 \iff 0 < u < 1$ ; \; $\log_a(u) < 0 \iff u > 1$.
+    \end{itemize}
+\end{itemize}
+
+\end{multicols}
+}
+
+\newpage
+% ============================================================================
+% PAGE 2/4 : NOMBRES COMPLEXES, COMBINATOIRE, BINÔME & PROBABILITÉS (1 PAGE A4)
+% ============================================================================
+\thispagestyle{plain}
+\refstepcounter{section}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Nombres Complexes, Combinatoire, Binôme de Newton et Probabilités}
+
+\begin{center}
+    {\LARGE\bfseries\color{uclblue} Formulaire : Complexes, Combinatoire \& Probabilités}\\[2pt]
+    {\small\color{darkgray} Examen d'entrée Ingénieur Civil -- UCLouvain (Fiche récapitulative imprimable 2/4)}
+    \vspace{2pt}
+    \hrule height 1pt
+\end{center}
+\vspace{-6pt}
+
+{\fontsize{9.5pt}{11.5pt}\selectfont
+\setlength{\columnsep}{18pt}
+\begin{multicols}{2}
+
+\noindent{\large\bfseries\color{uclblue} 1. Nombres Complexes dans $\C$ ($i^2 = -1$)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Forme cartésienne :} $z = a + bi$ ($a = \Reop(z), b = \Imop(z) \in \R$).
+    \item \textbf{Conjugué :} $z^* = a - bi$.
+    \[
+        z + z^* = 2a, \quad z - z^* = 2bi, \quad \boxed{z \cdot z^* = a^2 + b^2 = |z|^2}.
+    \]
+    \item \textbf{Division :} $\dfrac{a + bi}{c + di} = \dfrac{(a + bi)(c - di)}{c^2 + d^2}$.
+    \item \textbf{Astuce des carrés :} $(1 + i)^2 = 2i$ et $(1 - i)^2 = -2i$.
+    \item \textbf{Module et Argument (forme polaire $z = \rho e^{i\theta}$) :}
+    \[
+        \rho = |z| = \sqrt{a^2 + b^2}, \qquad \begin{cases} \cos\theta = a/\rho \\ \sin\theta = b/\rho \end{cases}
+    \]
+    \item \textbf{Produit, Quotient et De Moivre :}
+    \[
+        (\rho_1 e^{i\theta_1})(\rho_2 e^{i\theta_2}) = \rho_1\rho_2 e^{i(\theta_1+\theta_2)}, \quad \frac{\rho_1 e^{i\theta_1}}{\rho_2 e^{i\theta_2}} = \frac{\rho_1}{\rho_2}e^{i(\theta_1-\theta_2)}
+    \]
+    \[
+        \boxed{z^n = \rho^n e^{in\theta} = \rho^n\bigl(\cos(n\theta) + i\sin(n\theta)\bigr)}.
+    \]
+    \item \textbf{Racines $n$-ièmes ($z^n = w = R e^{i\alpha}$, $n$ solutions) :}
+    \[
+        \boxed{z_k = \sqrt[n]{R} \cdot e^{i\left(\frac{\alpha}{n} + \frac{2k\pi}{n}\right)}, \quad k \in \{0, 1, \dots, n-1\}}.
+    \]
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 2. Analyse Combinatoire (Dénombrement)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Permutations ($n$ objets distincts) :} $P_n = n!$ ($0! = 1$).
+    \item \textbf{Arrangements avec répétition :} $n^k$ (listes de longueur $k$).
+    \item \textbf{Arrangements sans répétition (ordre important) :}
+    \[
+        A_n^k = n(n-1)\dots(n-k+1) = \frac{n!}{(n-k)!}.
+    \]
+    \item \textbf{Combinaisons (ordre SANS importance) :}
+    \[
+        \boxed{C_n^k = \binom{n}{k} = \frac{n!}{k!\,(n-k)!} = C_n^{n-k}}.
+    \]
+    \item \textbf{Relation de Pascal :} $C_n^k = C_{n-1}^{k-1} + C_{n-1}^k$.
+\end{itemize}
+
+\columnbreak
+
+\noindent{\large\bfseries\color{uclblue} 3. Formule du Binôme de Newton}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Développement :}
+    \[
+        \boxed{(a + b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k}.
+    \]
+    \item \textbf{Terme général de $\left(\alpha x^r + \dfrac{\beta}{x}\right)^n$ :}
+    \[
+        T_k = \binom{n}{k}\alpha^{n-k}\beta^k \cdot x^{r(n-k) - k}.
+    \]
+    \emph{Terme d'ordre nul (constant en $x^0$) :} résoudre $r(n-k) - k = 0$.
+    \item \textbf{Somme et différence :}
+    \begin{align*}
+        (x+1)^n + (x-1)^n &= 2\sum_{k \text{ pair}} \binom{n}{k} x^{n-k} \\
+        (x+1)^n - (x-1)^n &= 2\sum_{k \text{ impair}} \binom{n}{k} x^{n-k}
+    \end{align*}
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 4. Probabilités \& Statistiques}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Loi de Laplace (issues équiprobables) :}
+    \[
+        P(A) = \frac{\text{Nombre de cas favorables}}{\text{Nombre de cas possibles}}.
+    \]
+    \item \textbf{Complémentaire (« au moins un ») :} $P(A) = 1 - P(\bar{A})$.
+    \item \textbf{Lancers de $n$ dés à $6$ faces :} $6^n$ issues ordonnées équiprobables :
+    \begin{itemize}[leftmargin=1em, itemsep=1pt]
+        \item Paire exacte sur $3$ dés : $\dfrac{\binom{3}{2}\cdot 6 \cdot 5}{6^3} = \dfrac{5}{12}$.
+        \item Full ($3+2$) sur $5$ dés : $\dfrac{\binom{5}{2}\cdot 6 \cdot 5}{6^5} = \dfrac{25}{648}$.
+    \end{itemize}
+    \item \textbf{Tirage simultané sans remise (urne / cartes) :} Utiliser les combinaisons $\binom{N}{k}$ en haut et en bas.
+    \item \textbf{Moyenne et Écart-type ($N = \sum n_i$) :}
+    \[
+        \bar{x} = \frac{1}{N}\sum n_i x_i, \qquad \sigma = \sqrt{\frac{1}{N}\sum n_i(x_i - \bar{x})^2} = \sqrt{\overline{x^2} - \bar{x}^2}.
+    \]
+\end{itemize}
+
+\end{multicols}
+}
+
+\newpage
+% ============================================================================
+% PAGE 3/4 : SUITES ARITHMÉTIQUES & GÉOMÉTRIQUES ET DISCUSSION PARAMÉTRIQUE (1 PAGE A4)
+% ============================================================================
+\thispagestyle{plain}
+\refstepcounter{section}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Suites Arithmétiques et Géométriques, Discussion Paramétrique}
+
+\begin{center}
+    {\LARGE\bfseries\color{uclblue} Formulaire : Suites \& Inéquations Paramétriques}\\[2pt]
+    {\small\color{darkgray} Examen d'entrée Ingénieur Civil -- UCLouvain (Fiche récapitulative imprimable 3/4)}
+    \vspace{2pt}
+    \hrule height 1pt
+\end{center}
+\vspace{-6pt}
+
+{\fontsize{9.5pt}{11.5pt}\selectfont
+\setlength{\columnsep}{18pt}
+\begin{multicols}{2}
+
+\noindent{\large\bfseries\color{uclblue} 1. Suites Arithmétiques (pas $+r$)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Récurrence :} $u_{n+1} = u_n + r$.
+    \item \textbf{Terme général :} $u_n = u_1 + (n - 1)r = u_p + (n - p)r$.
+    \item \textbf{Moyenne arithmétique :} $u_n = \dfrac{u_{n-1} + u_{n+1}}{2}$.
+    \item \textbf{Somme des $n$ premiers termes ($S_n = u_1 + \dots + u_n$) :}
+    \[
+        \boxed{S_n = n \cdot \frac{u_1 + u_n}{2} = \frac{n}{2}\bigl(2u_1 + (n - 1)r\bigr)}.
+    \]
+    \item \textbf{Sommes remarquables :}
+    \begin{align*}
+        1 + 2 + 3 + \dots + n &= \frac{n(n+1)}{2} \\
+        2 + 4 + 6 + \dots + 2n &= n(n+1) \\
+        1 + 3 + 5 + \dots + (2n-1) &= n^2
+    \end{align*}
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 2. Suites Géométriques (facteur $\times q$)}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Récurrence :} $u_{n+1} = q \cdot u_n$ ($q \neq 0$).
+    \item \textbf{Terme général :} $u_n = u_1 \cdot q^{n-1} = u_p \cdot q^{n-p}$.
+    \item \textbf{Moyenne géométrique ($u_k > 0$) :} $u_n = \sqrt{u_{n-1}\cdot u_{n+1}}$.
+    \item \textbf{Somme des $n$ premiers termes ($q \neq 1$) :}
+    \[
+        \boxed{S_n = u_1 \cdot \frac{1 - q^n}{1 - q} = u_1 \cdot \frac{q^n - 1}{q - 1}}.
+    \]
+    \item \textbf{Doublement ($q = 2$) :} $S_n = u_1(2^n - 1)$ ($2^7 - 1 = 127$, $2^{10} - 1 = 1023$).
+    \item \textbf{Hausse / baisse de $p\,\%$ :} $q = 1 \pm \dfrac{p}{100}$.
+\end{itemize}
+
+\columnbreak
+
+\noindent{\large\bfseries\color{uclblue} 3. Méthodologie de la Question 2 (Discussion Paramétrique)}
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt, topsep=2pt]
+    \item \textbf{Mise sous forme standard :} Tout passer à gauche et réduire au même dénominateur :
+    \[
+        \frac{N(x, m)}{D(x, m)} \ge 0 \quad (\text{ou } > 0, \le 0, < 0).
+    \]
+    \emph{Ne jamais multiplier par un dénominateur de signe inconnu !}
+    \item \textbf{Valeurs interdites (C.E.) :} Résoudre $D(x, m) = 0$ (doubles barres $\|$ dans le tableau, toujours exclues de $S$).
+    \item \textbf{Factorisation et discriminants $\Delta(m)$ :} Trouver les plages de $m$ où chaque trinôme a $0$, $1$ ou $2$ racines réelles.
+    \item \textbf{Ordre des valeurs critiques :} Résoudre $x_{\text{num}}(m) = x_{\text{dén}}(m)$ pour trouver les valeurs charnières de $m$ où deux racines se croisent.
+    \item \textbf{Tableaux de signes :} Dresser un tableau par plage de $m$ (attention au signe du coefficient dominant s'il dépend de $m$ !).
+\end{enumerate}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 4. Inéquations Logarithmiques Paramétriques}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Base fixe $b > 1$ :}
+    \[
+        \log_b\bigl(U(x,a)\bigr) < k \iff \boxed{0 < U(x,a) < b^k}.
+    \]
+    \item \textbf{Base variable $B(a)$ (ex. $B(a) = a - 1$) :}
+    Écrire $\dfrac{\ln U(x,a)}{\ln B(a)} > 0$.
+    \begin{itemize}[leftmargin=1em, itemsep=1pt]
+        \item Si $B(a) \le 0$ ou $B(a) = 1$ : $S = \varnothing$.
+        \item Si $B(a) > 1$ : $\boxed{U(x,a) > 1}$.
+        \item Si $0 < B(a) < 1$ : $\boxed{0 < U(x,a) < 1}$.
+    \end{itemize}
+\end{itemize}
+
+\end{multicols}
+}
+
+\newpage
+% ============================================================================
+% PAGE 4/4 : MODÉLISATION DE PROBLÈMES TEXTUELS (QUESTION 3) (1 PAGE A4)
+% ============================================================================
+\thispagestyle{plain}
+\refstepcounter{section}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Modélisation et Systèmes Algébriques (Question 3)}
+
+\begin{center}
+    {\LARGE\bfseries\color{uclblue} Formulaire : Modélisation \& Systèmes (Question 3)}\\[2pt]
+    {\small\color{darkgray} Examen d'entrée Ingénieur Civil -- UCLouvain (Fiche récapitulative imprimable 4/4)}
+    \vspace{2pt}
+    \hrule height 1pt
+\end{center}
+\vspace{-6pt}
+
+{\fontsize{9.5pt}{11.5pt}\selectfont
+\setlength{\columnsep}{18pt}
+\begin{multicols}{2}
+
+\noindent{\large\bfseries\color{uclblue} 1. Dictionnaire de Traduction Algébrique}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item « $A$ a trois fois plus que $B$ » : $A = 3B$.
+    \item « $A$ dépasse $B$ de $150\text{ g}$ » : $A - B = 150$.
+    \item « Perte d'un sixième de la normale $P$ » : $\text{Perte} = \frac{1}{6}P$, il reste $\frac{5}{6}P$.
+    \item « $F$ est la moyenne de $B$ et $V$ » : $F = \dfrac{B + V}{2} \iff 2F = B + V$.
+    \item « Autant de $V$ que de $F$ et $B$ réunis » : $V_{\text{tot}} = F_{\text{tot}} + B_{\text{tot}}$.
+    \item « Nombre impair $N$ de sièges, majorité absolue $M$ » :
+    \[
+        M = \frac{N + 1}{2} \iff N = 2M - 1.
+    \]
+    \item « Capacité = Débit $\times$ Temps de vidange » ($C = q \cdot t$) :
+    Si le débit double ($2q$) et qu'elle se vide $3$ fois plus vite ($t/3$), alors $A = (2q)\frac{t}{3} = \frac{2}{3}C$.
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 2. Astuces de Résolution des Systèmes}
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Méthode de la variable pivot :} Exprimer toutes les inconnues en fonction d'une seule (ex. $B = 2V$, $F = \frac{3}{2}V$, ou $A = \frac{2}{3}C$, $H = \frac{8}{5}C$) avant d'injecter dans l'équation du total.
+    \item \textbf{Soustraction membre à membre $(1) - (2)$ :} Idéal pour éliminer un coût fixe $c_0$ ou le poids d'un filet vide $S$ qui apparaît avec le même coefficient dans deux situations.
+    \item \textbf{Substitution par bloc bilinéaire ($N\cdot p$) :}
+    Si l'on connaît $Nv = 360$ et que l'on a $(N + 5)p = 3510$, développer en $Np + 5p = 3510$ et isoler d'abord le produit global $Np$ !
+\end{itemize}
+
+\columnbreak
+
+\noindent{\large\bfseries\color{uclblue} 3. Diagramme de Venn à 3 Ensembles ($C, A, L$)}
+Lorsque chaque individu appartient à au moins un des $3$ ensembles :
+\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=2pt]
+    \item Poser une inconnue dans chacune des \textbf{$7$ régions disjointes} :
+    \begin{itemize}[leftmargin=1em, itemsep=1pt]
+        \item $c, a, \ell$ : appartenant à un seul ensemble ($C$ seul, $A$ seul, $L$ seul) ;
+        \item $x_{CA}, x_{CL}, x_{AL}$ : appartenant à exactement deux ensembles ;
+        \item $x_{CAL}$ : appartenant aux trois ensembles au centre.
+    \end{itemize}
+    \item \textbf{Équations des cercles complets :}
+    \begin{align*}
+        \text{Tot}_C &= c + x_{CA} + x_{CL} + x_{CAL} \\
+        \text{Tot}_A &= a + x_{CA} + x_{AL} + x_{CAL} \\
+        \text{Tot}_L &= \ell + x_{CL} + x_{AL} + x_{CAL}
+    \end{align*}
+    \item \textbf{Population totale $N$ (somme des 7 régions disjointes) :}
+    \[
+        N = c + a + \ell + x_{CA} + x_{CL} + x_{AL} + x_{CAL}.
+    \]
+    \item \textbf{Formule du crible de Poincaré (Inclusion-Exclusion) :}
+    \begin{align*}
+        \text{card}(C \cup A \cup L) &= \text{Tot}_C + \text{Tot}_A + \text{Tot}_L \\
+        &\quad - \bigl(\text{card}(C\cap A) + \text{card}(C\cap L) + \text{card}(A\cap L)\bigr) \\
+        &\quad + \text{card}(C \cap A \cap L).
+    \end{align*}
+\end{itemize}
+
+\vspace{3pt}
+\noindent{\large\bfseries\color{uclblue} 4. Check-list de Vérification Finale}
+\begin{enumerate}[leftmargin=1.4em, itemsep=1pt, topsep=2pt]
+    \item Toutes les inconnues sont-elles définies avec leurs unités ?
+    \item Les unités sont-elles homogènes dans chaque équation (g vs kg, cL vs L) ?
+    \item Les solutions entières (nombre de sacs, de panneaux, de ruches, de sièges) sont-elles bien des entiers naturels positifs ?
+    \item Les réponses finales sont-elles toutes reportées dans les cadres ?
+\end{enumerate}
+
+\end{multicols}
+}
+
+\restoregeometry

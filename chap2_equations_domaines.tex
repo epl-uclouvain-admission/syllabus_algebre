@@ -1,0 +1,326 @@
+% ============================================================================
+% CHAPITRE 2 : ÉQUATIONS, VALEURS ABSOLUES, RADICAUX ET DOMAINES D'EXISTENCE
+% ============================================================================
+\chapter{Équations, Valeurs Absolues, Radicaux et Domaines d'Existence}
+
+Dans ce deuxième chapitre, nous abordons trois thèmes incontournables de la Question~1 et de la Question~2 de l'examen d'admission de l'UCLouvain : la manipulation des \textbf{valeurs absolues} $|A(x)|$, la résolution rigoureuse des \textbf{équations irrationnelles} (comportant des racines carrées $\sqrt{A(x)}$) sans se faire piéger par les solutions parasites, et la détermination des \textbf{domaines de définition} (ou conditions d'existence) de fonctions composées mêlant fractions, radicaux et logarithmes.
+
+% ----------------------------------------------------------------------------
+\section{Valeur absolue : propriétés, équations et inéquations}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition algébrique et interprétation géométrique}
+
+\begin{definition}[Valeur absolue d'un nombre réel]
+Pour tout réel $x \in \R$, la \textbf{valeur absolue} de $x$, notée $|x|$, représente la distance entre le point d'abscisse $x$ et l'origine $0$ sur la droite réelle :
+\[
+    \boxed{|x| = \begin{cases} x & \text{si } x \ge 0, \\ -x & \text{si } x < 0. \end{cases}}
+\]
+Plus généralement, $|x - a|$ est la \textbf{distance} entre les réels $x$ et $a$ sur la droite graduée.
+\end{definition}
+
+\begin{attention}[Le piège classique : $\sqrt{x^2} = |x|$ et non $x$ !]
+Pour tout nombre réel $x \in \R$ (positif ou négatif), la racine carrée désigne toujours le réel \textbf{positif ou nul} dont le carré vaut $x^2$. Par conséquent :
+\[
+    \boxed{\forall x \in \R : \sqrt{x^2} = |x|} \qquad \text{(par exemple, } \sqrt{(-5)^2} = \sqrt{25} = 5 = |-5| \neq -5\text{)}.
+\]
+En revanche, $|x|^2 = x^2$ pour tout $x \in \R$.
+\end{attention}
+
+\begin{theoreme}[Propriétés fondamentales de la valeur absolue]
+Pour tous réels $x, y \in \R$ :
+\begin{enumerate}
+    \item \textbf{Positivité et parité :} $|x| \ge 0$, $\;|x| = 0 \iff x = 0$, $\;$et $|-x| = |x|$.
+    \item \textbf{Produit et quotient :} $|x \cdot y| = |x| \cdot |y|$ \quad et \quad $\left|\dfrac{x}{y}\right| = \dfrac{|x|}{|y|}$ (pour $y \neq 0$).
+    \item \textbf{Inégalité triangulaire :} $|x + y| \le |x| + |y|$ \quad et \quad $\bigl||x| - |y|\bigr| \le |x - y|$.
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Résolution d'équations et d'inéquations avec valeurs absolues}
+
+\begin{theoreme}[Équations et inéquations fondamentales avec $|A(x)|$]
+Soit $A(x)$ une expression algébrique et $k \in \R$ un réel donné :
+\begin{enumerate}
+    \item \textbf{Équation $|A(x)| = k$ :}
+    \begin{itemize}
+        \item Si $k < 0$, l'équation n'a \textbf{aucune solution} ($S = \varnothing$), car une valeur absolue est toujours positive ou nulle.
+        \item Si $k \ge 0$ : $\boxed{|A(x)| = k \iff A(x) = k \;\text{ \textbf{ou} }\; A(x) = -k}$.
+    \end{itemize}
+    \item \textbf{Équation $|A(x)| = |B(x)|$ :}
+    \[
+        \boxed{|A(x)| = |B(x)| \iff A(x) = B(x) \;\text{ \textbf{ou} }\; A(x) = -B(x)}.
+    \]
+    \item \textbf{Inéquation $|A(x)| < k$ (ou $\le k$) :}
+    \begin{itemize}
+        \item Si $k \le 0$ (pour $< k$) ou $k < 0$ (pour $\le k$), il n'y a \textbf{aucune solution} ($S = \varnothing$).
+        \item Si $k > 0$ : $\boxed{|A(x)| < k \iff -k < A(x) < k \iff \begin{cases} A(x) > -k \\ \text{\textbf{et}} \\ A(x) < k \end{cases}}$ (intersection $\cap$).
+    \end{itemize}
+    \item \textbf{Inéquation $|A(x)| > k$ (ou $\ge k$) :}
+    \begin{itemize}
+        \item Si $k < 0$, l'inégalité est toujours vérifiée sur tout le domaine d'existence de $A(x)$.
+        \item Si $k \ge 0$ : $\boxed{|A(x)| > k \iff A(x) < -k \;\text{ \textbf{ou} }\; A(x) > k}$ (union $\cup$).
+    \end{itemize}
+\end{enumerate}
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.92, >=Stealth]
+    % |X| < k
+    \begin{scope}[shift={(0,0)}]
+        \draw[->, thick, darkgray] (-3.5,0) -- (3.5,0) node[right] {\small $A(x)$};
+        \draw[very thick, defgreen] (-1.8,0) -- (1.8,0);
+        \fill[white] (-1.8,0) circle (2.2pt);
+        \draw[thick, defgreen] (-1.8,0) circle (2.2pt) node[below=3pt] {\small $-k$};
+        \fill[white] (1.8,0) circle (2.2pt);
+        \draw[thick, defgreen] (1.8,0) circle (2.2pt) node[below=3pt] {\small $k$};
+        \fill[darkgray] (0,0) circle (1.5pt) node[below=3pt] {\small $0$};
+        \node[defgreen, font=\small\bfseries] at (0,0.45) {$|A(x)| < k \iff -k < A(x) < k$};
+    \end{scope}
+
+    % |X| > k
+    \begin{scope}[shift={(8.2,0)}]
+        \draw[->, thick, darkgray] (-3.5,0) -- (3.5,0) node[right] {\small $A(x)$};
+        \draw[very thick, warnred] (-3.4,0) -- (-1.8,0);
+        \draw[very thick, warnred, ->] (1.8,0) -- (3.5,0);
+        \fill[white] (-1.8,0) circle (2.2pt);
+        \draw[thick, warnred] (-1.8,0) circle (2.2pt) node[below=3pt] {\small $-k$};
+        \fill[white] (1.8,0) circle (2.2pt);
+        \draw[thick, warnred] (1.8,0) circle (2.2pt) node[below=3pt] {\small $k$};
+        \fill[darkgray] (0,0) circle (1.5pt) node[below=3pt] {\small $0$};
+        \node[warnred, font=\small\bfseries] at (0,0.45) {$|A(x)| > k \iff A(x) < -k \text{ ou } A(x) > k$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{astuce}[Méthode générale de disjonction des cas (élimination des barres de valeur absolue)]
+Lorsqu'une équation ou inéquation mêle $|A(x)|$ à d'autres termes dépendant de $x$, comme $|A(x)| \le B(x)$, commencez par \textbf{étudier le signe de l'expression $A(x)$ située à l'intérieur de la valeur absolue} pour découper $\R$ en deux régions :
+\begin{itemize}
+    \item \textbf{Cas 1 (Région où $A(x) \ge 0$) :} On remplace $|A(x)|$ par $A(x)$, on résout l'inéquation $A(x) \le B(x)$, puis on prend l'\textbf{intersection} avec la condition du Cas~1 ($A(x) \ge 0$).
+    \item \textbf{Cas 2 (Région où $A(x) < 0$) :} On remplace $|A(x)|$ par $-A(x)$, on résout $-A(x) \le B(x)$, puis on prend l'\textbf{intersection} avec la condition du Cas~2 ($A(x) < 0$).
+    \item \textbf{Synthèse finale :} On fait l'\textbf{union} ($S = S_1 \cup S_2$) des solutions obtenues dans les deux cas.
+\end{itemize}
+\end{astuce}
+
+\begin{exemple}[Inéquation avec valeur absolue -- UCLouvain, Septembre 2021, Q2.1]
+\textbf{Énoncé :} Déterminer l'ensemble des nombres réels $x$ qui vérifient l'inéquation suivante :
+\[
+    |x^2 - 2x - 6| \le 3x^2 - 2x - 6.
+\]
+\textbf{Résolution :} Étudions d'abord le signe de $A(x) = x^2 - 2x - 6$. Son discriminant vaut $\Delta = (-2)^2 - 4(1)(-6) = 4 + 24 = 28 = 4 \times 7$, d'où les deux racines :
+\[
+    r_1 = 1 - \sqrt{7} \approx -1,65 \qquad \text{et} \qquad r_2 = 1 + \sqrt{7} \approx 3,65.
+\]
+\begin{itemize}
+    \item \textbf{1\ier{} cas : $x \in \,]-\infty, 1 - \sqrt{7}] \cup [1 + \sqrt{7}, +\infty[$ (région où $x^2 - 2x - 6 \ge 0$).}\\
+    Dans cette région, $|x^2 - 2x - 6| = x^2 - 2x - 6$. L'inéquation devient :
+    \[
+        x^2 - 2x - 6 \le 3x^2 - 2x - 6 \iff 0 \le 2x^2 \iff x^2 \ge 0,
+    \]
+    ce qui est \textbf{toujours vrai} pour tout $x \in \R$. L'intersection avec le domaine du 1\ier{} cas donne donc :
+    \[
+        S_1 = \,]-\infty, 1 - \sqrt{7}] \cup [1 + \sqrt{7}, +\infty[.
+    \]
+    \item \textbf{2\ieme{} cas : $x \in \,]1 - \sqrt{7}, 1 + \sqrt{7}[$ (région où $x^2 - 2x - 6 < 0$).}\\
+    Dans cette région, $|x^2 - 2x - 6| = -(x^2 - 2x - 6) = -x^2 + 2x + 6$. L'inéquation devient :
+    \[
+        -x^2 + 2x + 6 \le 3x^2 - 2x - 6 \iff 4x^2 - 4x - 12 \ge 0 \iff x^2 - x - 3 \ge 0.
+    \]
+    Le trinôme $x^2 - x - 3$ a pour discriminant $\Delta' = 1 + 12 = 13$, et ses racines sont $\alpha_1 = \frac{1 - \sqrt{13}}{2} \approx -1,30$ et $\alpha_2 = \frac{1 + \sqrt{13}}{2} \approx 2,30$. Il est positif ou nul à l'extérieur de ses racines : $x \le \frac{1-\sqrt{13}}{2}$ ou $x \ge \frac{1+\sqrt{13}}{2}$.
+    Or, comme $4 < 7 < 13 < 28$, on a $1 - \sqrt{7} = \frac{2 - \sqrt{28}}{2} < \frac{1 - \sqrt{13}}{2} < \frac{1 + \sqrt{13}}{2} < \frac{2 + \sqrt{28}}{2} = 1 + \sqrt{7}$.
+    L'intersection avec l'intervalle du 2\ieme{} cas donne donc :
+    \[
+        S_2 = \left]1 - \sqrt{7},\, \frac{1 - \sqrt{13}}{2}\right] \cup \left[\frac{1 + \sqrt{13}}{2},\, 1 + \sqrt{7}\right[.
+    \]
+\end{itemize}
+\textbf{Synthèse ($S = S_1 \cup S_2$) :} Les bornes $1 - \sqrt{7}$ et $1 + \sqrt{7}$ se raccordent parfaitement ! On obtient :
+\[
+    \boxed{S = \left]-\infty,\, \frac{1 - \sqrt{13}}{2}\right] \cup \left[\frac{1 + \sqrt{13}}{2},\, +\infty\right[}.
+\]
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Équations irrationnelles (avec racines carrées) et solutions parasites}
+% ----------------------------------------------------------------------------
+
+À l'examen d'admission (notamment en \textbf{Juillet 2023 Série 1 Q1.7}, \textbf{Juillet 2023 Série 2 Q1.7} et \textbf{Septembre 2023 Q1.7}), la Question~1 propose régulièrement une équation de la forme $\sqrt{A(x)} = B(x)$. C'est l'un des pièges les plus redoutables pour les candidats inattentifs !
+
+\begin{theoreme}[Équivalence fondamentale pour résoudre $\sqrt{A(x)} = B(x)$]
+Pour tout réel $x \in \R$, l'écriture $\sqrt{A(x)}$ désigne un nombre \textbf{positif ou nul}. Par conséquent, si $B(x) < 0$, l'égalité $\sqrt{A(x)} = B(x)$ est impossible ! L'équivalence exacte est :
+\[
+    \boxed{\sqrt{A(x)} = B(x) \iff \begin{cases} B(x) \ge 0 & \text{(condition de positivité du second membre)} \\ A(x) = \bigl(B(x)\bigr)^2 & \text{(élévation au carré)} \end{cases}}
+\]
+\emph{Remarque :} La condition d'existence du radical $A(x) \ge 0$ est automatiquement garantie dès lors que $A(x) = \bigl(B(x)\bigr)^2$, car un carré réel est toujours positif ou nul !
+\end{theoreme}
+
+\begin{attention}[Pourquoi l'élévation au carré seule crée-t-elle des solutions parasites ?]
+Lorsque vous élevez les deux membres au carré sans condition :
+\[
+    A(x) = \bigl(B(x)\bigr)^2 \iff \sqrt{A(x)} = |B(x)| \iff \sqrt{A(x)} = B(x) \;\text{ \textbf{ou} }\; \textcolor{warnred}{\sqrt{A(x)} = -B(x)}.
+\]
+Les racines de $A(x) = (B(x))^2$ pour lesquelles $B(x) < 0$ sont en réalité les solutions de l'équation opposée $\sqrt{A(x)} = -B(x)$ : ce sont des \textbf{solutions parasites} qu'il faut impérativement éliminer !
+\end{attention}
+
+\begin{exemple}[Les trois équations irrationnelles de 2023 -- UCLouvain, Juillet \& Septembre 2023, Q1.7]
+\begin{enumerate}
+    \item \textbf{Juillet 2023 -- Série 1, Q1.7 :} \emph{Quelles sont les solutions dans $\R$ de l'équation $x = \sqrt{x + 1}$ ?}\\
+    Appliquons le théorème avec $A(x) = x + 1$ et $B(x) = x$ :
+    \[
+        \sqrt{x + 1} = x \iff \begin{cases} x \ge 0 \\ x + 1 = x^2 \end{cases} \iff \begin{cases} x \ge 0 \\ x^2 - x - 1 = 0 \end{cases}
+    \]
+    Le trinôme $x^2 - x - 1 = 0$ ($\Delta = 1 + 4 = 5$) a deux racines : $x_1 = \frac{1 - \sqrt{5}}{2} < 0$ (car $\sqrt{5} > 1$) et $x_2 = \frac{1 + \sqrt{5}}{2} > 0$ (le célèbre \textbf{nombre d'or} $\varphi \approx 1,618$).
+    La condition $x \ge 0$ élimine la solution parasite $x_1 = \frac{1-\sqrt{5}}{2}$, et il reste l'unique solution :
+    \[
+        \boxed{x = \frac{1 + \sqrt{5}}{2}}.
+    \]
+    \item \textbf{Juillet 2023 -- Série 2, Q1.7 :} \emph{Quelles sont les solutions dans $\R$ de l'équation $\sqrt{1 - x^2} = x - 1$ ?}\\
+    Ici $A(x) = 1 - x^2$ et $B(x) = x - 1$. On pose :
+    \[
+        \sqrt{1 - x^2} = x - 1 \iff \begin{cases} x - 1 \ge 0 \iff x \ge 1 \\ 1 - x^2 = (x - 1)^2 \end{cases}
+    \]
+    Développons la seconde équation : $1 - x^2 = x^2 - 2x + 1 \iff 2x^2 - 2x = 0 \iff 2x(x - 1) = 0$, ce qui fournit deux candidats : $x = 0$ et $x = 1$.
+    Or, pour $x = 0$, le membre de droite vaut $0 - 1 = -1 < 0$ (tandis que $\sqrt{1 - 0^2} = 1 \neq -1$) : $x = 0$ est une solution parasite ! Seul $x = 1 \ge 1$ convient :
+    \[
+        \boxed{x = 1}.
+    \]
+    \emph{Remarque rapide par les domaines :} La racine $\sqrt{1-x^2}$ exige $1-x^2 \ge 0 \iff x \in [-1, 1]$, tandis que la positivité du membre de droite exige $x - 1 \ge 0 \iff x \in [1, +\infty[$. L'intersection $[-1, 1] \cap [1, +\infty[ = \{1\}$ ne contient qu'un seul point possible : $x = 1$, qui vérifie bien $\sqrt{0} = 0$ !
+    \item \textbf{Septembre 2023, Q1.7 :} \emph{Quelles sont les solutions dans $\R$ de l'équation $x - \sqrt{x + 1} = 1$ ?}\\
+    Isolons d'abord le radical seul d'un côté avant d'élever au carré :
+    \[
+        \sqrt{x + 1} = x - 1 \iff \begin{cases} x \ge 1 \\ x + 1 = (x - 1)^2 \end{cases} \iff \begin{cases} x \ge 1 \\ x^2 - 3x = x(x - 3) = 0 \end{cases}
+    \]
+    Parmi les deux racines $x = 0$ et $x = 3$, la condition $x \ge 1$ rejette $x = 0$ (pour lequel $0 - \sqrt{1} = -1 \neq 1$) et conserve l'unique solution :
+    \[
+        \boxed{x = 3}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Détermination du domaine de définition (Conditions d'existence)}
+% ----------------------------------------------------------------------------
+
+Presque chaque session d'examen d'Algèbre comporte à la Question~1 (souvent en Q1.2 ou Q1.5) une question demandant le \textbf{domaine de définition} $\dom f$ (ou les conditions d'existence) d'une fonction réelle $f(x)$.
+
+\subsection{Les trois règles de base des conditions d'existence dans $\R$}
+
+\begin{theoreme}[Catalogue des conditions d'existence (C.E.)]
+Pour qu'une expression réelle $f(x)$ existe dans $\R$, toutes les opérations qui la composent doivent être simultanément licites (\textbf{intersection $\cap$} de toutes les conditions) :
+\begin{enumerate}
+    \item \textbf{Dénominateur d'une fraction $\dfrac{N(x)}{D(x)}$ :} Le dénominateur doit être \textbf{non nul} :
+    \[
+        \boxed{D(x) \neq 0}.
+    \]
+    \item \textbf{Racine carrée (ou d'indice pair $2n$) $\sqrt{A(x)}$ :} Le radicande sous la racine doit être \textbf{positif ou nul} :
+    \[
+        \boxed{A(x) \ge 0}.
+    \]
+    \emph{Cas fréquent :} Si la racine carrée est elle-même au dénominateur, comme $\dfrac{1}{\sqrt{A(x)}}$, la combinaison de $A(x) \ge 0$ et $\sqrt{A(x)} \neq 0$ donne une inégalité \textbf{stricte} : $\boxed{A(x) > 0}$.
+    \item \textbf{Logarithme $\ln\bigl(U(x)\bigr)$ ou $\log_a\bigl(U(x)\bigr)$ :} L'argument du logarithme doit être \textbf{strictement positif} :
+    \[
+        \boxed{U(x) > 0} \qquad \text{(et si la base $a$ dépend d'un paramètre : } a > 0 \text{ et } a \neq 1\text{)}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Fonctions emboîtées : le motif récurrent $\sqrt{\ln(U(x))}$ et $\frac{1}{\sqrt{\ln(U(x))}}$}
+
+Regardons attentivement les fonctions posées à l'examen en 2024, 2025 et 2026 : elles reposent presque toutes sur l'emboîtement d'une racine carrée et d'un logarithme népérien !
+
+\begin{theoreme}[Conditions d'existence de $\sqrt{\ln(U(x))}$ et de $\dfrac{1}{\sqrt{\ln(U(x))}}$]
+Puisque la fonction logarithme népérien $\ln : \,]0, +\infty[ \to \R$ est strictement croissante et s'annule en $1$ ($\ln(1) = 0$) :
+\begin{itemize}
+    \item Pour $f(x) = \sqrt{\ln\bigl(U(x)\bigr)}$, la racine impose $\ln\bigl(U(x)\bigr) \ge 0 = \ln(1)$, ce qui équivaut à :
+    \[
+        \boxed{\ln\bigl(U(x)\bigr) \ge 0 \iff U(x) \ge 1}.
+    \]
+    \item Pour $f(x) = \dfrac{1}{\sqrt{\ln\bigl(U(x)\bigr)}}$, la racine au dénominateur impose $\ln\bigl(U(x)\bigr) > 0 = \ln(1)$, ce qui équivaut à :
+    \[
+        \boxed{\ln\bigl(U(x)\bigr) > 0 \iff U(x) > 1}.
+    \]
+\end{itemize}
+\emph{Observation très utile :} Dès que l'on impose $U(x) \ge 1$ (ou $U(x) > 1$), la condition d'existence du logarithme $U(x) > 0$ est \textbf{automatiquement satisfaite} puisque $1 > 0$ !
+\end{theoreme}
+
+\begin{exemple}[Les six questions de domaine d'existence (2021--2026)]
+Passons en revue toutes les questions de domaine tombées à la Question~1 de 2021 à 2026 :
+\begin{enumerate}
+    \item \textbf{Septembre 2021, Q1.1 :} \emph{Domaine d'existence de $f(x) = \ln\left(\dfrac{x + 2}{x}\right)$.}\\
+    Il faut $x \neq 0$ et l'argument du logarithme strictement positif : $\dfrac{x + 2}{x} > 0$. Le quotient de $(x+2)$ par $x$ a pour valeurs critiques $-2$ et $0$, et est strictement positif à l'extérieur de $[-2, 0]$ :
+    \[
+        \boxed{\dom f = \,]-\infty, -2[ \,\cup\, ]0, +\infty[}.
+    \]
+
+    \item \textbf{Juillet 2024, Q1.5 :} \emph{Domaine de définition de $f(x) = \dfrac{1}{\sqrt{\ln(x^2 - 1)}}$.}\\
+    La racine au dénominateur impose $\ln(x^2 - 1) > 0 \iff x^2 - 1 > 1 \iff x^2 - 2 > 0 \iff (x - \sqrt{2})(x + \sqrt{2}) > 0$. Le trinôme est strictement positif à l'extérieur de ses racines $-\sqrt{2}$ et $\sqrt{2}$ :
+    \[
+        \boxed{\dom f = \,]-\infty, -\sqrt{2}[ \,\cup\, ]\sqrt{2}, +\infty[}.
+    \]
+
+    \item \textbf{Septembre 2024, Q1.2 :} \emph{Domaine de définition de $f(x) = \dfrac{1}{\sqrt{\ln(x^2 - 2x + 1)}}$.}\\
+    On impose $\ln(x^2 - 2x + 1) > 0 \iff x^2 - 2x + 1 > 1 \iff x^2 - 2x > 0 \iff x(x - 2) > 0$ :
+    \[
+        \boxed{\dom f = \,]-\infty, 0[ \,\cup\, ]2, +\infty[}.
+    \]
+
+    \item \textbf{Juillet 2025, Q1.2 :} \emph{Conditions d'existence de l'inéquation $\dfrac{\ln(x + 1)}{\sqrt{x(x - 10)}} \ge 0$.}\\
+    Ici, le logarithme et la racine sont séparés :
+    \begin{itemize}
+        \item Au numérateur, $\ln(x + 1)$ existe ssi $x + 1 > 0 \iff x \in \,]-1, +\infty[$.
+        \item Au dénominateur, $\sqrt{x(x - 10)}$ est réel et non nul ssi $x(x - 10) > 0 \iff x \in \,]-\infty, 0[ \,\cup\, ]10, +\infty[$.
+    \end{itemize}
+    On prend l'\textbf{intersection} des deux ensembles : $\bigl]-1, +\infty\bigr[ \cap \bigl(]-\infty, 0[ \,\cup\, ]10, +\infty[\bigr)$ :
+    \[
+        \boxed{\text{C.E.} : x \in \,]-1, 0[ \,\cup\, ]10, +\infty[}.
+    \]
+
+    \item \textbf{Septembre 2025, Q1.2 :} \emph{Domaine de définition de $f(x) = \dfrac{1}{\sqrt{\ln(x^2 - 3)}}$.}\\
+    On impose $\ln(x^2 - 3) > 0 \iff x^2 - 3 > 1 \iff x^2 - 4 > 0 \iff (x - 2)(x + 2) > 0$ :
+    \[
+        \boxed{\dom f = \,]-\infty, -2[ \,\cup\, ]2, +\infty[}.
+    \]
+
+    \item \textbf{Juillet 2026, Q1.2 :} \emph{Domaine de définition de $f(x) = \sqrt{\ln(4 - x^2)}$.}\\
+    Attention : ici la racine est au \textbf{numérateur} ! La condition est donc large ($\ge 0$) :
+    \[
+        \ln(4 - x^2) \ge 0 \iff 4 - x^2 \ge 1 \iff x^2 - 3 \le 0 \iff (x + \sqrt{3})(x - \sqrt{3}) \le 0,
+    \]
+    ce qui donne l'intervalle fermé entre les racines :
+    \[
+        \boxed{\dom f = \bigl[-\sqrt{3},\, \sqrt{3}\bigr]}.
+    \]
+
+    \item \textbf{Septembre 2026, Q1.2 :} \emph{Domaine de définition de $f(x) = \sqrt{\ln\left(\dfrac{x - 1}{x + 2}\right)}$.}\\
+    La racine au numérateur impose $\ln\left(\dfrac{x - 1}{x + 2}\right) \ge 0 \iff \dfrac{x - 1}{x + 2} \ge 1$ (avec $x \neq -2$).
+    \textbf{Attention :} On ne multiplie surtout pas par $(x + 2)$ dont le signe est inconnu ! On soustrait $1$ et on met au même dénominateur :
+    \[
+        \frac{x - 1}{x + 2} - 1 \ge 0 \iff \frac{(x - 1) - (x + 2)}{x + 2} \ge 0 \iff \frac{-3}{x + 2} \ge 0.
+    \]
+    Comme le numérateur $-3$ est strictement négatif, la fraction ne peut jamais s'annuler et est positive si et seulement si son dénominateur est strictement négatif : $x + 2 < 0 \iff x < -2$. D'où :
+    \[
+        \boxed{\dom f = \,]-\infty, -2[}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 2}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 2.\arabic* :}, leftmargin=*]
+    \item \textbf{(Équation avec valeurs absolues)} Résoudre dans $\R$ l'équation $|2x - 3| = |x + 4|$.
+    \item \textbf{(Inéquation avec valeur absolue)} Résoudre dans $\R$ l'inéquation $|x^2 - 5x + 4| < 2$.
+    \item \textbf{(Équations irrationnelles)} Résoudre dans $\R$ les équations suivantes en vérifiant soigneusement l'absence de solutions parasites :
+    \begin{enumerate}[label=(\alph*)]
+        \item $\sqrt{2x + 3} = x$
+        \item $\sqrt{x + 4} + x = 2$
+        \item $\sqrt{3x + 1} - \sqrt{x - 1} = 2$
+    \end{enumerate}
+    \item \textbf{(Domaines de définition type Question 1)} Déterminer le domaine de définition dans $\R$ de chacune des fonctions suivantes :
+    \begin{enumerate}[label=(\alph*)]
+        \item $f_1(x) = \dfrac{1}{\sqrt{\ln(x^2 - 4x + 5)}}$
+        \item $f_2(x) = \sqrt{\ln\left(\dfrac{2x + 1}{x - 1}\right)}$
+        \item $f_3(x) = \dfrac{\sqrt{9 - x^2}}{\ln(x + 2)}$
+    \end{enumerate}
+\end{enumerate}

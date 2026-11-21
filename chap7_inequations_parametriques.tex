@@ -1,0 +1,357 @@
+% ============================================================================
+% CHAPITRE 7 : DISCUSSION D'ÉQUATIONS ET D'INÉQUATIONS PARAMÉTRIQUES
+% ============================================================================
+\chapter{Discussion d'Équations et d'Inéquations Paramétriques}
+
+La \textbf{Question~2} de l'épreuve d'Algèbre de l'examen d'admission à l'EPL (UCLouvain) est dédiée à la résolution et à la discussion complète dans $\R$ d'une inéquation (ou d'une équation) dépendant d'un \textbf{paramètre réel} noté $m$ ou $a$. Contrairement à la Question~1, ici \textbf{toute la démarche et la clarté de l'explication sont évaluées} : conditions d'existence, factorisation, étude du signe du discriminant $\Delta(m)$, comparaison de l'ordre des valeurs critiques en fonction du paramètre, tableaux de signes et conclusion récapitulative.
+
+Ce chapitre vous donne une méthodologie infaillible en 5 étapes, illustrée par \textbf{l'intégralité des Questions~2 tombées entre 2021 et 2026}.
+
+% ----------------------------------------------------------------------------
+\section{Méthodologie générale en 5 étapes pour les inéquations rationnelles paramétriques}
+% ----------------------------------------------------------------------------
+
+Face à une inéquation rationnelle dépendant d'un paramètre réel $m \in \R$, suivez scrupuleusement ce plan de bataille :
+
+\begin{theoreme}[Les 5 étapes d'une discussion d'inéquation rationnelle paramétrique]
+\begin{enumerate}
+    \item \textbf{Étape 1 -- Mise sous forme standard (membre de droite égal à $0$) :}
+    Ramenez tous les termes à gauche et réduisez au même dénominateur pour obtenir un unique quotient comparé à $0$ :
+    \[
+        \boxed{\frac{N(x, m)}{D(x, m)} \ge 0 \qquad \left(\text{ou } > 0,\; \le 0,\; < 0\right)}.
+    \]
+    \textbf{Règle absolue :} Ne multipliez \textbf{JAMAIS} les deux membres d'une inéquation par un dénominateur $D(x,m)$ dont le signe dépend de $x$ ou de $m$ !
+    \item \textbf{Étape 2 -- Conditions d'existence (Valeurs interdites) :}
+    Résolvez $D(x, m) = 0$ pour identifier toutes les \textbf{valeurs interdites} de $x$ (qui seront marquées par une double barre $\|$ ou une croix $\times$ dans le tableau de signes et \textbf{toujours exclues} de l'ensemble des solutions $S$, même si l'inégalité est large $\ge 0$). Si un dénominateur s'annule pour une valeur particulière du paramètre (ex. $m = 0$ dans $\frac{1}{mx}$), traitez ce cas d'emblée ($S = \varnothing$).
+    \item \textbf{Étape 3 -- Recherche des racines (valeurs critiques) du numérateur et du dénominateur :}
+    Factorisez $N(x,m)$ et $D(x,m)$. Si un facteur est du second degré $ax^2 + bx + c$, calculez son discriminant $\Delta(m) = b^2 - 4ac$ et étudiez le \textbf{signe de $\Delta(m)$ en fonction de $m$} :
+    \begin{itemize}
+        \item Pour les valeurs de $m$ où $\Delta(m) < 0$, ce trinôme n'a pas de racine réelle et garde un \textbf{signe constant} (celui de $a$) sur tout $\R$.
+        \item Pour les valeurs de $m$ où $\Delta(m) \ge 0$, notez ses racines $x_1(m) \le x_2(m)$ (\emph{attention : si le coefficient dominant $a$ dépend de $m$ et change de signe, comme dans $mx^2 - mx - 1$, l'ordre entre $\frac{-b-\sqrt{\Delta}}{2m}$ et $\frac{-b+\sqrt{\Delta}}{2m}$ s'inverse lorsque $m < 0$ !}).
+    \end{itemize}
+    \item \textbf{Étape 4 -- Classement (ordre) des valeurs critiques selon les plages de $m$ et Tableaux de signes :}
+    Pour placer les valeurs critiques dans l'ordre croissant sur la première ligne du tableau de signes, \textbf{comparez les racines entre elles} (en résolvant $x_{\text{num}}(m) = x_{\text{dén}}(m)$ pour trouver les valeurs de basculement de $m$). Dressez ensuite un \textbf{tableau de signes propre pour chaque cas}.
+    \item \textbf{Étape 5 -- Synthèse finale encadrée :}
+    Récapitulez clairement l'ensemble des solutions $S$ pour chaque intervalle ou valeur particulière du paramètre $m$.
+\end{enumerate}
+\end{theoreme}
+
+% ----------------------------------------------------------------------------
+\section{Inéquations rationnelles paramétriques : études complètes des annales}
+% ----------------------------------------------------------------------------
+
+\subsection{Cas où un facteur du premier degré change de place par rapport aux racines}
+
+\begin{exemple}[Inéquation rationnelle avec paramètre positif -- UCLouvain, Septembre 2026, Q2]
+\textbf{Énoncé :} Résoudre dans $\R$, en discutant selon le paramètre réel strictement positif $m > 0$, l'inéquation :
+\[
+    \frac{x - m}{x^3 - x} > 0.
+\]
+\textbf{Résolution détaillée :}
+\begin{enumerate}
+    \item \textbf{Factorisation et domaine d'existence :} Le dénominateur se factorise en $x^3 - x = x(x^2 - 1) = x(x - 1)(x + 1)$. L'inéquation s'écrit :
+    \[
+        \frac{x - m}{x(x - 1)(x + 1)} > 0.
+    \]
+    Les valeurs interdites (qui annulent le dénominateur) sont $x \in \{-1, 0, 1\}$, donc $\dom = \R \setminus \{-1, 0, 1\}$.
+    \item \textbf{Valeurs critiques et ordre en fonction de $m > 0$ :}
+    Le dénominateur a trois racines simples fixes : $-1 < 0 < 1$. Le numérateur s'annule en $x = m$.
+    Puisque l'énoncé précise que $\mathbf{m > 0}$, la racine $m$ est toujours strictement à droite de $0$. Il suffit donc de comparer $m$ avec la racine $1$, ce qui donne \textbf{trois cas} :
+    \begin{itemize}
+        \item \textbf{1\ier{} cas : $0 < m < 1$.} L'ordre des valeurs critiques est $-1 < 0 < m < 1$ :
+        \begin{center}
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{c|ccccccccccc}
+            $x$ & $-\infty$ & & $-1$ & & $0$ & & $m$ & & $1$ & & $+\infty$ \\ \hline
+            $x - m$ & & $-$ & $-$ & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ & \\
+            $x(x-1)(x+1)$ & & $-$ & $0$ & $+$ & $0$ & $-$ & $-$ & $-$ & $0$ & $+$ & \\ \hline
+            Quotient & & $+$ & $\|$ & $-$ & $\|$ & $+$ & $0$ & $-$ & $\|$ & $+$ &
+        \end{tabular}
+        \end{center}
+        Comme l'inégalité est stricte ($> 0$), on prend les régions marquées $+$ en excluant toutes les bornes :
+        \[
+            S = \,]-\infty, -1[ \,\cup\, ]0, m[ \,\cup\, ]1, +\infty[.
+        \]
+
+        \item \textbf{2\ieme{} cas : $m = 1$.} Le facteur $(x - 1)$ apparaît en haut et en bas ! Pour $x \neq 1$, la fraction se simplifie en $\dfrac{1}{x(x + 1)} > 0$, qui est strictement positive pour $x \in \,]-\infty, -1[ \,\cup\, ]0, +\infty[$. \textbf{Attention :} $x = 1$ reste une valeur interdite du dénominateur initial, il faut donc l'exclure de $]0, +\infty[$ :
+        \[
+            S = \,]-\infty, -1[ \,\cup\, ]0, 1[ \,\cup\, ]1, +\infty[.
+        \]
+
+        \item \textbf{3\ieme{} cas : $m > 1$.} L'ordre des valeurs critiques est $-1 < 0 < 1 < m$ :
+        \begin{center}
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{c|ccccccccccc}
+            $x$ & $-\infty$ & & $-1$ & & $0$ & & $1$ & & $m$ & & $+\infty$ \\ \hline
+            $x - m$ & & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $0$ & $+$ & \\
+            $x(x-1)(x+1)$ & & $-$ & $0$ & $+$ & $0$ & $-$ & $0$ & $+$ & $+$ & $+$ & \\ \hline
+            Quotient & & $+$ & $\|$ & $-$ & $\|$ & $+$ & $\|$ & $-$ & $0$ & $+$ &
+        \end{tabular}
+        \end{center}
+        On lit directement : $S = \,]-\infty, -1[ \,\cup\, ]0, 1[ \,\cup\, ]m, +\infty[$.
+    \end{itemize}
+\end{enumerate}
+\textbf{Conclusion :}
+\[
+    \boxed{\begin{cases}
+        \text{Si } 0 < m < 1 : & S = \,]-\infty, -1[ \,\cup\, ]0, m[ \,\cup\, ]1, +\infty[ \\
+        \text{Si } m = 1 : & S = \,]-\infty, -1[ \,\cup\, ]0, 1[ \,\cup\, ]1, +\infty[ \\
+        \text{Si } m > 1 : & S = \,]-\infty, -1[ \,\cup\, ]0, 1[ \,\cup\, ]m, +\infty[
+    \end{cases}}
+\]
+\end{exemple}
+
+\subsection{Cas où un trinôme du second degré dépend du paramètre}
+
+\begin{exemple}[Mise sous forme standard et discussion -- UCLouvain, Juillet 2024, Q2]
+\textbf{Énoncé :} Résoudre dans $\R$ et discuter en fonction du paramètre réel $m$ l'inéquation suivante :
+\[
+    \frac{(m - 1)(x - 1)}{x + m - 1} \le x.
+\]
+\textbf{Résolution détaillée :}
+\begin{enumerate}
+    \item \textbf{Étape 1 (Mise sous forme standard) :} On fait passer $x$ à gauche et on réduit au même dénominateur (sans multiplier par $x + m - 1$ !) :
+    \[
+        \frac{(m - 1)(x - 1) - x(x + m - 1)}{x + m - 1} \le 0 \iff \frac{-x^2 - m + 1}{x + m - 1} \le 0.
+    \]
+    En multipliant les deux membres par $-1$ (ce qui \textbf{inverse le sens de l'inégalité} : $\le 0$ devient $\ge 0$) :
+    \[
+        \boxed{\frac{x^2 + m - 1}{x + m - 1} \ge 0}.
+    \]
+    \item \textbf{Étape 2 (Condition d'existence) :} Le dénominateur s'annule en $x_D = 1 - m$, donc $\text{C.E. } : \mathbf{x \neq 1 - m}$.
+    \item \textbf{Étape 3 (Racines du numérateur $N(x) = x^2 - (1 - m)$) :}
+    \begin{itemize}
+        \item Si $1 - m < 0 \iff \mathbf{m > 1}$ : $x^2 + (m - 1) > 0$ pour tout $x \in \R$ (aucune racine réelle, numérateur toujours strictement positif).
+        \item Si $1 - m = 0 \iff \mathbf{m = 1}$ : $x^2 = 0$ admet une racine double $x = 0$ (qui coïncide avec la valeur interdite $1 - m = 0$).
+        \item Si $1 - m > 0 \iff \mathbf{m < 1}$ : le numérateur possède deux racines réelles opposées $x_1 = -\sqrt{1 - m}$ et $x_2 = +\sqrt{1 - m}$.
+    \end{itemize}
+    \item \textbf{Étape 4 (Comparaison de la racine du dénominateur $1 - m$ avec $x_1 = -\sqrt{1-m}$ et $x_2 = \sqrt{1-m}$ pour $m < 1$) :}
+    Posons $u = \sqrt{1 - m} > 0$, de sorte que $x_1 = -u$, $x_2 = u$, et la valeur interdite du dénominateur vaut $x_D = 1 - m = u^2 > 0$.
+    Comme $u > 0$, on a toujours $-u < 0 < u^2$, donc $x_1 < x_D$. En revanche, la position de $x_D = u^2$ par rapport à $x_2 = u$ dépend de la comparaison de $u$ avec $1$ ($u^2 = u \iff u = 1 \iff 1 - m = 1 \iff m = 0$) :
+    \begin{itemize}
+        \item Si $\mathbf{0 < m < 1}$ ($0 < u < 1$, donc $u^2 < u$) : l'ordre est $\mathbf{-\sqrt{1 - m} < 1 - m < \sqrt{1 - m}}$.
+        \item Si $\mathbf{m = 0}$ ($u = 1$) : $x_D = 1$ coïncide avec $x_2 = 1$ (ordre : $-1 < 1$).
+        \item Si $\mathbf{m < 0}$ ($u > 1$, donc $u < u^2$) : l'ordre est $\mathbf{-\sqrt{1 - m} < \sqrt{1 - m} < 1 - m}$.
+    \end{itemize}
+    Dressons le tableau de signes pour le cas $0 < m < 1$ (et de même pour $m < 0$) :
+    \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{c|ccccccccc}
+        $x$ & $-\infty$ & & $-\sqrt{1-m}$ & & $1-m$ & & $\sqrt{1-m}$ & & $+\infty$ \\ \hline
+        $x^2 + m - 1$ & & $+$ & $0$ & $-$ & $-$ & $-$ & $0$ & $+$ & \\
+        $x + m - 1$ & & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ & \\ \hline
+        Quotient & & $-$ & $0$ & $+$ & $\|$ & $-$ & $0$ & $+$ &
+    \end{tabular}
+    \end{center}
+\end{enumerate}
+\textbf{Étape 5 (Synthèse finale des 5 cas) :}
+\[
+    \boxed{\begin{cases}
+        \text{Si } m < 0 : & S = \bigl[-\sqrt{1 - m},\, \sqrt{1 - m}\bigr] \cup \,]1 - m, +\infty[ \\
+        \text{Si } m = 0 : & S = [-1, 1[ \,\cup\, ]1, +\infty[ \\
+        \text{Si } 0 < m < 1 : & S = \bigl[-\sqrt{1 - m},\, 1 - m\bigr[ \cup \bigl[\sqrt{1 - m},\, +\infty\bigr[ \\
+        \text{Si } m = 1 : & S = \,]0, +\infty[ \\
+        \text{Si } m > 1 : & S = \,]1 - m, +\infty[
+    \end{cases}}
+\]
+\end{exemple}
+
+\begin{exemple}[Cinq autres discussions rationnelles et valeurs absolues des annales (2021--2025)]
+\begin{enumerate}
+    \item \textbf{Septembre 2024, Q2 :} \emph{Résoudre et discuter en fonction de $m \in \R$ : $\dfrac{x^2 - 2mx + 1}{x - m} \ge 0$.}\\
+    \begin{itemize}
+        \item \textbf{C.E. :} $x \neq m$.
+        \item \textbf{Numérateur $N(x) = x^2 - 2mx + 1$ :} $\Delta = 4m^2 - 4 = 4(m^2 - 1)$.
+        \item Si $\mathbf{-1 < m < 1}$ ($\Delta < 0$) : $N(x) > 0$ pour tout $x \in \R$. Le quotient a le signe de $x - m$, donc $S = \,]m, +\infty[$.
+        \item Si $\mathbf{m = \pm 1}$ ($\Delta = 0$) : $N(x) = (x - m)^2 \ge 0$, donc pour $x \neq m$ le quotient vaut $x - m > 0 \iff S = \,]m, +\infty[$.
+        \item Si $\mathbf{m < -1 \text{ ou } m > 1}$ ($\Delta > 0$) : les racines du numérateur sont $x_1 = m - \sqrt{m^2 - 1}$ et $x_2 = m + \sqrt{m^2 - 1}$. Comme $\sqrt{m^2 - 1} > 0$, la valeur interdite $m$ est \textbf{toujours située pile au milieu des deux racines} : $\mathbf{x_1 < m < x_2}$ ! Le tableau de signes est identique pour $m < -1$ et $m > 1$ :
+    \end{itemize}
+    \[
+        \boxed{\begin{cases}
+            \text{Si } -1 \le m \le 1 : & S = \,]m, +\infty[ \\
+            \text{Si } m < -1 \text{ ou } m > 1 : & S = \bigl[m - \sqrt{m^2 - 1},\, m\bigr[ \,\cup\, \bigl[m + \sqrt{m^2 - 1},\, +\infty\bigr[
+        \end{cases}}
+    \]
+
+    \item \textbf{Juillet 2022, Q2 :} \emph{Résoudre et discuter selon $m \in \R$ : $\dfrac{x^2 + 2x - 2m}{x^2 - m^2} > 0$.}\\
+    \textbf{C.E. :} $x \notin \{-m, m\}$. Le numérateur a pour discriminant $\Delta = 4 + 8m = 4(2m + 1)$ :
+    \begin{itemize}
+        \item Si $\mathbf{m < -1/2}$ ($\Delta < 0$) : numérateur toujours $> 0$. Comme $m < 0$, on a $m < -m$, et $x^2 - m^2 > 0$ à l'extérieur de $[m, -m]$ : $S = \,]-\infty, m[ \,\cup\, ]-m, +\infty[$.
+        \item Si $\mathbf{m \ge -1/2}$ ($\Delta \ge 0$) : le numérateur a pour racines $x_1 = -1 - \sqrt{2m+1}$ et $x_2 = -1 + \sqrt{2m+1}$. Quand $x_1$ ou $x_2$ croisent-elles $\pm m$ ?
+        L'équation $(x \pm m) = 0$ dans $x^2 + 2x - 2m = 0$ donne $m^2 + 2(\pm m) - 2m = 0$, soit $m^2 = 0 \implies m = 0$ (pour $x = m$) et $m^2 - 4m = 0 \implies m = 0 \text{ ou } m = 4$ (pour $x = -m$). Cela découpe la discussion en trois sous-cas :
+        \begin{itemize}
+            \item Pour $\mathbf{-1/2 \le m < 0}$ (ordre $x_1 < x_2 < m < -m$) : $S = \,]-\infty, x_1[ \,\cup\, ]x_2, m[ \,\cup\, ]-m, +\infty[$.
+            \item Pour $\mathbf{0 \le m < 4}$ (ordre $x_1 < -m \le x_2 < m$, avec $x_2 = m = 0$ si $m=0$) : $S = \,]-\infty, x_1[ \,\cup\, ]-m, x_2[ \,\cup\, ]m, +\infty[$ (et pour $m = 0$ : $]-\infty, -2[ \,\cup\, ]0, +\infty[$).
+            \item Pour $\mathbf{m \ge 4}$ (ordre $-m \le x_1 < x_2 < m$) : $S = \,]-\infty, -m[ \,\cup\, ]x_1, x_2[ \,\cup\, ]m, +\infty[$ (et pour $m = 4$, $x_1 = -m = -4$ est exclu : $]-\infty, -4[ \,\cup\, ]-4, 2[ \,\cup\, ]4, +\infty[$).
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Juillet 2025, Q2 (Avec valeur absolue $|x|$) :} \emph{Résoudre et discuter selon $m \in \R$ : $\dfrac{|x| - m}{x^2 - mx + 1} \ge 0$.}\\
+    \begin{itemize}
+        \item \textbf{Numérateur $N(x) = |x| - m$ :} Si $m < 0$, alors $|x| - m > 0$ pour tout $x \in \R$ (toujours strictement positif). Si $m \ge 0$, $|x| - m \ge 0 \iff x \le -m \text{ ou } x \ge m$ (racines $-m$ et $m$).
+        \item \textbf{Dénominateur $D(x) = x^2 - mx + 1$ :} $\Delta = m^2 - 4$.
+        Si $-2 < m < 2$, $\Delta < 0$ donc $D(x) > 0$ sur tout $\R$. Si $m \le -2$ ou $m \ge 2$, $D(x)$ a deux racines $x_{1,2} = \dfrac{m \pm \sqrt{m^2 - 4}}{2}$ (pour $m \ge 2$, on vérifie que $-m < 0 < x_1 \le x_2 < m$).
+    \end{itemize}
+    Cela donne les 4 plages de discussion :
+    \[
+        \boxed{\begin{cases}
+            \text{Si } m \le -2 : & S = \left]-\infty,\, \frac{m - \sqrt{m^2-4}}{2}\right[ \cup \left]\frac{m + \sqrt{m^2-4}}{2},\, +\infty\right[ \\
+            \text{Si } -2 < m < 0 : & S = \R \\
+            \text{Si } 0 \le m < 2 : & S = \,]-\infty, -m] \cup [m, +\infty[ \\
+            \text{Si } m \ge 2 : & S = \,]-\infty, -m] \cup \left]\frac{m - \sqrt{m^2-4}}{2},\, \frac{m + \sqrt{m^2-4}}{2}\right[ \cup [m, +\infty[
+        \end{cases}}
+    \]
+
+    \item \textbf{Septembre 2025, Q2 (Coefficient dominant $m$ au carré !) :} \emph{Résoudre et discuter selon $m \in \R$ : $x - 1 \ge \dfrac{1}{mx}$.}\\
+    \begin{itemize}
+        \item \textbf{Cas $m = 0$ :} Division par zéro dans l'énoncé $\implies \mathbf{S = \varnothing}$.
+        \item \textbf{Pour $m \neq 0$ et $x \neq 0$ :} Mise sous forme standard :
+        \[
+            x - 1 - \frac{1}{mx} \ge 0 \iff \frac{mx^2 - mx - 1}{mx} \ge 0 \qquad \text{avec } P(x) = mx^2 - mx - 1.
+        \]
+        Le discriminant de $P(x)$ vaut $\Delta = m^2 + 4m = m(m + 4)$.
+        \item \textbf{Si $-4 < m < 0$ ($\Delta < 0$) :} Comme $m < 0$, $P(x) < 0$ pour tout $x \in \R$, et le dénominateur $mx$ est $< 0$ lorsque $x > 0$. Le quotient $\frac{-}{-}$ est donc positif pour $\mathbf{S = \,]0, +\infty[}$.
+        \item \textbf{Si $m > 0$ ($\Delta > 0$) :} Deux racines de signes contraires (car produit $-\frac{1}{m} < 0$) : $x_1 = \frac{m - \sqrt{m^2+4m}}{2m} < 0 < x_2 = \frac{m + \sqrt{m^2+4m}}{2m}$. Le tableau de signes donne $\mathbf{S = [x_1, 0[ \,\cup\, [x_2, +\infty[}$.
+        \item \textbf{Si $m \le -4$ ($\Delta \ge 0$ et $m < 0$) :} \emph{Attention à l'ordre des racines quand on divise par $2m < 0$ !} La plus petite racine est $x_1 = \frac{m + \sqrt{m^2+4m}}{2m}$ et la plus grande est $x_2 = \frac{m - \sqrt{m^2+4m}}{2m}$, avec $0 < x_1 \le x_2 < 1$. Le tableau de signes (avec coefficient dominant $m < 0$) donne $\mathbf{S = \,]0, x_1] \cup [x_2, +\infty[}$ (et pour $m = -4$, $x_1 = x_2 = \frac{1}{2}$, donc $S = \,]0, +\infty[$).
+    \end{itemize}
+
+    \item \textbf{Juillet 2023 -- Série 1, Q2 (Valeur absolue paramétrique) :} \emph{Résoudre et discuter selon $a \in \R$ : $|x^2 - a| < 1$.}\\
+    D'après le Chapitre~2, $|x^2 - a| < 1 \iff -1 < x^2 - a < 1 \iff \mathbf{a - 1 < x^2 < a + 1}$.
+    \begin{itemize}
+        \item \textbf{Si $a \le -1$ :} Alors $a + 1 \le 0$, or un carré réel $x^2 \ge 0$ ne peut jamais être strictement négatif $\implies \mathbf{S = \varnothing}$.
+        \item \textbf{Si $-1 < a < 1$ :} Alors $a - 1 < 0$ (donc $x^2 > a - 1$ est toujours vrai !) et $a + 1 > 0$. Il reste uniquement $x^2 < a + 1 \iff \mathbf{S = \bigl]-\sqrt{a + 1},\, \sqrt{a + 1}\bigr[}$.
+        \item \textbf{Si $a \ge 1$ :} Alors $0 \le a - 1 < a + 1$. En prenant la racine carrée des membres positifs : $\sqrt{a - 1} < |x| < \sqrt{a + 1}$, ce qui donne deux intervalles symétriques :
+        \[
+            \mathbf{S = \bigl]-\sqrt{a + 1},\, -\sqrt{a - 1}\bigr[ \,\cup\, \bigl]\sqrt{a - 1},\, \sqrt{a + 1}\bigr[}.
+        \]
+    \end{itemize}
+
+    \item \textbf{Juillet 2023 -- Série 2, Q2 (Équation paramétrique avec condition sur les racines) :} \emph{Pour quelles valeurs du paramètre réel $a$ l'équation $\dfrac{x^2 + 2x - a}{x - a} = 0$ admet-elle deux racines réelles $x_1$ et $x_2$ telles que $x_1 x_2 > -1$ ?}\\
+    Il faut réunir \textbf{trois conditions simultanées} :
+    \begin{itemize}
+        \item \emph{Condition 1 (Existence de deux racines réelles au numérateur $x^2 + 2x - a = 0$) :} $\Delta = 4 + 4a \ge 0 \iff \mathbf{a \ge -1}$ (ou $a > -1$ si les deux racines sont supposées distinctes), de racines $x_{1,2} = -1 \pm \sqrt{1 + a}$.
+        \item \emph{Condition 2 (Produit des racines $x_1 x_2 > -1$) :} Par la relation Somme-Produit de Viète, le produit des racines du trinôme $x^2 + 2x - a$ vaut $x_1 x_2 = \frac{c}{1} = -a$. On impose donc $-a > -1 \iff \mathbf{a < 1}$.
+        \item \emph{Condition 3 (Aucune des deux racines ne doit annuler le dénominateur $x - a \neq 0$) :} Il est interdit que $x = a$ soit racine du numérateur ! En remplaçant $x = a$ dans $x^2 + 2x - a \neq 0$ :
+        \[
+            a^2 + 2a - a \neq 0 \iff a^2 + a \neq 0 \iff a(a + 1) \neq 0 \iff \mathbf{a \neq 0 \text{ et } a \neq -1}.
+        \]
+    \end{itemize}
+    L'intersection des trois conditions ($a \ge -1$, $a < 1$ et $a \notin \{-1, 0\}$) donne :
+    \[
+        \boxed{a \in \,]-1, 0[ \,\cup\, ]0, 1[}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Inéquations logarithmiques paramétriques (dont base variable $a - 1$)}
+% ----------------------------------------------------------------------------
+
+Trois sessions récentes (\textbf{Septembre 2022 Q2}, \textbf{Septembre 2023 Q2} et \textbf{Juillet 2026 Q2}) ont posé à la Question~2 une inéquation logarithmique paramétrique.
+
+\begin{theoreme}[Méthode de résolution des inéquations logarithmiques paramétriques]
+\begin{enumerate}
+    \item \textbf{Cas d'une base fixe $b > 1$ (comme $\ln$ ou $\log_2$) :}
+    Puisque $\log_b$ est strictement croissante pour $b > 1$ et que la C.E. impose $U(x, a) > 0$, une inéquation de la forme $\log_b\bigl(U(x, a)\bigr) < k$ se traduit par une \textbf{double inégalité} (intersection de la C.E. et de l'inéquation) :
+    \[
+        \boxed{\log_b\bigl(U(x, a)\bigr) < k \iff 0 < U(x, a) < b^k}.
+    \]
+    En particulier, pour $k = 0$ : $\boxed{\ln\bigl(U(x,a)\bigr) < 0 \iff 0 < U(x, a) < 1}$.
+    \item \textbf{Cas d'une base dépendante du paramètre $\log_{B(a)}\bigl(U(x, a)\bigr) > 0$ (ex. $B(a) = a - 1$) :}
+    Passez au logarithme népérien par la \textbf{formule de changement de base} $\dfrac{\ln\bigl(U(x,a)\bigr)}{\ln\bigl(B(a)\bigr)} > 0$.
+    \begin{itemize}
+        \item \textbf{Si $B(a) \le 0$ ou $B(a) = 1$ :} La base du logarithme n'est pas valide $\implies \mathbf{S = \varnothing}$.
+        \item \textbf{Si $B(a) > 1$ ($\ln B(a) > 0$, base croissante) :} $\log_{B(a)}\bigl(U(x,a)\bigr) > 0 \iff \boxed{U(x, a) > 1}$.
+        \item \textbf{Si $0 < B(a) < 1$ ($\ln B(a) < 0$, base décroissante) :} Le sens s'inverse ! $\log_{B(a)}\bigl(U(x,a)\bigr) > 0 \iff \ln\bigl(U(x,a)\bigr) < 0 \iff \boxed{0 < U(x, a) < 1}$.
+    \end{itemize}
+\end{enumerate}
+\end{theoreme}
+
+\begin{exemple}[Les trois inéquations logarithmiques paramétriques des annales (2022, 2023, 2026)]
+\begin{enumerate}
+    \item \textbf{Septembre 2022, Q2 :} \emph{Résoudre dans $\R$ et discuter selon $a \in \R$ : $\ln(-x^2 + 2x + a) < 0$.}\\
+    D'après le théorème, cette inéquation équivaut exactement à la double condition :
+    \[
+        \boxed{0 < -x^2 + 2x + a < 1} \iff \begin{cases} -x^2 + 2x + a > 0 & (1) \text{ [Condition d'existence]} \\ -x^2 + 2x + a - 1 < 0 & (2) \text{ [Inégalité } < \ln(1)] \end{cases}
+    \]
+    \begin{itemize}
+        \item \textbf{Étude de $(1)$ : $-x^2 + 2x + a > 0$.} Le discriminant vaut $\Delta_1 = 4 + 4a = 4(1 + a)$. Comme le coefficient de $x^2$ est $-1 < 0$, ce trinôme n'est strictement positif qu'entre ses racines (à condition que $\Delta_1 > 0 \iff a > -1$) :
+        \begin{itemize}
+            \item Si $\mathbf{a \le -1}$ : $(1)$ n'est jamais vérifiée $\implies \mathbf{S = \varnothing}$.
+            \item Si $\mathbf{a > -1}$ : $(1) \iff x \in \bigl]1 - \sqrt{1 + a},\, 1 + \sqrt{1 + a}\bigr[$.
+        \end{itemize}
+        \item \textbf{Étude de $(2)$ : $-x^2 + 2x + (a - 1) < 0 \iff x^2 - 2x + (1 - a) > 0$.} Son discriminant vaut $\Delta_2 = 4 - 4(1 - a) = 4a$ :
+        \begin{itemize}
+            \item Si $\mathbf{-1 < a < 0}$ ($\Delta_2 < 0$) : $(2)$ est \textbf{toujours vérifiée} sur $\R$ ! L'intersection de $(1)$ et $(2)$ redonne tout l'intervalle de $(1)$ :
+            \[
+                \mathbf{S = \bigl]1 - \sqrt{1 + a},\, 1 + \sqrt{1 + a}\bigr[}.
+            \]
+            \item Si $\mathbf{a \ge 0}$ ($\Delta_2 \ge 0$) : $(2)$ est vérifiée à l'extérieur des racines $1 - \sqrt{a}$ et $1 + \sqrt{a}$, soit $x < 1 - \sqrt{a}$ ou $x > 1 + \sqrt{a}$. Comme $0 \le a < 1 + a \implies \sqrt{a} < \sqrt{1 + a}$, on a l'emboîtement $1 - \sqrt{1+a} < 1 - \sqrt{a} \le 1 + \sqrt{a} < 1 + \sqrt{1+a}$. L'intersection de $(1)$ et $(2)$ retire le segment central $[1 - \sqrt{a}, 1 + \sqrt{a}]$ :
+            \[
+                \mathbf{S = \bigl]1 - \sqrt{1 + a},\, 1 - \sqrt{a}\bigr[ \,\cup\, \bigl]1 + \sqrt{a},\, 1 + \sqrt{1 + a}\bigr[}.
+            \]
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Septembre 2023, Q2 :} \emph{Résoudre dans $\R$ et discuter selon $a \in \R$ : $\log_2\left(\dfrac{x + a}{x - 1}\right) < 1$.}\\
+    Puisque la base $2 > 1$ est strictement croissante et $2^1 = 2$, l'inéquation équivaut au système ($x \neq 1$) :
+    \[
+        0 < \frac{x + a}{x - 1} < 2 \iff \begin{cases} \dfrac{x + a}{x - 1} > 0 & (1) \\[1.8ex] \dfrac{x + a}{x - 1} - 2 < 0 \iff \dfrac{-x + a + 2}{x - 1} < 0 \iff \dfrac{x - (a + 2)}{x - 1} > 0 & (2) \end{cases}
+    \]
+    Chaque fraction $\frac{x - r}{x - 1}$ est strictement positive à l'\textbf{extérieur} de l'intervalle borné par $r$ et $1$. Comparons les racines $-a$ et $a + 2$ avec $1$ (elles se croisent toutes les deux en $1$ lorsque $\mathbf{a = -1}$ !) :
+    \begin{itemize}
+        \item \textbf{Si $a = -1$ :} Alors $\frac{x - 1}{x - 1} = 1$ pour tout $x \neq 1$, et $\log_2(1) = 0 < 1$ est toujours vrai ! (Attention : $x = 1$ annule le dénominateur $x - 1$, donc il est exclu) : $\mathbf{S = \R \setminus \{1\} = \,]-\infty, 1[ \,\cup\, ]1, +\infty[}$.
+        \item \textbf{Si $a < -1$ :} Alors $a + 2 < 1 < -a$.
+        $(1) \iff x \in \,]-\infty, 1[ \,\cup\, ]-a, +\infty[$ et $(2) \iff x \in \,]-\infty, a + 2[ \,\cup\, ]1, +\infty[$.
+        L'intersection des deux ensembles donne : $\mathbf{S = \,]-\infty, a + 2[ \,\cup\, ]-a, +\infty[}$.
+        \item \textbf{Si $a > -1$ :} Alors $-a < 1 < a + 2$.
+        $(1) \iff x \in \,]-\infty, -a[ \,\cup\, ]1, +\infty[$ et $(2) \iff x \in \,]-\infty, 1[ \,\cup\, ]a + 2, +\infty[$.
+        L'intersection des deux ensembles donne : $\mathbf{S = \,]-\infty, -a[ \,\cup\, ]a + 2, +\infty[}$.
+    \end{itemize}
+
+    \item \textbf{Juillet 2026, Q2 (Base paramétrique $a - 1$) :} \emph{Résoudre dans $\R$ et discuter selon $a \in \R$ : $\log_{a-1}\bigl(x^2 - 2ax + 1\bigr) > 0$.}\\
+    Par changement de base : $\dfrac{\ln(x^2 - 2ax + 1)}{\ln(a - 1)} > 0$.
+    \textbf{Conditions sur la base $a - 1$ :} Il faut $a - 1 > 0 \iff a > 1$ et $a - 1 \neq 1 \iff a \neq 2$.
+    \begin{itemize}
+        \item \textbf{Cas 0 : $a \le 1$ ou $a = 2$.} Le logarithme en base $a - 1$ n'est pas défini $\implies \mathbf{S = \varnothing}$.
+        \item \textbf{Cas 1 : $a > 2$ (donc $a - 1 > 1$, base croissante, $\ln(a - 1) > 0$).}\\
+        L'inéquation équivaut à $\ln(x^2 - 2ax + 1) > 0 \iff x^2 - 2ax + 1 > 1$ (ce qui garantit automatiquement la C.E. $> 0$). En simplifiant :
+        \[
+            x^2 - 2ax > 0 \iff x(x - 2a) > 0 \iff \mathbf{S = \,]-\infty, 0[ \,\cup\, ]2a, +\infty[} \quad (\text{car } 2a > 4 > 0).
+        \]
+        \item \textbf{Cas 2 : $1 < a < 2$ (donc $0 < a - 1 < 1$, base décroissante, $\ln(a - 1) < 0$).}\\
+        En multipliant par $\ln(a - 1) < 0$, le sens s'inverse : $\ln(x^2 - 2ax + 1) < 0$, ce qui impose la double inégalité :
+        \[
+            0 < x^2 - 2ax + 1 < 1 \iff \begin{cases} x^2 - 2ax + 1 > 0 & (1) \\ x^2 - 2ax < 0 \iff x(x - 2a) < 0 & (2) \end{cases}
+        \]
+        Puisque $a \in \,]1, 2[$, $(2)$ donne l'intervalle $\mathbf{0 < x < 2a}$.
+        Pour $(1)$, le trinôme $x^2 - 2ax + 1$ a pour discriminant $\Delta = 4(a^2 - 1) > 0$ (car $a > 1$), et est strictement positif à l'extérieur de ses racines $x_1 = a - \sqrt{a^2 - 1}$ et $x_2 = a + \sqrt{a^2 - 1}$.
+        Or, comme $0 < \sqrt{a^2 - 1} < \sqrt{a^2} = a$, on a toujours l'emboîtement $\mathbf{0 < a - \sqrt{a^2 - 1} < a + \sqrt{a^2 - 1} < 2a}$ !
+        L'intersection de $]0, 2a[$ avec $]-\infty, x_1[ \,\cup\, ]x_2, +\infty[$ donne donc :
+        \[
+            \mathbf{S = \bigl]0,\, a - \sqrt{a^2 - 1}\bigr[ \,\cup\, \bigl]a + \sqrt{a^2 - 1},\, 2a\bigr[}.
+        \]
+    \end{itemize}
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 7}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 7.\arabic* :}, leftmargin=*]
+    \item \textbf{(UCLouvain -- Juillet 2021, Q2.2)} Soit $m$ un paramètre réel strictement négatif ($m < 0$). Résoudre et discuter dans $\R$ l'inéquation suivante :
+    \[
+        \frac{x^4 - 4x^2 + 4}{x^2 - mx + 4} < 0.
+    \]
+    \item \textbf{(Inéquation rationnelle paramétrique type Question 2)} Résoudre dans $\R$ et discuter en fonction du paramètre réel $m \in \R$ l'inéquation :
+    \[
+        \frac{x^2 - (m + 1)x + m}{x^2 - 1} \le 0.
+    \]
+    \item \textbf{(Inéquation logarithmique à base paramétrique type Question 2)} Résoudre dans $\R$ et discuter en fonction du paramètre réel $a \in \R$ l'inéquation :
+    \[
+        \log_a\bigl(x^2 - ax\bigr) < 1.
+    \]
+\end{enumerate}

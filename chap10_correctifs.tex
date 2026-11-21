@@ -1,0 +1,449 @@
+% ============================================================================
+% CHAPITRE 10 : CORRIGÉS DÉTAILLÉS DES EXERCICES DE FIN DE CHAPITRE
+% ============================================================================
+\chapter{Corrigés Détaillés des Exercices}
+
+Ce chapitre rassemble les solutions complètes, méthodiques et commentées de tous les exercices d'entraînement proposés à la fin des Chapitres~1 à~8.
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 1 (Polynômes, Factorisation et Division Euclidienne)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 1.1 (UCLouvain -- Septembre 2021, Q1.6) :}
+Par l'identité remarquable de la différence de deux carrés appliquée à $x^4 - 1 = (x^2)^2 - 1^2$ :
+\[
+    x^4 - 1 = (x^2 + 1)(x^2 - 1) + 0.
+\]
+Par unicité de la division euclidienne de $x^4 - 1$ par $x^2 + 1$, le quotient et le reste valent directement :
+\[
+    \boxed{Q(x) = x^2 - 1 \quad \text{et} \quad R(x) = 0}.
+\]
+
+\paragraph{Corrigé de l'Exercice 1.2 (UCLouvain -- Juillet 2023, Série 1, Q1.6) :}
+\textbf{Méthode 1 (Division euclidienne posée) :} En divisant $x^4 + 0x^3 + 0x^2 + 0x + 4$ par $x^2 + 2x + 2$ :
+\begin{itemize}
+    \item $x^4 / x^2 = x^2$, et $(x^4 + 4) - x^2(x^2 + 2x + 2) = -2x^3 - 2x^2 + 4$.
+    \item $-2x^3 / x^2 = -2x$, et $(-2x^3 - 2x^2 + 4) - (-2x)(x^2 + 2x + 2) = 2x^2 + 4x + 4$.
+    \item $2x^2 / x^2 = 2$, et $(2x^2 + 4x + 4) - 2(x^2 + 2x + 2) = 0$.
+\end{itemize}
+\textbf{Méthode 2 (Identité de Sophie Germain) :} $x^4 + 4 = (x^4 + 4x^2 + 4) - 4x^2 = (x^2 + 2)^2 - (2x)^2 = (x^2 + 2x + 2)(x^2 - 2x + 2)$.
+Le quotient vaut donc $\boxed{Q(x) = x^2 - 2x + 2}$ (et le reste est nul).
+
+\paragraph{Corrigé de l'Exercice 1.3 (Division par Horner) :}
+On divise $P(x) = 2x^4 - 5x^3 + 4x^2 - 3x + 7$ par $x - 2$ ($\alpha = 2$) :
+\[
+\begin{array}{c|cccc|c}
+    & x^4 & x^3 & x^2 & x^1 & x^0 \\
+    & 2 & -5 & 4 & -3 & 7 \\
+    \alpha = 2 & \downarrow & 4 & -2 & 4 & 2 \\
+    \hline
+    & 2 & -1 & 2 & 1 & \mathbf{9 = R}
+\end{array}
+\]
+On obtient : $\boxed{Q(x) = 2x^3 - x^2 + 2x + 1 \quad \text{et} \quad R(x) = 9}$.
+
+\paragraph{Corrigé de l'Exercice 1.4 (Factorisation d'un polynôme de degré 3) :}
+Puisque $x_1 = 3$ est racine de $P(x) = 2x^3 - 3x^2 - 11x + 6$, divisons $P(x)$ par $x - 3$ via le schéma de Horner :
+\[
+\begin{array}{c|ccc|c}
+    & 2 & -3 & -11 & 6 \\
+    \alpha = 3 & \downarrow & 6 & 9 & -6 \\
+    \hline
+    & 2 & 3 & -2 & \mathbf{0 = R}
+\end{array}
+\]
+Le quotient est $Q(x) = 2x^2 + 3x - 2$. Ses racines ($\Delta = 9 + 16 = 25 = 5^2$) valent $x_2 = \frac{-3 - 5}{4} = -2$ et $x_3 = \frac{-3 + 5}{4} = \frac{1}{2}$.
+Le deux autres racines sont donc $\boxed{-2 \text{ et } \dfrac{1}{2}}$, et la forme factorisée s'écrit :
+\[
+    \boxed{P(x) = 2(x - 3)(x + 2)\left(x - \frac{1}{2}\right) = (x - 3)(x + 2)(2x - 1)}.
+\]
+
+\paragraph{Corrigé de l'Exercice 1.5 (Divisibilité par $(x - 1)(x + 2)$) :}
+Comme $1$ et $-2$ sont distincts, $P(x) = x^4 - 2x^3 + ax^2 + bx + 4$ est divisible par $(x - 1)(x + 2)$ si et seulement s'il est divisible par $(x - 1)$ \textbf{et} par $(x + 2)$, soit $P(1) = 0$ et $P(-2) = 0$ :
+\[
+    \begin{cases}
+        P(1) = 1 - 2 + a + b + 4 = 0 \iff a + b = -3 \\
+        P(-2) = 16 - 2(-8) + 4a - 2b + 4 = 0 \iff 4a - 2b = -36 \iff 2a - b = -18
+    \end{cases}
+\]
+En additionnant les deux équations : $3a = -21 \implies \boxed{a = -7}$, puis $b = -3 - (-7) = \boxed{4}$.
+
+\paragraph{Corrigé de l'Exercice 1.6 (Reste de la division par un produit $(x - 1)(x + 2)$) :}
+Le diviseur $D(x) = (x - 1)(x + 2)$ étant de degré~$2$, le reste est au plus de degré~$1$ : posons $R(x) = ux + v$, de sorte que :
+\[
+    P(x) = (x - 1)(x + 2)Q(x) + ux + v.
+\]
+En évaluant cette égalité en $x = 1$ (où $P(1) = 5$) et en $x = -2$ (où $P(-2) = -4$), le terme contenant $Q(x)$ s'annule :
+\[
+    \begin{cases}
+        P(1) = u + v = 5 \\
+        P(-2) = -2u + v = -4
+    \end{cases}
+    \implies (u + v) - (-2u + v) = 5 - (-4) \iff 3u = 9 \iff u = 3 \;\text{ et }\; v = 2.
+\]
+Le reste cherché est donc $\boxed{R(x) = 3x + 2}$.
+
+\paragraph{Corrigé de l'Exercice 1.7 (Factorisation de degré 6 par groupement) :}
+Groupons les termes deux par deux dans $P(x) = x^6 - 9x^4 - x^2 + 9$ :
+\[
+    P(x) = x^4(x^2 - 9) - (x^2 - 9) = (x^2 - 9)(x^4 - 1) = \boxed{(x - 3)(x + 3)(x - 1)(x + 1)(x^2 + 1)}
+\]
+(le facteur $x^2 + 1$ étant irréductible dans $\R$).
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 2 (Équations, Valeurs Absolues, Radicaux et Domaines)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 2.1 (Équation $|2x - 3| = |x + 4|$) :}
+Deux valeurs absolues sont égales ssi les expressions sont égales ou opposées :
+\[
+    |2x - 3| = |x + 4| \iff 2x - 3 = x + 4 \;\text{ ou }\; 2x - 3 = -(x + 4) \iff \boxed{S = \left\{-\frac{1}{3},\; 7\right\}}.
+\]
+
+\paragraph{Corrigé de l'Exercice 2.2 (Inéquation $|x^2 - 5x + 4| < 2$) :}
+Puisque $2 > 0$, l'inéquation équivaut à la double inégalité $-2 < x^2 - 5x + 4 < 2$, soit au système :
+\[
+    \begin{cases}
+        x^2 - 5x + 4 > -2 \iff x^2 - 5x + 6 > 0 \iff (x - 2)(x - 3) > 0 & (1) \\
+        x^2 - 5x + 4 < 2 \iff x^2 - 5x + 2 < 0 & (2)
+    \end{cases}
+\]
+\begin{itemize}
+    \item La condition $(1)$ donne $x \in \,]-\infty, 2[ \,\cup\, ]3, +\infty[$.
+    \item Le trinôme de $(2)$ a pour discriminant $\Delta = 25 - 8 = 17$, et est strictement négatif entre ses racines $\frac{5 - \sqrt{17}}{2} \approx 0,44$ et $\frac{5 + \sqrt{17}}{2} \approx 4,56$.
+\end{itemize}
+Comme $4 < \sqrt{17} < 5$, on a $\frac{5-\sqrt{17}}{2} < 2 < 3 < \frac{5+\sqrt{17}}{2}$. L'intersection de $(1)$ et $(2)$ donne :
+\[
+    \boxed{S = \left]\frac{5 - \sqrt{17}}{2},\, 2\right[ \cup \left]3,\, \frac{5 + \sqrt{17}}{2}\right[}.
+\]
+
+\paragraph{Corrigé de l'Exercice 2.3 (Équations irrationnelles) :}
+\begin{enumerate}[label=(\alph*)]
+    \item $\sqrt{2x + 3} = x \iff \begin{cases} x \ge 0 \\ 2x + 3 = x^2 \end{cases} \iff \begin{cases} x \ge 0 \\ x^2 - 2x - 3 = (x - 3)(x + 1) = 0 \end{cases}$. On rejette $x = -1 < 0$ et on garde $\boxed{x = 3}$.
+    \item On isole d'abord le radical : $\sqrt{x + 4} = 2 - x \iff \begin{cases} 2 - x \ge 0 \iff x \le 2 \\ x + 4 = (2 - x)^2 = x^2 - 4x + 4 \end{cases} \iff \begin{cases} x \le 2 \\ x^2 - 5x = x(x - 5) = 0 \end{cases}$. La condition $x \le 2$ rejette la solution parasite $x = 5$ et conserve $\boxed{x = 0}$.
+    \item C.E. des radicaux : $3x + 1 \ge 0$ et $x - 1 \ge 0 \iff \mathbf{x \ge 1}$. Isolons le plus gros radical avant d'élever au carré (les deux membres étant positifs pour $x \ge 1$) :
+    \[
+        \sqrt{3x + 1} = 2 + \sqrt{x - 1} \iff 3x + 1 = 4 + 4\sqrt{x - 1} + (x - 1) \iff x - 1 = 2\sqrt{x - 1}.
+    \]
+    En posant $u = \sqrt{x - 1} \ge 0$, on a $u^2 = 2u \iff u(u - 2) = 0 \iff u = 0 \text{ ou } u = 2$, soit $x - 1 = 0$ ou $x - 1 = 4$, d'où les deux solutions valides : $\boxed{x = 1 \quad \text{et} \quad x = 5}$.
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 2.4 (Domaines de définition) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Pour $f_1(x) = \dfrac{1}{\sqrt{\ln(x^2 - 4x + 5)}}$, il faut $\ln(x^2 - 4x + 5) > 0 \iff x^2 - 4x + 5 > 1 \iff x^2 - 4x + 4 > 0 \iff (x - 2)^2 > 0$. Or un carré parfait est strictement positif partout sauf là où il s'annule ($x = 2$) ! D'où :
+    \[
+        \boxed{\dom f_1 = \R \setminus \{2\} = \,]-\infty, 2[ \,\cup\, ]2, +\infty[}.
+    \]
+    \item Pour $f_2(x) = \sqrt{\ln\left(\dfrac{2x + 1}{x - 1}\right)}$, la racine au numérateur impose $\ln\left(\dfrac{2x + 1}{x - 1}\right) \ge 0 \iff \dfrac{2x + 1}{x - 1} \ge 1$ (avec $x \neq 1$). En passant $1$ à gauche :
+    \[
+        \frac{(2x + 1) - (x - 1)}{x - 1} \ge 0 \iff \frac{x + 2}{x - 1} \ge 0 \iff \boxed{\dom f_2 = \,]-\infty, -2] \,\cup\, ]1, +\infty[}.
+    \]
+    \item Pour $f_3(x) = \dfrac{\sqrt{9 - x^2}}{\ln(x + 2)}$, il faut trois conditions simultanées :
+    \begin{itemize}
+        \item Radicande positif ou nul : $9 - x^2 \ge 0 \iff x \in [-3, 3]$.
+        \item Argument du logarithme strictement positif : $x + 2 > 0 \iff x > -2$.
+        \item Dénominateur non nul : $\ln(x + 2) \neq 0 \iff x + 2 \neq 1 \iff x \neq -1$.
+    \end{itemize}
+    L'intersection $[-3, 3] \cap \,]-2, +\infty[ \setminus \{-1\}$ donne $\boxed{\dom f_3 = \,]-2, -1[ \,\cup\, ]-1, 3]}$.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 3 (Exponentielles et Logarithmes)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 3.1 (Calculs logarithmiques sans calculatrice) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Remarquons que $\log_4(9) = \log_{2^2}(3^2) = \frac{2}{2}\log_2(3) = \log_2(3)$, qui s'annule avec $-\log_2(3)$ ! Il reste :
+    \[
+        A = \log_2(24) - \log_2(3^{1/2}) = \log_2(8 \times 3) - \frac{1}{2}\log_2(3) = \dots
+    \]
+    \emph{Plus précisément :} en regroupant tout en base~$2$ : $\log_2(24) - \log_2(3) = \log_2(24/3) = \log_2(8) = 3$, et $\log_4(9) - \log_2(\sqrt{3}) = \log_2(3) - \frac{1}{2}\log_2(3) = \frac{1}{2}\log_2(3)$, soit $A = \boxed{3 + \frac{1}{2}\log_2(3)}$.
+    \item Par changement de base en logarithme népérien (produit télescopique !) :
+    \[
+        B = \frac{\ln 5}{\ln 3} \cdot \frac{\ln 7}{\ln 5} \cdot \frac{\ln(3^4)}{\ln 7} = \frac{4\ln 3}{\ln 3} = \boxed{4}.
+    \]
+    \item Comme $9 = 3^2$ et $8 = 2^3$ : $C = (3^2)^{\log_3(5)} - (2^3)^{\log_2(3)} = \bigl(3^{\log_3(5)}\bigr)^2 - \bigl(2^{\log_2(3)}\bigr)^3 = 5^2 - 3^3 = 25 - 27 = \boxed{-2}$.
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 3.2 (Équations exponentielles) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Écrivons $4^{x+1} = 4\cdot 4^x = 4\cdot(2^x)^2$ et posons $t = 2^x > 0$ :
+    \[
+        4t^2 - 9t + 2 = 0 \iff (4t - 1)(t - 2) = 0 \iff t = \frac{1}{4} = 2^{-2} \;\text{ ou }\; t = 2 = 2^1 \iff \boxed{x = -2 \;\text{ ou }\; x = 1}.
+    \]
+    \item Avec $3^{2-x} = \dfrac{9}{3^x}$ et $t = 3^x > 0$ : $t + \dfrac{9}{t} = 10 \iff t^2 - 10t + 9 = (t - 1)(t - 9) = 0 \iff t = 1 \text{ ou } t = 9 \iff \boxed{x = 0 \;\text{ ou }\; x = 2}$.
+    \item Détachons les constantes : $2^2 \cdot 2^x \cdot \frac{3^x}{3} = 144 \iff \frac{4}{3} \cdot 6^x = 144 \iff 6^x = \frac{144 \times 3}{4} = 36 \times 3 = 108 \implies \boxed{x = \log_6(108) = 2 + \log_6(3)}$. (Et si le second membre vaut $48$, $6^x = 36 \implies x = 2$).
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 3.3 (Équations logarithmiques) :}
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{C.E. :} $x + 2 > 0$ et $x - 4 > 0 \iff \mathbf{x > 4}$. En regroupant :
+    \[
+        \log_3\bigl((x + 2)(x - 4)\bigr) = 3 \iff x^2 - 2x - 8 = 3^3 = 27 \iff x^2 - 2x - 35 = (x - 7)(x + 5) = 0.
+    \]
+    La condition $x > 4$ élimine $x = -5$ et conserve l'unique solution $\boxed{x = 7}$.
+    \item \textbf{C.E. :} $x > 0$. Comme $\ln(x^4) = 4\ln x$, posons $t = \ln x \in \R$ : $t^2 - 4t + 3 = (t - 1)(t - 3) = 0 \iff \ln x = 1 \text{ ou } \ln x = 3 \iff \boxed{x = e \;\text{ ou }\; x = e^3}$.
+    \item \textbf{C.E. :} $x > 0$ et $x \neq 1$. Par la formule d'inversion de la base $\log_x(2) = \dfrac{1}{\log_2(x)}$, en posant $t = \log_2(x) \in \R_0$ :
+    \[
+        t + \frac{1}{t} = \frac{5}{2} \iff 2t^2 - 5t + 2 = (2t - 1)(t - 2) = 0 \iff \boxed{x = \sqrt{2} \;\text{ ou }\; x = 4}.
+    \]
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 4 (Nombres Complexes dans $\C$)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 4.1 (Formes cartésienne et polaire) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Au numérateur : $(1 + i)^8 = \bigl((1 + i)^2\bigr)^4 = (2i)^4 = 16 i^4 = 16 = 16 e^{i\cdot 0}$.\\
+    Au dénominateur : $w = 1 - i\sqrt{3}$ a pour module $|w| = 2$ et argument $\arg(w) = -\frac{\pi}{3}$, donc $w^3 = 2^3 e^{i\cdot 3(-\pi/3)} = 8 e^{-i\pi} = -8$.\\
+    En divisant : $z_1 = \dfrac{16}{-8} = \boxed{-2 = 2 e^{i\pi}}$ ($\text{module} = 2$, $\text{argument} = \pi$, forme cartésienne $-2 + 0i$).
+    \item Au numérateur : $2 - 2i = 2\sqrt{2}\,e^{-i\frac{\pi}{4}}$. Au dénominateur : $1 + i\sqrt{3} = 2\,e^{i\frac{\pi}{3}}$. Par quotient :
+    \[
+        z_2 = \frac{2\sqrt{2}}{2}\,e^{i\left(-\frac{\pi}{4} - \frac{\pi}{3}\right)} = \boxed{\sqrt{2}\,e^{-i\frac{7\pi}{12}}} \quad \left(\text{module } \rho = \sqrt{2},\; \text{argument } \theta = -\frac{7\pi}{12}\right).
+    \]
+    En forme cartésienne : $z_2 = \dfrac{(2 - 2i)(1 - i\sqrt{3})}{1 + 3} = \dfrac{(2 - 2\sqrt{3}) - (2 + 2\sqrt{3})i}{4} = \boxed{\frac{1 - \sqrt{3}}{2} - \frac{1 + \sqrt{3}}{2}\,i}$.
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 4.2 (Équations avec conjugué $z^*$) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Posons $z = a + bi$ ($a, b \in \R$) dans $2z + iz^* = 5 - 4i$ :
+    \[
+        2(a + bi) + i(a - bi) = 5 - 4i \iff (2a + b) + (a + 2b)i = 5 - 4i \iff \begin{cases} 2a + b = 5 \\ a + 2b = -4 \end{cases}
+    \]
+    En résolvant ce système linéaire $2 \times 2$ ($b = 5 - 2a \implies a + 2(5 - 2a) = -4 \iff -3a = -14$... ou par soustraction $2L_1 - L_2$ : $3a = 14 \implies a = \frac{14}{3}$ et $b = -\frac{13}{3}$), on trouve l'unique solution :
+    \[
+        \boxed{z = \frac{14}{3} - \frac{13}{3}i}.
+    \]
+    \item Posons $z = a + bi$ dans $z^2 + 2z^* + 1 = 0$ :
+    \[
+        (a^2 - b^2 + 2a + 1) + (2ab - 2b)i = 0 \iff \begin{cases} (a + 1)^2 - b^2 = 0 & (1) \\ 2b(a - 1) = 0 & (2) \end{cases}
+    \]
+    L'équation $(2)$ donne deux cas très simples :
+    \begin{itemize}
+        \item Si $b = 0$, alors $(1)$ donne $(a + 1)^2 = 0 \iff a = -1 \implies z_1 = -1$.
+        \item Si $a = 1$, alors $(1)$ donne $(1 + 1)^2 - b^2 = 0 \iff b^2 = 4 \iff b = \pm 2 \implies z_{2,3} = 1 \pm 2i$.
+    \end{itemize}
+    D'où les trois solutions : $\boxed{S = \{-1,\; 1 + 2i,\; 1 - 2i\}}$.
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 4.3 (Racines $n$-ièmes dans $\C$) :}
+\begin{enumerate}[label=(\alph*)]
+    \item $z^3 = 27 = 3^3 e^{i\cdot 0} \iff z_k = 3 e^{i\frac{2k\pi}{3}}$ pour $k \in \{0, 1, 2\}$, ce qui donne en forme cartésienne :
+    \[
+        \boxed{S = \left\{3,\;\; -\frac{3}{2} + i\frac{3\sqrt{3}}{2},\;\; -\frac{3}{2} - i\frac{3\sqrt{3}}{2}\right\}}.
+    \]
+    \item $z^4 = -16 = 2^4 e^{i\pi} \iff z_k = 2 e^{i\left(\frac{\pi}{4} + k\frac{\pi}{2}\right)}$ pour $k \in \{0, 1, 2, 3\}$. Comme $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}$ :
+    \[
+        \boxed{S = \bigl\{\sqrt{2} + i\sqrt{2},\;\; -\sqrt{2} + i\sqrt{2},\;\; -\sqrt{2} - i\sqrt{2},\;\; \sqrt{2} - i\sqrt{2}\bigr\}}.
+    \]
+    \item Cherchons $z = a + bi$ tel que $z^2 = 3 + 4i$. En identifiant parties réelle, imaginaire et module ($|z|^2 = |3+4i| = \sqrt{9+16} = 5$) :
+    \[
+        \begin{cases} a^2 - b^2 = 3 \\ a^2 + b^2 = 5 \\ 2ab = 4 > 0 \end{cases} \implies \begin{cases} 2a^2 = 8 \iff a^2 = 4 \iff a = \pm 2 \\ 2b^2 = 2 \iff b^2 = 1 \iff b = \pm 1 \\ a \text{ et } b \text{ de même signe (car } ab = 2 > 0\text{)} \end{cases}
+    \]
+    D'où les deux racines carrées opposées : $\boxed{S = \{2 + i,\; -2 - i\}}$.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 5 (Analyse Combinatoire, Binôme et Probabilités)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 5.1 (UCLouvain -- Septembre 2021, Q1.5) :}
+Le nombre total de façons de distribuer les $52$ cartes en $4$ paquets ordonnés de $13$ cartes est $\binom{52}{13}\binom{39}{13}\binom{26}{13}\binom{13}{13}$.
+Pour qu'un paquet donné (parmi les $\binom{4}{1} = 4$ paquets) ne contienne que des cartes rouges, on choisit ses $13$ cartes parmi les $26$ cartes rouges ($\binom{26}{13}$ façons), puis on répartit les $39$ cartes restantes dans les $3$ autres paquets ($\binom{39}{13}\binom{26}{13}\binom{13}{13}$ façons).
+\textbf{Attention au principe d'inclusion-exclusion :} Il est possible que \emph{deux} paquets simultanément soient entièrement rouges (l'un prend $13$ rouges, le second prend les $13$ rouges restantes, et les deux derniers se partagent les $26$ cartes noires : $\binom{4}{2}\binom{26}{13}\binom{13}{13}\binom{26}{13}\binom{13}{13}$ cas comptés deux fois !). En soustrayant cette intersection :
+\[
+    \boxed{P = \frac{\binom{4}{1}\binom{26}{13}\binom{39}{13}\binom{26}{13} - \binom{4}{2}\binom{26}{13}\binom{26}{13}}{\binom{52}{13}\binom{39}{13}\binom{26}{13}} = \frac{4\binom{26}{13}\binom{39}{13} - 6\binom{26}{13}}{\binom{52}{13}\binom{39}{13}}}.
+\]
+
+\paragraph{Corrigé de l'Exercice 5.2 (Binôme de Newton) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Dans $(2x - 1)^8$, le terme général est $\binom{8}{k}(2x)^{8-k}(-1)^k = \binom{8}{k}2^{8-k}(-1)^k x^{8-k}$. Pour $x^5$, il faut $8 - k = 5 \iff k = 3$ :
+    \[
+        \text{Coeff} = \binom{8}{3}\cdot 2^5 \cdot (-1)^3 = 56 \times 32 \times (-1) = \boxed{-1792}.
+    \]
+    \item Dans $\left(3x^2 - \frac{1}{3x}\right)^9$, le terme général est $\binom{9}{k}(3x^2)^{9-k}\left(-\frac{1}{3}x^{-1}\right)^k = \binom{9}{k}3^{9-2k}(-1)^k x^{18-3k}$.
+    Pour le terme constant ($x^0$), on résout $18 - 3k = 0 \iff k = 6$, d'où :
+    \[
+        T_6 = \binom{9}{6}\cdot 3^{9-12}\cdot (-1)^6 = \binom{9}{3}\cdot \frac{1}{3^3} = \frac{9 \times 8 \times 7}{3 \times 2 \times 1} \cdot \frac{1}{27} = \frac{84}{27} = \boxed{\frac{28}{9}}.
+    \]
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 5.3 (Probabilités aux dés et aux urnes) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Sur $4$ dés ($6^4 = 1296$ issues équiprobables) :
+    \begin{itemize}
+        \item Il y a $6$ carrés possibles (1-1-1-1 à 6-6-6-6), donc $P(\text{carré}) = \dfrac{6}{6^4} = \dfrac{1}{6^3} = \boxed{\dfrac{1}{216}}$.
+        \item Il y a $A_6^4 = 6 \times 5 \times 4 \times 3 = 360$ tirages à $4$ chiffres tous distincts, donc $P(\text{tous différents}) = \dfrac{6 \times 5 \times 4 \times 3}{6^4} = \dfrac{20}{36} = \boxed{\dfrac{5}{9}}$.
+    \end{itemize}
+    \item L'urne contient $5 + 3 + 2 = 10$ boules, donc $\binom{10}{3} = 120$ tirages de $3$ boules équiprobables :
+    \begin{itemize}
+        \item $3$ boules de même couleur (soit $3$ blanches, soit $3$ noires, car il n'y a que $2$ rouges) : $P = \dfrac{\binom{5}{3} + \binom{3}{3}}{\binom{10}{3}} = \dfrac{10 + 1}{120} = \boxed{\dfrac{11}{120}}$.
+        \item $1$ boule de chaque couleur ($1$ blanche, $1$ noire et $1$ rouge) : $P = \dfrac{\binom{5}{1}\binom{3}{1}\binom{2}{1}}{\binom{10}{3}} = \dfrac{30}{120} = \boxed{\dfrac{1}{4}}$.
+    \end{itemize}
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 6 (Suites Arithmétiques et Géométriques)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 6.1 (Suite arithmétique) :}
+On a $u_{11} - u_4 = (11 - 4)r = 7r = 35 - 14 = 21 \implies \boxed{r = 3}$.
+Puis $u_1 = u_4 - 3r = 14 - 9 = \boxed{5}$. Enfin, la somme des $20$ premiers termes vaut :
+\[
+    S_{20} = \frac{20}{2}\bigl(2(5) + 19(3)\bigr) = 10(10 + 57) = \boxed{670}.
+\]
+
+\paragraph{Corrigé de l'Exercice 6.2 (Suite géométrique et moyenne géométrique) :}
+Notons les trois termes en progression géométrique $\frac{b}{q},\; b,\; bq$ (avec $q > 1$ car la suite est strictement croissante).
+Leur produit donne immédiatement le terme central : $\left(\frac{b}{q}\right)\cdot b \cdot (bq) = b^3 = 216 = 6^3 \implies \mathbf{b = 6}$ !
+La somme devient $\frac{6}{q} + 6 + 6q = 26 \iff 6q^2 - 20q + 6 = 0 \iff 3q^2 - 10q + 3 = (3q - 1)(q - 3) = 0$.
+Comme $q > 1$, on retient $q = 3$, et les trois termes sont $\boxed{2,\;\; 6,\;\; 18}$.
+
+\paragraph{Corrigé de l'Exercice 6.3 (Le puits de forage) :}
+Le coût du $n$-ième mètre suit une suite arithmétique de premier terme $u_1 = 100$\,€ et de raison $r = 15$\,€. Le coût total pour forer $n$ mètres est :
+\[
+    S_n = \frac{n}{2}\bigl(200 + 15(n - 1)\bigr) \le 5200 \iff 15n^2 + 185n - 10\,400 \le 0 \iff 3n^2 + 37n - 2080 \le 0.
+\]
+Cherchons la racine positive : $\Delta = 37^2 + 4(3)(2080) = 1369 + 24\,960 = 26\,329$. Plus simplement, testons $n = 20$ : $3(400) + 37(20) = 1200 + 740 = 1940 \le 2080$, puis $n = 21$ : $3(441) + 37(21) = 1323 + 777 = 2100 > 2080$ !
+On peut donc forer au maximum $\boxed{20\text{ mètres entiers}}$ (ou exactement $20,86\text{ m}$ si une fraction de mètre est facturée au prorata).
+
+\paragraph{Corrigé de l'Exercice 6.4 (UCLouvain -- Juillet 2021, Q3 : Le robot-tondeuse) :}
+\begin{enumerate}[label=(\alph*)]
+    \item Au cycle $n$, l'énergie disponible pour la tonte est $C_b(n) - C_{b,m} = C_{b,0}(1 - d_b)^{n-1} - C_{b,m}$. Avec une puissance consommée $p_t$, la durée de tonte vaut :
+    \[
+        \boxed{t_t(n) = \frac{C_{b,0}(1 - d_b)^{n-1} - C_{b,m}}{p_t}}.
+    \]
+    Sur un cycle complet de durée totale $T(n) = t_t(n) + t_c + t_a(n)$, l'équilibre entre le volume d'herbe tondu et le volume qui a poussé s'écrit $v_t \cdot t_t(n) = v_p \cdot T(n)$. Au cycle limite $n_\ell$, le temps d'attente tombe à zéro ($t_a(n_\ell) = 0$, donc $T(n_\ell) = t_t(n_\ell) + t_c$), d'où :
+    \[
+        (v_t - v_p)\,t_t(n_\ell) = v_p\,t_c \iff (1 - d_b)^{n_\ell - 1} = \frac{\frac{v_p}{v_t - v_p}\,p_t\,t_c + C_{b,m}}{C_{b,0}}.
+    \]
+    En prenant le logarithme, on obtient la formule littérale exacte :
+    \[
+        \boxed{n_\ell = 1 + \frac{\ln\left(\dfrac{\frac{v_p}{v_t - v_p}\,p_t\,t_c + C_{b,m}}{C_{b,0}}\right)}{\ln(1 - d_b)}} \quad \left(\text{numériquement : } 1 + \frac{\ln(5,555/100)}{\ln(0,995)} \approx 449,6 \text{ cycles}\right).
+    \]
+    \item Le temps total sur les $n_\ell$ cycles est $T_{\text{tot}} = \sum_{n=1}^{n_\ell} T(n) = \frac{v_t}{v_p}\sum_{n=1}^{n_\ell} t_t(n)$. Par la formule de la somme d'une suite géométrique de raison $q = 1 - d_b$ (avec $1 - q = d_b$) :
+    \[
+        \boxed{T_{\text{tot}} = \frac{v_t}{v_p \cdot p_t}\left[C_{b,0}\,\frac{1 - (1 - d_b)^{n_\ell}}{d_b} - n_\ell\,C_{b,m}\right]}.
+    \]
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 7 (Discussion d'Inéquations Paramétriques)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 7.1 (UCLouvain -- Juillet 2021, Q2.2) :}
+\begin{enumerate}
+    \item \textbf{Étude du numérateur :} $N(x) = x^4 - 4x^2 + 4 = (x^2 - 2)^2 = \bigl((x - \sqrt{2})(x + \sqrt{2})\bigr)^2 \ge 0$.
+    C'est un \textbf{carré parfait} ! Il est strictement positif pour tout $x \in \R \setminus \{-\sqrt{2}, \sqrt{2}\}$ et s'annule en $x = \pm\sqrt{2}$.
+    Puisque l'inégalité demandée est \textbf{stricte} ($\frac{N(x)}{D(x)} < 0$), les valeurs $x = -\sqrt{2}$ et $x = \sqrt{2}$ (qui annulent le numérateur) ne peuvent \textbf{jamais} être solutions, et pour $x \neq \pm\sqrt{2}$ le quotient est strictement négatif si et seulement si le dénominateur est \textbf{strictement négatif} : $D(x) = x^2 - mx + 4 < 0$.
+    \item \textbf{Étude du dénominateur $D(x) = x^2 - mx + 4$ (avec $m < 0$) :}
+    Son discriminant vaut $\Delta = m^2 - 16 = (m - 4)(m + 4)$. Comme $m < 0$ par hypothèse :
+    \begin{itemize}
+        \item \textbf{Si $-4 \le m < 0$ ($\Delta \le 0$) :} $D(x) \ge 0$ sur tout $\R$ (jamais strictement négatif) $\implies \mathbf{S = \varnothing}$.
+        \item \textbf{Si $m < -4$ ($\Delta > 0$) :} $D(x) < 0$ strictement entre ses deux racines $x_1 = \frac{m - \sqrt{m^2 - 16}}{2}$ et $x_2 = \frac{m + \sqrt{m^2 - 16}}{2}$.
+        Comme $x_1 + x_2 = m < 0$ et $x_1 x_2 = 4 > 0$, les deux racines $x_1$ et $x_2$ sont \textbf{strictement négatives} ! La racine positive $\sqrt{2}$ du numérateur n'est donc jamais dans $]x_1, x_2[$. En revanche, la racine négative $-\sqrt{2}$ peut-elle tomber dans $]x_1, x_2[$ ?
+        Calculons $D(-\sqrt{2}) = (-\sqrt{2})^2 - m(-\sqrt{2}) + 4 = 6 + m\sqrt{2}$.
+        On a $D(-\sqrt{2}) < 0 \iff -\sqrt{2} \in \,]x_1, x_2[ \iff 6 + m\sqrt{2} < 0 \iff m < -\frac{6}{\sqrt{2}} = -3\sqrt{2} \approx -4,24$ (et pour $m = -3\sqrt{2}$, $x_2 = -\sqrt{2}$ est déjà exclu de l'intervalle ouvert $]x_1, x_2[$).
+    \end{itemize}
+\end{enumerate}
+\textbf{Conclusion :}
+\[
+    \boxed{\begin{cases}
+        \text{Si } -4 \le m < 0 : & S = \varnothing \\
+        \text{Si } -3\sqrt{2} \le m < -4 : & S = \left]\dfrac{m - \sqrt{m^2 - 16}}{2},\, \dfrac{m + \sqrt{m^2 - 16}}{2}\right[ \\[2ex]
+        \text{Si } m < -3\sqrt{2} : & S = \left]\dfrac{m - \sqrt{m^2 - 16}}{2},\, \dfrac{m + \sqrt{m^2 - 16}}{2}\right[ \setminus \{-\sqrt{2}\}
+    \end{cases}}
+\]
+
+\paragraph{Corrigé de l'Exercice 7.2 (Inéquation rationnelle $\frac{x^2 - (m+1)x + m}{x^2 - 1} \le 0$) :}
+\textbf{C.E. :} $x^2 - 1 \neq 0 \iff x \notin \{-1, 1\}$.
+Factorisons le numérateur et le dénominateur : $x^2 - (m + 1)x + m = (x - 1)(x - m)$ (somme $m + 1$, produit $m$ !) et $x^2 - 1 = (x - 1)(x + 1)$.
+Pour tout $x \notin \{-1, 1\}$, on peut simplifier par $(x - 1) \neq 0$ (tout en gardant la restriction $\mathbf{x \neq 1}$) :
+\[
+    \frac{(x - 1)(x - m)}{(x - 1)(x + 1)} \le 0 \iff \begin{cases} \dfrac{x - m}{x + 1} \le 0 \\ x \neq 1 \text{ et } x \neq -1 \end{cases}
+\]
+Le quotient $\frac{x - m}{x + 1}$ est négatif ou nul entre ses valeurs critiques $-1$ (exclue) et $m$ (incluse si $m \neq \pm 1$). On compare donc $m$ avec $-1$ et $1$ :
+\[
+    \boxed{\begin{cases}
+        \text{Si } m < -1 : & S = [m, -1[ \\
+        \text{Si } m = -1 : & S = \varnothing \quad (\text{car pour } x \neq \pm 1,\; \frac{x+1}{x+1} = 1 > 0) \\
+        \text{Si } -1 < m < 1 : & S = \,]-1, m] \\
+        \text{Si } m = 1 : & S = \,]-1, 1[ \quad (\text{car } x = 1 \text{ est une valeur interdite !}) \\
+        \text{Si } m > 1 : & S = \,]-1, 1[ \,\cup\, ]1, m]
+    \end{cases}}
+\]
+
+\paragraph{Corrigé de l'Exercice 7.3 (Inéquation logarithmique $\log_a(x^2 - ax) < 1$) :}
+\textbf{Condition sur la base $a$ :} $a > 0$ et $a \neq 1$ (donc si $a \le 0$ ou $a = 1$, $\mathbf{S = \varnothing}$).
+\begin{itemize}
+    \item \textbf{Cas 1 : $a > 1$ (base croissante, ordre conservé).}
+    $\log_a(x^2 - ax) < 1 = \log_a(a) \iff 0 < x^2 - ax < a \iff \begin{cases} x(x - a) > 0 & (1) \\ x^2 - ax - a < 0 & (2) \end{cases}$.
+    La condition $(1)$ donne $x \in \,]-\infty, 0[ \,\cup\, ]a, +\infty[$.
+    Le trinôme de $(2)$ a pour discriminant $\Delta = a^2 + 4a > 0$ (car $a > 1$), et pour racines $x_1 = \frac{a - \sqrt{a^2+4a}}{2} < 0$ et $x_2 = \frac{a + \sqrt{a^2+4a}}{2} > a$. L'intersection de $]x_1, x_2[$ avec $(1)$ donne :
+    \[
+        S = \left]\frac{a - \sqrt{a^2 + 4a}}{2},\, 0\right[ \cup \left]a,\, \frac{a + \sqrt{a^2 + 4a}}{2}\right[.
+    \]
+    \item \textbf{Cas 2 : $0 < a < 1$ (base décroissante, ordre inversé !).}
+    $\log_a(x^2 - ax) < 1 \iff x^2 - ax > a \iff x^2 - ax - a > 0$ (ce qui garantit automatiquement la C.E. $x^2 - ax > a > 0$). Le trinôme est strictement positif à l'extérieur de ses racines $x_1 < x_2$ :
+    \[
+        S = \left]-\infty,\, \frac{a - \sqrt{a^2 + 4a}}{2}\right[ \cup \left]\frac{a + \sqrt{a^2 + 4a}}{2},\, +\infty\right[.
+    \]
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\section{Corrigés du Chapitre 8 (Mise en Équations et Systèmes Algébriques)}
+% ----------------------------------------------------------------------------
+
+\paragraph{Corrigé de l'Exercice 8.1 (UCLouvain -- Septembre 2021, Q3 : La collecte des déchets) :}
+\begin{enumerate}
+    \item \textbf{Relation entre la masse de déchets $Q_i$ et le nombre de levées $N_i$ :}
+    Puisque les conteneurs ne sont sortis que lorsqu'ils sont intégralement remplis (capacité $5\text{ kg}$ pour Laurent et Nadine, $10\text{ kg}$ pour Bruno), on a :
+    \[
+        N_L = \frac{Q_L}{5}, \qquad N_N = \frac{Q_N}{5}, \qquad N_B = \frac{Q_B}{10}.
+    \]
+    \item \textbf{Mise en équations en fonction des seules inconnues $Q_L, Q_N, Q_B$ :}
+    \begin{itemize}
+        \item \emph{Masse totale de déchets :} $Q_L + Q_N + Q_B = 290$ \quad $(1)$.
+        \item \emph{Nombre total de levées :} $N_L + N_N + N_B = \dfrac{Q_L}{5} + \dfrac{Q_N}{5} + \dfrac{Q_B}{10} = 43 \xrightarrow{\times 10} 2Q_L + 2Q_N + Q_B = 430$ \quad $(2)$.
+        \item \emph{Facture totale ($251,60$\,€) :} Laurent ne dépasse pas son forfait (il paie uniquement $50$\,€). Nadine (forfait $50$\,€, franchises $50\text{ kg}$ et $12$ levées) et Bruno (forfait $80$\,€, franchises $70\text{ kg}$ et $12$ levées) paient les suppléments :
+        \[
+            50 + 50 + 80 + 0,4(Q_N - 50) + 1,2\left(\frac{Q_N}{5} - 12\right) + 0,4(Q_B - 70) + 1,2\left(\frac{Q_B}{10} - 12\right) = 251,6.
+        \]
+    \end{itemize}
+    \item \textbf{Résolution :}
+    De $(1)$, $Q_L + Q_N = 290 - Q_B$. En remplaçant dans $(2)$ : $2(290 - Q_B) + Q_B = 430 \iff 580 - Q_B = 430 \implies \boxed{Q_B = 150\text{ kg}}$ (et donc $Q_L + Q_N = 140\text{ kg}$).
+    Dans l'équation de la facture, remplaçons $Q_B = 150$ (les suppléments de Bruno valent $0,4(80) + 1,2(15 - 12) = 32 + 3,6 = 35,60$\,€) :
+    \[
+        180 + 0,4(Q_N - 50) + 0,24\,Q_N - 14,4 + 35,6 = 251,6 \iff 0,64\,Q_N + 181,2 = 251,6,
+    \]
+    d'où $0,64\,Q_N = 70,4 \implies \boxed{Q_N = \frac{7040}{64} = 110\text{ kg}}$,
+    et enfin $Q_L = 140 - 110 = \boxed{30\text{ kg}}$ (qui est bien $\le 50\text{ kg}$ et correspond à $6 \le 12$ levées : Laurent n'a effectivement pas dépassé son forfait !).
+\end{enumerate}
+
+\paragraph{Corrigé de l'Exercice 8.2 (Problème d'alliages métallurgiques) :}
+Soient $x, y, z$ les masses (en kg) prélevées respectivement des lingots A, B et C. Les équations de conservation de la masse de cuivre, de zinc et d'étain (ou de la masse totale $x + y + z = 100$) s'écrivent :
+\[
+    \begin{cases}
+        x + y + z = 100 & (1) \text{ [Masse totale]} \\
+        0,6x + 0,5y + 0,4z = 52 \iff 6x + 5y + 4z = 520 & (2) \text{ [Cuivre]} \\
+        0,1x + 0,3y + 0,1z = 17 \iff x + 3y + z = 170 & (3) \text{ [Étain]}
+    \end{cases}
+\]
+\textbf{Astuce :} Regardez $(3) - (1)$ (l'étain a le même pourcentage $10\,\%$ dans A et C !) :
+\[
+    (x + 3y + z) - (x + y + z) = 170 - 100 \iff 2y = 70 \implies \boxed{y = 35\text{ kg du lingot B}} !
+\]
+On remplace $y = 35$ dans $(1)$ et $(2)$ : $x + z = 65$ et $6x + 4z = 520 - 175 = 345 \iff 6x + 4(65 - x) = 345 \iff 2x + 260 = 345 \iff 2x = 85 \implies \boxed{x = 42,5\text{ kg du lingot A}}$ et $\boxed{z = 22,5\text{ kg du lingot C}}$.
+
+\paragraph{Corrigé de l'Exercice 8.3 (Diagramme de Venn à 3 ateliers) :}
+Notons $x$ le nombre d'étudiants suivant uniquement Analyse et Trigonométrie ($x_{An,Tr} = x$). D'après l'énoncé, $x_{Al,An} = 2x$, $x_{Al,Tr} = 25$ et le centre des trois ateliers vaut $x_{Al,An,Tr} = 30$.
+Par la formule du crible de Poincaré (ou en sommant les 7 régions du diagramme de Venn), sachant que les intersections deux à deux complètes valent $\text{card}(Al \cap An) = 2x + 30$, $\text{card}(An \cap Tr) = x + 30$ et $\text{card}(Al \cap Tr) = 25 + 30 = 55$ :
+\[
+    250 = (140 + 130 + 110) - \bigl((2x + 30) + (x + 30) + 55\bigr) + 30 \iff 250 = 380 - (3x + 115) + 30 = 295 - 3x,
+\]
+d'où $3x = 45 \implies \mathbf{x = 15}$.
+Le nombre d'étudiants inscrits \emph{uniquement} à l'atelier d'Algèbre est alors le total du cercle d'Algèbre ($140$) diminué des trois régions d'intersection de ce cercle ($2x = 30$, $25$ et $30$) :
+\[
+    n_{\text{Algèbre seul}} = 140 - (30 + 25 + 30) = 140 - 85 = \boxed{55\text{ étudiants}}.
+\]

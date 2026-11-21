@@ -1,0 +1,459 @@
+% ============================================================================
+% CHAPITRE 1 : POLYNÔMES, FACTORISATION ET DIVISION EUCLIDIENNE
+% ============================================================================
+\chapter{Polynômes, Factorisation et Division Euclidienne}
+
+Les polynômes constituent la colonne vertébrale du calcul algébrique. À l'examen d'admission de l'UCLouvain, au moins une (et souvent deux) des sept sous-questions de la Question~1 porte directement sur la division euclidienne de polynômes, le théorème du reste, la factorisation ou la détermination de paramètres $(a,b)$ assurant la divisibilité d'un polynôme par un autre. De plus, les techniques de factorisation étudiées ici seront indispensables au Chapitre~7 pour dresser les tableaux de signes des inéquations paramétriques.
+
+% ----------------------------------------------------------------------------
+\section{Généralités sur les polynômes et identités remarquables}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition, degré et égalité de deux polynômes}
+
+\begin{definition}[Polynôme à coefficients réels]
+Un \textbf{polynôme} $P(x)$ à coefficients réels en la variable $x$ est une expression algébrique de la forme :
+\[
+    P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = \sum_{k=0}^n a_k x^k,
+\]
+où $n \in \N$ est un entier naturel et $a_0, a_1, \dots, a_n \in \R$ sont les \textbf{coefficients} du polynôme.
+\begin{itemize}
+    \item Si $a_n \neq 0$, l'entier $n$ est appelé le \textbf{degré} du polynôme, noté $\deg(P) = n$.
+    \item Le terme $a_n x^n$ est le \textbf{terme dominant}, $a_n$ est le \textbf{coefficient dominant} (si $a_n = 1$, le polynôme est dit \emph{unitaire} ou \emph{normalisé}), et $a_0 = P(0)$ est le \textbf{terme indépendant} (ou terme constant).
+    \item Par convention, le polynôme nul $P(x) = 0$ a un degré égal à $-\infty$.
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Principe d'identification des coefficients et règles sur les degrés]
+\begin{enumerate}
+    \item \textbf{Égalité de deux polynômes :} Deux polynômes non nuls $P(x) = \sum_{k=0}^n a_k x^k$ et $Q(x) = \sum_{k=0}^m b_k x^k$ prennent la même valeur pour tout $x \in \R$ ($\forall x \in \R : P(x) = Q(x)$) \textbf{si et seulement si} ils ont le même degré ($n = m$) et leurs coefficients de même degré sont deux à deux égaux :
+    \[
+        \boxed{\forall k \in \{0, 1, \dots, n\} : a_k = b_k}.
+    \]
+    En particulier, un polynôme est identiquement nul sur $\R$ si et seulement si tous ses coefficients sont nuls.
+    \item \textbf{Degré d'une somme et d'un produit :} Pour tous polynômes $P$ et $Q$ :
+    \[
+        \deg(P + Q) \le \max\bigl(\deg(P), \deg(Q)\bigr) \qquad \text{et} \qquad \boxed{\deg(P \cdot Q) = \deg(P) + \deg(Q)}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\subsection{Les identités remarquables indispensables sans calculatrice}
+
+Le jour de l'examen, savoir reconnaître instantanément une identité remarquable permet d'éviter de longs calculs et de factoriser en quelques secondes des polynômes de degré $3$, $4$ ou $6$.
+
+\begin{theoreme}[Formulaire des identités remarquables (degrés 2, 3 et $n$)]
+Pour tous réels (ou complexes) $a$ et $b$ :
+\begin{itemize}
+    \item \textbf{Carré d'une somme ou d'une différence :}
+    \[
+        (a + b)^2 = a^2 + 2ab + b^2 \qquad \text{et} \qquad (a - b)^2 = a^2 - 2ab + b^2.
+    \]
+    \item \textbf{Différence de deux carrés :}
+    \[
+        \boxed{a^2 - b^2 = (a - b)(a + b)}.
+    \]
+    \item \textbf{Cube d'une somme ou d'une différence :}
+    \[
+        (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 \qquad \text{et} \qquad (a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3.
+    \]
+    \item \textbf{Différence et somme de deux cubes :}
+    \[
+        \boxed{a^3 - b^3 = (a - b)(a^2 + ab + b^2)} \qquad \text{et} \qquad \boxed{a^3 + b^3 = (a + b)(a^2 - ab + b^2)}.
+    \]
+    \item \textbf{Généralisation à un degré $n \in \N_0$ quelconque :}
+    \[
+        a^n - b^n = (a - b)\bigl(a^{n-1} + a^{n-2}b + a^{n-3}b^2 + \dots + ab^{n-2} + b^{n-1}\bigr).
+    \]
+\end{itemize}
+\end{theoreme}
+
+\begin{astuce}[L'identité de Sophie Germain : factoriser $a^4 + 4b^4$]
+Une somme de deux carrés $a^2 + b^2$ ne se factorise pas dans $\R$. En revanche, une expression de la forme $x^4 + 4$ (posée à l'examen de \textbf{Juillet 2023 -- Série 1, Q1.6}) se factorise élégamment en complétant le carré par rapport au double produit $4x^2$ :
+\[
+    x^4 + 4 = (x^4 + 4x^2 + 4) - 4x^2 = (x^2 + 2)^2 - (2x)^2 = \boxed{(x^2 - 2x + 2)(x^2 + 2x + 2)}.
+\]
+Plus généralement, $a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2)$.
+\end{astuce}
+
+% ----------------------------------------------------------------------------
+\section{Trinôme du second degré et relations Somme-Produit de Viète}
+% ----------------------------------------------------------------------------
+
+\subsection{Racines, factorisation et signe du trinôme $ax^2 + bx + c$}
+
+\begin{theoreme}[Étude complète du trinôme du second degré ($a \neq 0$)]
+Soit $P(x) = ax^2 + bx + c$ avec $a \in \R_0$ et $b, c \in \R$. En mettant sous \textbf{forme canonique} :
+\[
+    ax^2 + bx + c = a\left[\left(x + \frac{b}{2a}\right)^2 - \frac{\Delta}{4a^2}\right] \qquad \text{où le discriminant vaut } \boxed{\Delta = b^2 - 4ac}.
+\]
+Trois cas se présentent selon le signe de $\Delta$ :
+\begin{enumerate}
+    \item \textbf{Si $\Delta > 0$ :} Le trinôme possède \textbf{deux racines réelles distinctes} :
+    \[
+        x_1 = \frac{-b - \sqrt{\Delta}}{2a} \qquad \text{et} \qquad x_2 = \frac{-b + \sqrt{\Delta}}{2a}.
+    \]
+    Sa factorisation dans $\R$ est $\boxed{P(x) = a(x - x_1)(x - x_2)}$.
+    \item \textbf{Si $\Delta = 0$ :} Le trinôme possède \textbf{une racine réelle double} $x_0 = -\dfrac{b}{2a}$, et se factorise en :
+    \[
+        \boxed{P(x) = a(x - x_0)^2}.
+    \]
+    \item \textbf{Si $\Delta < 0$ :} Le trinôme n'admet \textbf{aucune racine réelle} (il est irréductible dans $\R$, mais possède deux racines complexes conjuguées dans $\C$, voir Chapitre~4).
+\end{enumerate}
+\end{theoreme}
+
+\begin{theoreme}[Règle du signe d'un trinôme du second degré]
+\begin{itemize}
+    \item \textbf{Si $\Delta > 0$ (racines $x_1 < x_2$) :} Le trinôme $ax^2+bx+c$ est du \textbf{signe de $a$ à l'extérieur des racines} ($x \in \,]-\infty, x_1[ \cup \,]x_2, +\infty[$) et du \textbf{signe opposé à $a$ entre les racines} ($x \in \,]x_1, x_2[$).
+    \item \textbf{Si $\Delta = 0$ (racine double $x_0$) :} Le trinôme est du \textbf{signe de $a$ pour tout $x \neq x_0$}, et s'annule en $x_0$.
+    \item \textbf{Si $\Delta < 0$ :} Le trinôme ne s'annule jamais et garde strictement le \textbf{signe de $a$ sur tout $\R$}.
+\end{itemize}
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.92, >=Stealth]
+    % Cas Delta > 0
+    \begin{scope}[shift={(0,0)}]
+        \draw[->, thick, darkgray] (-2.0,0) -- (2.2,0) node[right] {\small $x$};
+        \draw[very thick, uclblue, domain=-1.75:1.95, samples=60] plot (\x, {0.7*(\x-0.1)^2 - 0.9});
+        \fill[warnred] (-1.03,0) circle (2pt) node[below left] {\small $x_1$};
+        \fill[warnred] (1.23,0) circle (2pt) node[below right] {\small $x_2$};
+        \node[uclblue, font=\bfseries] at (-1.55,0.45) {\small sgn($a$)};
+        \node[warnred, font=\bfseries] at (0.1,-0.45) {\small $-$sgn($a$)};
+        \node[uclblue, font=\bfseries] at (1.75,0.45) {\small sgn($a$)};
+        \node[darkgray, font=\small\bfseries] at (0.1,-1.55) {Cas $\Delta > 0$ ($a>0$)};
+    \end{scope}
+
+    % Cas Delta = 0
+    \begin{scope}[shift={(5.3,0)}]
+        \draw[->, thick, darkgray] (-2.0,0) -- (2.2,0) node[right] {\small $x$};
+        \draw[very thick, defgreen, domain=-1.55:1.75, samples=60] plot (\x, {0.7*(\x-0.1)^2});
+        \fill[warnred] (0.1,0) circle (2pt) node[below] {\small $x_0$};
+        \node[defgreen, font=\bfseries] at (-1.2,0.55) {\small sgn($a$)};
+        \node[defgreen, font=\bfseries] at (1.4,0.55) {\small sgn($a$)};
+        \node[darkgray, font=\small\bfseries] at (0.1,-1.55) {Cas $\Delta = 0$ ($a>0$)};
+    \end{scope}
+
+    % Cas Delta < 0
+    \begin{scope}[shift={(10.6,0)}]
+        \draw[->, thick, darkgray] (-2.0,0) -- (2.2,0) node[right] {\small $x$};
+        \draw[very thick, exorange, domain=-1.5:1.7, samples=60] plot (\x, {0.65*(\x-0.1)^2 + 0.4});
+        \node[exorange, font=\bfseries] at (0.1,0.85) {\small Toujours sgn($a$)};
+        \node[darkgray, font=\small\bfseries] at (0.1,-1.55) {Cas $\Delta < 0$ ($a>0$)};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Relations de Viète entre coefficients et racines (Somme et Produit)}
+
+\begin{theoreme}[Relations Somme-Produit de Viète]
+Si le trinôme $P(x) = ax^2 + bx + c$ ($a \neq 0$) possède deux racines $x_1$ et $x_2$ (distinctes ou confondues), alors en développant $a(x - x_1)(x - x_2) = ax^2 - a(x_1 + x_2)x + ax_1 x_2$, l'identification des coefficients donne :
+\[
+    \boxed{S = x_1 + x_2 = -\frac{b}{a}} \qquad \text{et} \qquad \boxed{P = x_1 x_2 = \frac{c}{a}}.
+\]
+Réciproquement, deux nombres réels dont la somme vaut $S$ et le produit vaut $P$ sont les racines de tout trinôme de la forme :
+\[
+    \boxed{a\bigl(x^2 - Sx + P\bigr) = 0 \qquad (a \in \R_0)}.
+\]
+\end{theoreme}
+
+\begin{astuce}[Trois usages majeurs des formules Somme-Produit à l'examen]
+\begin{enumerate}
+    \item \textbf{Construire un polynôme connaissant la somme et le produit de ses racines} (question directe).
+    \item \textbf{Trouver la seconde racine de tête} lorsqu'on connaît une racine évidente $x_1$ (comme $1$, $-1$, $2$ ou $1/3$) : il suffit d'utiliser $x_2 = \dfrac{c}{a x_1}$ ou $x_2 = -\dfrac{b}{a} - x_1$ sans calculer $\Delta$ !
+    \item \textbf{Déterminer le signe des racines d'un trinôme paramétrique} (Question 2 de l'examen) :
+    \begin{itemize}
+        \item Si $P = \frac{c}{a} < 0$, les deux racines sont de \textbf{signes contraires} ($x_1 < 0 < x_2$).
+        \item Si $P = \frac{c}{a} > 0$ (et $\Delta \ge 0$), les deux racines ont le \textbf{même signe}, qui est celui de leur somme $S = -\frac{b}{a}$.
+    \end{itemize}
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Application directe -- UCLouvain, Juillet 2021, Q1.5]
+\textbf{Énoncé :} Donner un polynôme du second degré dont les racines ont $6$ pour somme et $8$ pour produit.
+
+\textbf{Résolution :} Avec $S = x_1 + x_2 = 6$ et $P = x_1 x_2 = 8$, la formule $a(x^2 - Sx + P)$ donne immédiatement la famille de tous les polynômes solutions (pour tout réel non nul $a \in \R_0$, ou en particulier pour $a = 1$) :
+\[
+    \boxed{P(x) = x^2 - 6x + 8} \quad \text{(ou plus généralement } a(x^2 - 6x + 8) = ax^2 - 6ax + 8a \text{ avec } a \neq 0\text{)}.
+\]
+\emph{Vérification :} $x^2 - 6x + 8 = (x - 2)(x - 4)$, dont les racines $2$ et $4$ vérifient bien $2 + 4 = 6$ et $2 \times 4 = 8$.
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Division euclidienne des polynômes et théorème du reste}
+% ----------------------------------------------------------------------------
+
+\subsection{Le théorème de la division euclidienne}
+
+\begin{theoreme}[Division euclidienne de deux polynômes]
+Soient $P(x)$ (le \textbf{dividende}) et $D(x)$ (le \textbf{diviseur}) deux polynômes tels que $D(x)$ ne soit pas le polynôme nul. Il existe un \textbf{unique} couple de polynômes $\bigl(Q(x), R(x)\bigr)$, appelés respectivement le \textbf{quotient} et le \textbf{reste}, tels que :
+\[
+    \boxed{P(x) = D(x)\cdot Q(x) + R(x) \qquad \text{avec } \deg(R) < \deg(D)}.
+\]
+On dit que $P(x)$ est \textbf{divisible} par $D(x)$ (ou que $D(x)$ divise $P(x)$) si et seulement si le reste est le polynôme nul : $\boxed{R(x) = 0}$.
+\end{theoreme}
+
+\begin{attention}[Condition cruciale sur le degré du reste]
+Dans une division euclidienne par un diviseur $D(x)$ :
+\begin{itemize}
+    \item Si $D(x) = x - a$ est de \textbf{degré $1$}, le reste $R$ est de degré $< 1$, donc c'est une \textbf{constante réelle} $R \in \R$.
+    \item Si $D(x) = ax^2 + bx + c$ est de \textbf{degré $2$}, le reste est au plus de \textbf{degré $1$}, soit de la forme $R(x) = ux + v$.
+    \item Si $D(x)$ est de \textbf{degré $3$} (ex. $x^3 - 1$), le reste est au plus de \textbf{degré $2$}, soit $R(x) = ux^2 + vx + w$.
+\end{itemize}
+La division posée (en potence) ne s'arrête que lorsque le degré du reste partiel devient \textbf{strictement inférieur} au degré du diviseur !
+\end{attention}
+
+\subsection{Poser une division euclidienne de polynômes (en potence)}
+
+Pour diviser $P(x)$ par $D(x)$ :
+\begin{enumerate}
+    \item Ordonnez $P(x)$ et $D(x)$ selon les \textbf{puissances décroissantes} de $x$, en laissant un espace (ou en écrivant $+0x^k$) pour les puissances manquantes.
+    \item À chaque étape, divisez le \textbf{terme dominant} du dividende partiel par le \textbf{terme dominant} du diviseur $D(x)$ : cela donne le terme suivant du quotient $Q(x)$.
+    \item Multipliez tout le diviseur $D(x)$ par ce terme et soustrayez le résultat au dividende partiel.
+\end{enumerate}
+
+\begin{exemple}[Division euclidienne -- UCLouvain, Septembre 2022, Q1.4]
+\textbf{Énoncé :} Calculer le quotient et le reste de la division de $x^6 + x^4 + 1$ par $x^2 - 2$.
+
+\textbf{Résolution (Méthode 1 : division euclidienne posée) :}
+\[
+\begin{array}{r|l}
+    x^6 + x^4 + 0x^2 + 1 & x^2 - 2 \\
+    \cline{2-2}
+    -\,(x^6 - 2x^4) \phantom{+ 0x^2 + 1} & x^4 + 3x^2 + 6 = Q(x) \\
+    \cline{1-1}
+    3x^4 + 0x^2 + 1 & \\
+    -\,(3x^4 - 6x^2) \phantom{+ 1} & \\
+    \cline{1-1}
+    6x^2 + 1 & \\
+    -\,(6x^2 - 12) & \\
+    \cline{1-1}
+    13 & = R(x)
+\end{array}
+\]
+\textbf{Méthode 2 (Astuce par changement de variable $t = x^2$) :} Comme seuls des exposants pairs apparaissent, posons $t = x^2$. On divise $A(t) = t^3 + t^2 + 1$ par $t - 2$. Le reste vaut $A(2) = 2^3 + 2^2 + 1 = 8 + 4 + 1 = 13$, et par Horner en $t=2$, le quotient en $t$ est $t^2 + 3t + 6 = x^4 + 3x^2 + 6$.
+
+On obtient donc : $\boxed{\text{quotient } Q(x) = x^4 + 3x^2 + 6 \quad \text{et} \quad \text{reste } R(x) = 13}$.
+\end{exemple}
+
+\begin{exemple}[Astuce de substitution modulaire pour le reste -- UCLouvain, Septembre 2023, Q1.6]
+\textbf{Énoncé :} Quel est le reste de la division de l'expression $P(x) = (x^4 + 1)(x^2 - 1)$ par $D(x) = x^3 - 1$ ?
+
+\textbf{Résolution :} Développons d'abord le dividende :
+\[
+    P(x) = x^6 - x^4 + x^2 - 1.
+\]
+\textbf{Astuce ultra-rapide (« calcul modulo $x^3 - 1$ ») :} Dans la division par $x^3 - 1$, écrire $x^3 = (x^3 - 1) + 1$ signifie que chaque bloc $x^3$ laisse un reste égal à $1$ lorsqu'on le divise par $x^3 - 1$ ! En remplaçant $x^3$ par $1$ (donc $x^6 = (x^3)^2$ par $1^2 = 1$, et $x^4 = x^3 \cdot x$ par $1 \cdot x = x$) :
+\[
+    P(x) = (x^3)^2 - (x^3)\cdot x + x^2 - 1 \equiv 1^2 - 1\cdot x + x^2 - 1 = x^2 - x \pmod{x^3 - 1}.
+\]
+Puisque $\deg(x^2 - x) = 2 < \deg(x^3 - 1) = 3$, c'est directement le reste de la division euclidienne !
+\emph{Vérification explicite :} $(x^3 - 1)(x^3 + 1 - x) + (x^2 - x) = x^6 - x^4 + x^2 - 1 = P(x)$.
+Le reste cherché est donc $\boxed{R(x) = x^2 - x}$.
+\end{exemple}
+
+\subsection{Théorème du reste et divisibilité par $(x - a)$}
+
+\begin{theoreme}[Loi du reste et condition de divisibilité par $(x - a)$]
+Soit $P(x)$ un polynôme et $a \in \R$ un nombre réel. La division euclidienne de $P(x)$ par $x - a$ s'écrit :
+\[
+    P(x) = (x - a)\cdot Q(x) + R \qquad \text{où } R \in \R \text{ est une constante}.
+\]
+En évaluant cette égalité en $x = a$, le terme $(a - a)Q(a)$ s'annule et l'on obtient :
+\begin{enumerate}
+    \item \textbf{Théorème du reste :} Le reste de la division de $P(x)$ par $(x - a)$ est égal à la valeur numérique $\boxed{R = P(a)}$.\\
+    \emph{Attention au signe :} le reste de la division de $P(x)$ par $(x + a) = \bigl(x - (-a)\bigr)$ vaut $\boxed{R = P(-a)}$.
+    \item \textbf{Corollaire (Divisibilité par $x - a$) :} Un polynôme $P(x)$ est \textbf{divisible par $(x - a)$} si et seulement si $a$ est une \textbf{racine} de $P(x)$ :
+    \[
+        \boxed{P(x) \text{ est divisible par } (x - a) \iff P(a) = 0}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{exemple}[Application du théorème du reste -- UCLouvain, Juillet 2026, Q1.6]
+\textbf{Énoncé :} Déterminer la valeur du coefficient réel $a$ pour que le polynôme $P(x) = x^3 - 4x^2 + ax + 5$ soit divisible par $x - 2$.
+
+\textbf{Résolution :} Par le théorème du reste, $P(x)$ est divisible par $x - 2$ si et seulement si $P(2) = 0$. Calculons $P(2)$ :
+\[
+    P(2) = 2^3 - 4(2^2) + 2a + 5 = 8 - 16 + 2a + 5 = 2a - 3.
+\]
+L'équation $P(2) = 0$ donne immédiatement $2a - 3 = 0 \iff \boxed{a = \dfrac{3}{2}}$.
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Schéma de Horner et factorisation des polynômes de degré $\ge 3$}
+% ----------------------------------------------------------------------------
+
+\subsection{La grille de Horner pour diviser par $(x - a)$}
+
+Lorsqu'on divise un polynôme $P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0$ par un binôme du premier degré $(x - \alpha)$, le \textbf{schéma de Horner} (ou tableau de Horner) permet d'obtenir en une seule ligne tous les coefficients du quotient $Q(x)$ ainsi que le reste $R = P(\alpha)$.
+
+\begin{astuce}[Fonctionnement de la grille de Horner pour diviser par $(x - \alpha)$]
+\begin{enumerate}
+    \item Sur la première ligne, inscrivez tous les coefficients de $P(x)$ par ordre de puissances décroissantes (\textbf{sans oublier de mettre $0$ pour chaque puissance manquante !}).
+    \item Placez la valeur $\alpha$ (qui annule $x - \alpha = 0$) dans la colonne de gauche.
+    \item Abaissez directement le premier coefficient $a_n$ sur la troisième ligne.
+    \item Ensuite, répétez la boucle : \textbf{multipliez} le nombre obtenu en bas par $\alpha$, inscrivez le produit sur la deuxième ligne dans la colonne suivante, puis \textbf{additionnez} verticalement avec le coefficient du dessus.
+    \item La dernière case en bas à droite est le \textbf{reste $R = P(\alpha)$}, et les cases précédentes sont les coefficients du \textbf{quotient $Q(x)$} (de degré $n - 1$).
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Division par $(x + 1)$ avec Horner -- UCLouvain, Juillet 2021, Q1.6]
+\textbf{Énoncé :} Fournir le quotient $Q(x)$ et le reste $R(x)$ de la division du polynôme $(x - 1)^2$ par $(x + 1)$.
+
+\textbf{Résolution :} Développons $P(x) = (x - 1)^2 = x^2 - 2x + 1$. On divise par $x + 1 = x - (-1)$, donc on applique Horner avec $\alpha = -1$ :
+\[
+\begin{array}{c|cc|c}
+    & x^2 & x^1 & x^0 \\
+    & 1 & -2 & 1 \\
+    \alpha = -1 & \downarrow & -1 & 3 \\
+    \hline
+    & 1 & -3 & \mathbf{4 = R}
+\end{array}
+\]
+On lit directement sur la dernière ligne : $\boxed{Q(x) = x - 3 \quad \text{et} \quad R(x) = 4}$.
+\emph{Alternative mentale :} $(x - 1)^2 = \bigl((x + 1) - 2\bigr)^2 = (x + 1)^2 - 4(x + 1) + 4 = (x + 1)(x - 3) + 4$.
+\end{exemple}
+
+\begin{exemple}[Recherche des racines restantes d'un polynôme de degré 3 -- UCLouvain, Juillet 2022, Q1.5]
+\textbf{Énoncé :} Sachant qu'une des racines du polynôme $P(x) = 9x^3 + 12x^2 - 11x + 2$ est $1/3$, que valent les deux autres racines ?
+
+\textbf{Résolution :} Puisque $\alpha = \frac{1}{3}$ est une racine de $P(x)$, $P(x)$ est divisible par $\left(x - \frac{1}{3}\right)$. Dressons la grille de Horner avec $\alpha = \frac{1}{3}$ :
+\[
+\begin{array}{c|ccc|c}
+    & x^3 & x^2 & x^1 & x^0 \\
+    & 9 & 12 & -11 & 2 \\
+    \alpha = \tfrac{1}{3} & \downarrow & 3 & 5 & -2 \\
+    \hline
+    & 9 & 15 & -6 & \mathbf{0 = R}
+\end{array}
+\]
+Le reste est bien nul ($R = 0$), et le quotient vaut $Q(x) = 9x^2 + 15x - 6 = 3(3x^2 + 5x - 2)$.
+Cherchons les racines de $3x^2 + 5x - 2 = 0$ :
+\begin{itemize}
+    \item \textbf{Par le discriminant :} $\Delta = 5^2 - 4(3)(-2) = 25 + 24 = 49 = 7^2$, d'où :
+    \[
+        x_2 = \frac{-5 - 7}{6} = -2 \qquad \text{et} \qquad x_3 = \frac{-5 + 7}{6} = \frac{2}{6} = \frac{1}{3}.
+    \]
+    \item \textbf{Ou par racine évidente :} $\frac{1}{3}$ annule encore $3x^2 + 5x - 2$ (c'est une racine double !), et par le produit des racines $x_2 \cdot \frac{1}{3} = -\frac{2}{3} \implies x_2 = -2$.
+\end{itemize}
+Les deux autres racines sont donc $\boxed{-2 \text{ et } \dfrac{1}{3}}$ (et $P(x) = 9\left(x - \frac{1}{3}\right)^2(x + 2) = (3x - 1)^2(x + 2)$).
+\end{exemple}
+
+\subsection{Méthodes de factorisation des polynômes de degré 3, 4 ou 5}
+
+Face à un polynôme de degré supérieur ou égal à $3$, procédez toujours dans l'ordre suivant :
+
+\begin{astuce}[Les 4 réflexes de factorisation à l'examen]
+\begin{enumerate}
+    \item \textbf{Mise en évidence d'une puissance de $x$ :} Si le terme indépendant est nul ($a_0 = 0$), mettez la plus grande puissance possible de $x$ en facteur commun !
+    \item \textbf{Factorisation par groupement ($2$ par $2$) :} Pour un polynôme à $4$ termes $ax^3 + bx^2 + cx + d$, si $\frac{a}{b} = \frac{c}{d}$, groupez les deux premiers termes et les deux derniers :
+    \[
+        x^3 - 3x^2 - 4x + 12 = x^2(x - 3) - 4(x - 3) = (x - 3)(x^2 - 4) = (x - 3)(x - 2)(x + 2).
+    \]
+    \item \textbf{Polynôme bicarré ($ax^4 + bx^2 + c$) :} Posez $t = x^2 \ge 0$, factorisez $at^2 + bt + c$ en $t$, puis revenez à $x$.
+    \item \textbf{Recherche d'une racine entière évidente ($\alpha \in \{\pm 1, \pm 2, \pm 3\}$ diviseur de $a_0$) :} Dès que vous trouvez $\alpha$ tel que $P(\alpha) = 0$, divisez par $(x - \alpha)$ via la grille de Horner.
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Factorisations complètes -- UCLouvain, Juillet 2023 Série 2 Q1.5 \& Septembre 2025 Q1.6]
+\begin{enumerate}
+    \item \textbf{Juillet 2023 -- Série 2, Q1.5 :} \emph{Factoriser l'expression $P(x) = x^5 - 8x^3 + 16x$.}\\
+    On commence par mettre $x$ en évidence : $P(x) = x(x^4 - 8x^2 + 16)$. Dans la parenthèse, on reconnaît le carré parfait $(x^2 - 4)^2$ (car $(x^2)^2 - 2\cdot 4\cdot x^2 + 4^2 = (x^2-4)^2$). Enfin, on applique la différence de deux carrés $x^2 - 4 = (x - 2)(x + 2)$ :
+    \[
+        P(x) = x\bigl(x^2 - 4\bigr)^2 = x\bigl((x - 2)(x + 2)\bigr)^2 = \boxed{x(x - 2)^2(x + 2)^2}.
+    \]
+    \item \textbf{Septembre 2025, Q1.6 :} \emph{Factoriser le polynôme $P(x) = x^3 - 3x^2 - 4x + 12$.}\\
+    Par groupement des termes :
+    \[
+        P(x) = x^2(x - 3) - 4(x - 3) = (x - 3)(x^2 - 4) = \boxed{(x - 3)(x - 2)(x + 2)}.
+    \]
+    (On pouvait aussi regrouper $x(x^2 - 4) - 3(x^2 - 4) = (x^2 - 4)(x - 3)$).
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Détermination de paramètres de divisibilité : les deux méthodes reines}
+% ----------------------------------------------------------------------------
+
+Un grand classique de la Question~1 de l'examen d'Algèbre (tombé en \textbf{Juillet 2024 Q1.4}, \textbf{Septembre 2024 Q1.1}, \textbf{Juillet 2025 Q1.7} et \textbf{Septembre 2026 Q1.6}) consiste à déterminer deux paramètres réels $a$ et $b$ pour qu'un polynôme de degré~4 (typiquement $P(x) = x^4 + ax + b$) soit divisible par un trinôme du second degré $D(x) = x^2 + px + q$.
+
+Vous disposez de \textbf{deux méthodes infaillibles} qui donnent le résultat en moins de deux minutes :
+
+\begin{theoreme}[Méthode A (Coefficients indéterminés) vs Méthode B (Division euclidienne)]
+Pour imposer que $P(x) = x^4 + ax + b$ soit divisible par un trinôme unitaire $D(x) = x^2 + px + q$ :
+\begin{itemize}
+    \item \textbf{Méthode A (Identification d'un quotient $Q(x) = x^2 + ux + v$) :} Puisque $P$ est unitaire de degré~4 et $D$ est unitaire de degré~2, si le reste est nul, le quotient est nécessairement de la forme $Q(x) = x^2 + ux + v$. On écrit :
+    \[
+        x^4 + 0x^3 + 0x^2 + ax + b = (x^2 + px + q)(x^2 + ux + v).
+    \]
+    En développant le produit à droite et en identifiant les coefficients de $x^3$, $x^2$, $x^1$ et $x^0$ dans cet ordre, on trouve successivement $u$, puis $v$, puis $a$, puis $b$ sans résoudre aucun système compliqué !
+    \item \textbf{Méthode B (Annulation du reste $R(x) = (\dots)x + (\dots)$ de la division euclidienne) :} On effectue la division euclidienne de $P(x)$ par $D(x)$ jusqu'au bout. On obtient un reste du premier degré $R(x) = \alpha(a) x + \beta(b)$. Le polynôme $P$ est divisible par $D$ si et seulement si $\alpha(a) = 0$ \textbf{et} $\beta(b) = 0$.
+\end{itemize}
+\end{theoreme}
+
+\begin{exemple}[Application comparée des deux méthodes -- UCLouvain, Juillet 2024 Q1.4, Juillet 2025 Q1.7 \& Septembre 2026 Q1.6]
+Résolvons simultanément les trois versions posées en 2024, 2025 et 2026 en écrivant la formule générale pour $P(x) = x^4 + ax + b$ divisible par $D(x) = x^2 + x + q$ :
+posons $x^4 + 0x^3 + 0x^2 + ax + b = (x^2 + x + q)(x^2 + ux + v)$.
+En développant le membre de droite :
+\[
+    (x^2 + x + q)(x^2 + ux + v) = x^4 + (u + 1)x^3 + (v + u + q)x^2 + (v + qu)x + qv.
+\]
+En identifiant avec $x^4 + 0x^3 + 0x^2 + ax + b$ degré par degré :
+\begin{enumerate}
+    \item Coefficient de $x^3$ : $u + 1 = 0 \implies \mathbf{u = -1}$.
+    \item Coefficient de $x^2$ : $v + u + q = 0 \implies v - 1 + q = 0 \implies \mathbf{v = 1 - q}$.
+    \item Coefficient de $x^1$ : $a = v + qu = (1 - q) - q = \mathbf{1 - 2q}$.
+    \item Coefficient de $x^0$ : $b = qv = \mathbf{q(1 - q)}$.
+\end{enumerate}
+Appliquons ce schéma aux trois examens :
+\begin{itemize}
+    \item \textbf{Juillet 2024, Q1.4 ($D(x) = x^2 + x - 1$, soit $q = -1$) :}
+    $u = -1$, $v = 1 - (-1) = 2$, d'où $a = 2 + (-1)(-1) = 3$ et $b = (-1)(2) = -2$.
+    \[
+        \boxed{a = 3 \quad \text{et} \quad b = -2} \qquad \bigl(\text{et } x^4 + 3x - 2 = (x^2 + x - 1)(x^2 - x + 2)\bigr).
+    \]
+    \item \textbf{Juillet 2025, Q1.7 ($D(x) = x^2 + x + 1$, soit $q = 1$) :}
+    $u = -1$, $v = 1 - 1 = 0$, d'où $a = 0 + 1(-1) = -1$ et $b = 1 \cdot 0 = 0$.
+    \[
+        \boxed{a = -1 \quad \text{et} \quad b = 0} \qquad \bigl(\text{en effet, } x^4 - x = x(x^3 - 1) = x(x - 1)(x^2 + x + 1)\bigr).
+    \]
+    \item \textbf{Septembre 2026, Q1.6 ($D(x) = x^2 + x + 2$, soit $q = 2$) :}
+    $u = -1$, $v = 1 - 2 = -1$, d'où $a = -1 + 2(-1) = -3$ et $b = 2(-1) = -2$.
+    \[
+        \boxed{a = -3 \quad \text{et} \quad b = -2} \qquad \bigl(\text{et } x^4 - 3x - 2 = (x^2 + x + 2)(x^2 - x - 1)\bigr).
+    \]
+\end{itemize}
+\end{exemple}
+
+\begin{exemple}[Identification du diviseur -- UCLouvain, Septembre 2024, Q1.1]
+\textbf{Énoncé :} Déterminez les coefficients réels $a$ et $b$ pour que la division du polynôme $P(x) = 2x^4 - x^2 + x - 3$ par $D(x) = ax^2 + b$ donne comme quotient $Q(x) = x^2 - 1$ et comme reste $R(x) = x - 2$.
+
+\textbf{Résolution :} Par définition de la division euclidienne $P(x) = D(x)Q(x) + R(x)$, on a :
+\[
+    D(x)\cdot Q(x) = P(x) - R(x) = (2x^4 - x^2 + x - 3) - (x - 2) = 2x^4 - x^2 - 1.
+\]
+Développons $D(x)Q(x) = (ax^2 + b)(x^2 - 1) = ax^4 + (b - a)x^2 - b$.
+Par identification avec $2x^4 - x^2 - 1$ :
+\begin{itemize}
+    \item Terme en $x^4$ : $a = 2$.
+    \item Terme constant : $-b = -1 \implies b = 1$ (et on vérifie que le terme en $x^2$ vaut bien $b - a = 1 - 2 = -1$).
+\end{itemize}
+On conclut que $\boxed{a = 2 \quad \text{et} \quad b = 1}$.
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 1}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 1.\arabic* :}, leftmargin=*]
+    \item \textbf{(UCLouvain -- Septembre 2021, Q1.6)} Fournir le quotient $Q(x)$ et le reste $R(x)$ de la division du polynôme $(x^4 - 1)$ par $(x^2 + 1)$.
+    \item \textbf{(UCLouvain -- Juillet 2023, Série 1, Q1.6)} Quel est le quotient de la division du polynôme $x^4 + 4$ par $x^2 + 2x + 2$ ?
+    \item \textbf{(Entraînement type Question 1)} Déterminer le quotient $Q(x)$ et le reste $R(x)$ de la division euclidienne de $P(x) = 2x^4 - 5x^3 + 4x^2 - 3x + 7$ par $x - 2$ à l'aide du schéma de Horner.
+    \item \textbf{(Entraînement type Question 1)} Sachant que le polynôme $P(x) = 2x^3 - 3x^2 - 11x + 6$ admet $x_1 = 3$ pour racine, déterminer ses deux autres racines et sa forme complètement factorisée.
+    \item \textbf{(Entraînement type Question 1)} Déterminer les réels $a$ et $b$ pour que le polynôme $P(x) = x^4 - 2x^3 + ax^2 + bx + 4$ soit divisible par $(x - 1)(x + 2)$.
+    \item \textbf{(Entraînement type Question 1)} Soit $P(x)$ un polynôme dont le reste de la division par $(x - 1)$ vaut $5$ et dont le reste de la division par $(x + 2)$ vaut $-4$. Quel est le reste $R(x)$ de la division de $P(x)$ par $(x - 1)(x + 2)$ ?
+    \item \textbf{(Entraînement type Question 1)} Factoriser complètement dans $\R$ le polynôme $P(x) = x^6 - 9x^4 - x^2 + 9$.
+\end{enumerate}

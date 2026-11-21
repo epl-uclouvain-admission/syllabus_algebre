@@ -1,0 +1,332 @@
+\documentclass[11pt,a4paper,oneside]{book}
+
+% ============================================================================
+% PACKAGES
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=15pt]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{icomma}
+\usepackage{cancel}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{angles,quotes,calc,positioning,arrows.meta,patterns,decorations.pathreplacing,babel}
+
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% ============================================================================
+% COULEURS & STYLE UCLOUVAIN
+% ============================================================================
+\definecolor{uclblue}{RGB}{0, 53, 107}
+\definecolor{ucllightblue}{RGB}{235, 243, 250}
+\definecolor{uclaccent}{RGB}{0, 114, 188}
+\definecolor{defgreen}{RGB}{20, 110, 60}
+\definecolor{deflightgreen}{RGB}{238, 248, 242}
+\definecolor{exorange}{RGB}{180, 85, 0}
+\definecolor{exlightorange}{RGB}{253, 246, 238}
+\definecolor{warnred}{RGB}{170, 30, 30}
+\definecolor{warnlightred}{RGB}{253, 240, 240}
+\definecolor{darkgray}{RGB}{60, 60, 60}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uclblue,
+    urlcolor=uclaccent,
+    citecolor=uclblue,
+    pdftitle={Syllabus d'Algèbre - Examen d'entrée Ingénieur Civil UCLouvain},
+    pdfauthor={Jean-François Remacle et Pierre Schaus (Prompt Engineers) & IA}
+}
+
+% ============================================================================
+% BOÎTES PÉDAGOGIQUES (TCOLORBOX)
+% ============================================================================
+\newtcolorbox{theoreme}[1][]{
+    enhanced,
+    breakable,
+    colback=ucllightblue,
+    colframe=uclblue,
+    fonttitle=\bfseries,
+    title={#1},
+    arc=3pt,
+    boxrule=0.8pt,
+    left=8pt,right=8pt,top=6pt,bottom=6pt
+}
+
+\newtcolorbox{definition}[1][]{
+    enhanced,
+    breakable,
+    colback=deflightgreen,
+    colframe=defgreen,
+    fonttitle=\bfseries,
+    title={#1},
+    arc=3pt,
+    boxrule=0.8pt,
+    left=8pt,right=8pt,top=6pt,bottom=6pt
+}
+
+\newtcolorbox{exemple}[1][]{
+    enhanced,
+    breakable,
+    colback=exlightorange,
+    colframe=exorange,
+    fonttitle=\bfseries,
+    title={#1},
+    arc=3pt,
+    boxrule=0.8pt,
+    left=8pt,right=8pt,top=6pt,bottom=6pt
+}
+
+\newtcolorbox{attention}[1][Attention]{
+    enhanced,
+    breakable,
+    colback=warnlightred,
+    colframe=warnred,
+    fonttitle=\bfseries,
+    title={#1},
+    arc=3pt,
+    boxrule=0.8pt,
+    left=8pt,right=8pt,top=6pt,bottom=6pt
+}
+
+\newtcolorbox{astuce}[1][Astuce \& Méthode]{
+    enhanced,
+    breakable,
+    colback=gray!8,
+    colframe=darkgray,
+    fonttitle=\bfseries,
+    title={#1},
+    arc=3pt,
+    boxrule=0.8pt,
+    left=8pt,right=8pt,top=6pt,bottom=6pt
+}
+
+% ============================================================================
+% MISE EN PAGE & EN-TÊTES
+% ============================================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlist[itemize]{topsep=3pt,itemsep=2pt}
+\setlist[enumerate]{topsep=4pt,itemsep=4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{uclblue}{\nouppercase{\leftmark}}}
+\fancyhead[R]{\small\textcolor{darkgray}{Algèbre -- UCLouvain}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{uclblue}}
+  {\filright\large\textsc{\chaptertitlename}\ \thechapter}
+  {1ex}
+  {\titlerule\vspace{1.2ex}\filright}
+  [\vspace{1ex}\titlerule]
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{uclblue}}
+  {\thesection}{0.8em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{uclaccent}}
+  {\thesubsection}{0.7em}{}
+
+% ============================================================================
+% COMMANDES MATHÉMATIQUES
+% ============================================================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Reop}{Re}
+\DeclareMathOperator{\Imop}{Im}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\tg}{tg}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+\begin{document}
+
+% ----------------------------------------------------------------------------
+% PAGE DE TITRE
+% ----------------------------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \vspace*{0.8cm}
+    {\Large \textsc{Université catholique de Louvain (UCLouvain)}}\\[0.3cm]
+    {\large \textsc{École Polytechnique de Louvain (EPL)}}\\[1.3cm]
+
+    \begin{tcolorbox}[colback=ucllightblue,colframe=uclblue,arc=5pt,boxrule=1.5pt,top=15pt,bottom=15pt]
+        \centering
+        {\huge\bfseries\color{uclblue} Syllabus d'Algèbre}\\[0.4cm]
+        {\Large\color{uclaccent} Préparation à l'examen d'admission\\ aux études d'ingénieur civil}
+    \end{tcolorbox}
+
+    \vspace{0.7cm}
+
+    % Illustration centrale : Racines complexes dans C et parabole paramétrique
+    \begin{tikzpicture}[scale=1.05, >=Stealth]
+        % Panneau gauche : Racines 4-ièmes dans le plan complexe de Gauss
+        \begin{scope}[shift={(-3.5,0)}, scale=1.25]
+            \draw[step=0.5, gray!20, very thin] (-1.9,-1.9) grid (1.9,1.9);
+            \draw[->, thick, darkgray] (-2.0,0) -- (2.1,0) node[right] {\small $\Reop(z)$};
+            \draw[->, thick, darkgray] (0,-2.0) -- (0,2.1) node[above] {\small $\Imop(z)$};
+            \draw[thick, uclblue, dashed] (0,0) circle (1.414);
+            
+            \def\r{1.414}
+            \coordinate (Z0) at (30:\r);
+            \coordinate (Z1) at (120:\r);
+            \coordinate (Z2) at (210:\r);
+            \coordinate (Z3) at (300:\r);
+
+            \fill[uclaccent!12] (Z0) -- (Z1) -- (Z2) -- (Z3) -- cycle;
+            \draw[thick, uclaccent] (Z0) -- (Z1) -- (Z2) -- (Z3) -- cycle;
+            \draw[thick, exorange, ->] (0,0) -- (Z0) node[midway, below right=-2pt] {\footnotesize $\rho$};
+            \draw[uclblue, thick] (0.45,0) arc (0:30:0.45) node[midway, right=1pt] {\footnotesize $\theta_0$};
+
+            \fill[warnred] (Z0) circle (2pt) node[above right] {\footnotesize $z_0 = \rho e^{i\theta_0}$};
+            \fill[warnred] (Z1) circle (2pt) node[above left] {\footnotesize $z_1$};
+            \fill[warnred] (Z2) circle (2pt) node[below left] {\footnotesize $z_2$};
+            \fill[warnred] (Z3) circle (2pt) node[below right] {\footnotesize $z_3$};
+            \node[uclblue, font=\small\bfseries] at (0,-2.35) {Plan complexe $\C$ ($z^n = w$)};
+        \end{scope}
+
+        % Panneau droit : Famille de paraboles paramétriques P_m(x) et signes
+        \begin{scope}[shift={(3.3,0)}, scale=1.15]
+            \draw[step=0.5, gray!20, very thin] (-2.1,-1.8) grid (2.3,2.2);
+            \draw[->, thick, darkgray] (-2.2,0) -- (2.4,0) node[right] {\small $x$};
+            \draw[->, thick, darkgray] (0,-1.9) -- (0,2.3) node[above] {\small $P_m(x)$};
+
+            % Zone positive
+            \fill[defgreen!15] (-2.0,0) -- (-1.1,0) -- plot[domain=-2.0:-1.1, samples=40] (\x, {0.55*(\x-0.3)^2 - 1.078}) -- cycle;
+            \fill[defgreen!15] (1.7,0) -- (2.15,0) -- plot[domain=1.7:2.15, samples=40] (\x, {0.55*(\x-0.3)^2 - 1.078}) -- cycle;
+
+            % Courbe Delta > 0
+            \draw[very thick, uclblue, domain=-2.0:2.2, samples=80] plot (\x, {0.55*(\x-0.3)^2 - 1.078});
+            % Courbe Delta < 0
+            \draw[thick, exorange, dashed, domain=-1.6:2.1, samples=60] plot (\x, {0.55*(\x-0.2)^2 + 0.45});
+
+            \fill[warnred] (-1.1,0) circle (2.2pt) node[below left] {\footnotesize $x_1(m)$};
+            \fill[warnred] (1.7,0) circle (2.2pt) node[below right] {\footnotesize $x_2(m)$};
+
+            \node[defgreen, font=\small\bfseries] at (-1.65,0.45) {$+$};
+            \node[warnred, font=\small\bfseries] at (0.3,-0.55) {$-$};
+            \node[defgreen, font=\small\bfseries] at (1.98,0.45) {$+$};
+            \node[exorange] at (0.3,1.75) {\footnotesize $\Delta(m) < 0$};
+            \node[uclblue] at (1.15,-1.35) {\footnotesize $\Delta(m) > 0$};
+            \node[uclblue, font=\small\bfseries] at (0.1,-2.55) {Discussion paramétrique ($m \in \R$)};
+        \end{scope}
+    \end{tikzpicture}
+
+    \vfill
+
+    {\large \textbf{Direction artistique \& \emph{« Prompt Engineering »} :}}\\[0.2cm]
+    {\Large \textbf{L'équipe de l'examen d'entrée de l'EPL}}\\[0.15cm]
+    {\large \textbf{Jean-François Remacle} et \textbf{Pierre Schaus}}\\[0.3cm]
+    {\normalsize \emph{Rédigé à la sueur des GPU par l'Intelligence Artificielle,\\ sous la supervision bienveillante (et quelques prompts bien sentis) de ses humains.}}
+
+    \vspace{0.5cm}
+    {\small \textbf{Sources fournies à l'IA :}\\
+    Le référentiel de mathématiques de 5\ieme{} et 6\ieme{} secondaire de la Fédération Wallonie-Bruxelles\\
+    ainsi que l'intégralité des annales et solutionnaires officiels d'Algèbre de l'UCLouvain (2021--2026).}\\[0.4cm]
+    {\normalsize Édition 2026--2027}
+\end{titlepage}
+
+% ----------------------------------------------------------------------------
+% AVANT-PROPOS ET CONSEILS MÉTHODOLOGIQUES
+% ----------------------------------------------------------------------------
+\chapter*{Avant-propos et conseils méthodologiques}
+\addcontentsline{toc}{chapter}{Avant-propos et conseils méthodologiques}
+\markboth{Avant-propos}{Avant-propos}
+
+Ce syllabus a été conçu pour accompagner les étudiantes et étudiants qui préparent l'épreuve d'\textbf{algèbre} de l'examen spécial d'admission aux études d'ingénieur civil à l'\textbf{UCLouvain} (École Polytechnique de Louvain -- EPL). Il est pensé pour être pédagogique, progressif, rigoureux et directement accessible à toute personne ayant suivi le cours de mathématiques de 5\ieme{} et 6\ieme{} secondaire en Communauté française de Belgique (Fédération Wallonie-Bruxelles, en particulier l'option mathématiques 6h/semaine, ou 4h avec un investissement personnel complémentaire).
+
+\section*{Origine, auteurs et sources du document}
+
+\begin{theoreme}[« Prompt Engineers », IA et sources du document]
+\begin{itemize}
+    \item \textbf{\emph{Prompt Engineers} en chef :} Les professeurs \textbf{Jean-François Remacle} et \textbf{Pierre Schaus} (UCLouvain -- EPL), qui ont initié cette collection de syllabus ouverts et fourni les annales, solutionnaires et directives pédagogiques.
+    \item \textbf{Auteur exécutant (Intelligence Artificielle) :} Dans le même esprit que les syllabus de Trigonométrie/Géométrie et d'Analyse, la rédaction pédagogique détaillée, la structuration \LaTeX{}, le tracé des figures TikZ et la mise au net des corrigés ont été réalisés avec l'aide de l'intelligence artificielle.
+    \item \textbf{Annales et solutionnaires officiels d'Algèbre (UCLouvain 2021--2026) :} Ce syllabus intègre et explique en détail l'intégralité des questions posées aux sessions de \textbf{juillet et septembre de 2021 à 2026} à l'examen d'admission de l'UCLouvain. Nous tenons à remercier chaleureusement l'équipe des enseignantes et enseignants responsables de l'épreuve d'Algèbre à l'EPL pour la clarté et la richesse de leurs questionnaires et solutionnaires officiels (où l'on retrouve d'ailleurs régulièrement les aventures mathématiques de \emph{Charles, Laurent, Aude, Sophie} et du groupe de rock \emph{The EPLighters}).
+\end{itemize}
+\end{theoreme}
+
+\section*{Structure type de l'épreuve d'Algèbre à l'UCLouvain}
+
+L'épreuve d'Algèbre de l'examen d'admission à l'EPL dure \textbf{2h30}, se déroule \textbf{sans calculatrice} (ni téléphone ou montre connectée) et comporte systématiquement \textbf{3 grandes questions} dont le format est remarquablement constant d'année en année :
+\begin{enumerate}
+    \item \textbf{Question 1 : Sept questions courtes indépendantes (1.1 à 1.7) à réponse directe en cadre (Chapitres 1 à 6)} :
+    Pour cette première question, \textbf{seule la réponse finale inscrite dans le cadre compte} (aucune justification n'est demandée sur la copie). Ces 7 sous-questions balaient systématiquement les thèmes suivants :
+    \begin{itemize}
+        \item \textbf{Polynômes (Chapitre 1) :} division euclidienne $P(x) = D(x)Q(x) + R(x)$, théorème du reste, schéma de Horner, factorisation ou détermination de coefficients $(a,b)$ pour qu'un polynôme comme $x^4+ax+b$ soit divisible par un trinôme du second degré.
+        \item \textbf{Domaines de définition et équations irrationnelles (Chapitre 2) :} domaine d'existence de fonctions combinant racines carrées et logarithmes comme $f(x) = \frac{1}{\sqrt{\ln(x^2-1)}}$ ou $\sqrt{\ln\left(\frac{x-1}{x+2}\right)}$, et équations avec radicaux ($x = \sqrt{x+1}$, $\sqrt{1-x^2} = x-1$).
+        \item \textbf{Exponentielles et logarithmes (Chapitre 3) :} résolution d'équations exponentielles ($16^x - 4^x = 2$, $2^x + 2^{3-x} = 6$, $9^x + 1 = 10\cdot 3^{x-1}$) et d'équations logarithmiques en bases variées ($\log_{10}$, $\ln$, $\log_2$, $\log_4$, $\log_5$).
+        \item \textbf{Nombres complexes dans $\C$ (Chapitre 4) :} forme cartésienne $a+bi$, module $\rho = |z|$ et argument $\theta = \arg(z)$ de quotients ou puissances ($(1+i)^{10}$, $(1+\sqrt{3}i)^4$, $\frac{-6i}{1+i}$), racines $n$-ièmes ($z^3+8i=0$, $z^4+2-2\sqrt{3}i=0$) ou équations avec le conjugué $z^*$.
+        \item \textbf{Binôme de Newton (Chapitre 5) :} calcul d'un coefficient précis dans $(ax+b)^n$, simplification de $(x+1)^n \pm (x-1)^n$, ou recherche du terme constant (d'ordre nul en $x^0$) dans $\left(ax^p + \frac{b}{x}\right)^n$.
+        \item \textbf{Analyse combinatoire et probabilités (Chapitre 5) :} dénombrement avec contraintes (livret recto-verso, cadenas, choix de livres ou de questions d'examen) et calcul de probabilités sous forme de fraction irréductible (lancers de dés : full, paire ; tirages de cartes, d'urnes ou de chaussettes ; files d'attente).
+        \item \textbf{Suites arithmétiques et géométriques (Chapitre 6) :} calcul du premier terme $u_1$, de la raison ou du nombre de termes à partir de la somme $S_n$ (collection de pierres, soirée chantante, échelle de menuisier, tronçons de corde, prix d'un concours).
+    \end{itemize}
+    \item \textbf{Question 2 : Résolution et discussion complète d'une inéquation (ou équation) paramétrique dans $\R$ (Chapitre 7)} :
+    Cette question demande une \textbf{rédaction complète et rigoureuse}. Il s'agit de résoudre dans $\R$ une inéquation dépendant d'un paramètre réel $m$ ou $a$ :
+    \begin{itemize}
+        \item soit une \textbf{inéquation rationnelle paramétrique} (ex. $\frac{(m-1)(x-1)}{x+m-1} \le x$, $\frac{x^2+2x-2m}{x^2-m^2} > 0$, $\frac{|x|-m}{x^2-mx+1} \ge 0$, $x-1 \ge \frac{1}{mx}$, $\frac{x-m}{x^3-x} > 0$) ;
+        \item soit une \textbf{inéquation avec valeur absolue ou logarithme paramétrique} (ex. $|x^2-a| < 1$, $\ln(-x^2+2x+a) < 0$, $\log_2\left(\frac{x+a}{x-1}\right) < 1$, $\log_{a-1}(x^2-2ax+1) > 0$).
+    \end{itemize}
+    La clé de la réussite réside dans l'étude des conditions d'existence, la factorisation, la comparaison de l'ordre des racines en fonction du paramètre et la construction de \textbf{tableaux de signes} clairs pour chaque plage de valeurs du paramètre.
+    \item \textbf{Question 3 : Problème textuel de modélisation et résolution d'un système d'équations (Chapitre 8)} :
+    Un récit concret met en scène une situation à décoder méthodiquement : panneaux photovoltaïques en achat ou leasing, addition au restaurant à la Mer du Nord, coalitions électorales à l'EPL, logistique de brasserie (bouteilles, casiers, fûts, palettes), autographes du groupe \emph{EPLighters} (diagramme de Venn), rénovation de living avec escalier suspendu, jus d'oranges aux Portes Ouvertes, filets de ballons de sport, câblage électrique de trois maisons, ruches d'apiculture face au varroa et aux frelons, ou rotations de camions de pompiers et d'hélicoptère au bois de Lauzelle.
+\end{enumerate}
+
+\section*{Conventions de notation et règles d'or pour le jour de l'examen}
+
+\begin{itemize}
+    \item \textbf{Notations officielles de l'examen :}
+    \begin{itemize}
+        \item Le nombre complexe conjugué de $z = a+bi$ est noté $z^*$ (ou $\bar{z}$) : $z^* = a-bi$.
+        \item Le nombre de combinaisons de $k$ objets parmi $n$ est noté indifféremment $C_n^k$ ou $\binom{n}{k} = \frac{n!}{k!(n-k)!}$.
+        \item Le logarithme népérien (en base $e$) est noté $\ln(x)$ (attention : dans certains énoncés, la base de $\log$ est explicitement précisée dans le texte, par exemple « où $\log$ est le logarithme en base $10$ » ou « en base $e$ » : \textbf{lisez toujours la précision qui suit la formule !}).
+        \item Les intervalles ouverts s'écrivent avec des crochets retournés $]a, b[$ et l'exclusion d'un ensemble fini se note $\R \setminus \{-1, 0, 1\}$.
+    \end{itemize}
+    \item \textbf{Stratégie pour la Question 1 (7 cadres sans justification) :} Même si votre brouillon n'est pas lu pour la Question 1, \textbf{vérifiez systématiquement vos conditions d'existence} ! Par exemple, pour une équation logarithmique ou irrationnelle qui fournit deux candidats $x_1$ et $x_2$ après développement, testez-les tous les deux dans l'équation de départ : très souvent, l'un des deux est une solution parasite à rejeter.
+    \item \textbf{Stratégie pour la Question 2 (discussion paramétrique) :} Ne multipliez \textbf{jamais} les deux membres d'une inéquation par un dénominateur contenant $x$ ou le paramètre $m$ sans connaître son signe ! Ramenez toujours tout dans le membre de gauche ($\ge 0$ ou $< 0$), mettez au même dénominateur, factorisez et dressez un tableau de signes par cas. N'oubliez jamais de tester les \textbf{cas limites} où deux racines se croisent ou coïncident avec une valeur interdite.
+    \item \textbf{Stratégie pour la Question 3 (problème textuel) :} Commencez toujours votre copie en \textbf{définissant explicitement vos inconnues avec leurs unités} (« Soit $x$ le prix d'un mètre de câble en €/m... »). Numérotez vos équations $(1), (2), (3)\dots$ en indiquant quelle phrase de l'énoncé chacune traduit, et effectuez le contrôle final en réinjectant vos valeurs dans l'énoncé.
+\end{itemize}
+
+\tableofcontents
+
+% ----------------------------------------------------------------------------
+% CHAPITRES
+% ----------------------------------------------------------------------------
+\input{chap1_polynomes}
+\input{chap2_equations_domaines}
+\input{chap3_exp_log}
+\input{chap4_complexes}
+\input{chap5_combinatoire_probas}
+\input{chap6_suites}
+\input{chap7_inequations_parametriques}
+\input{chap8_systemes_problemes}
+\input{chap9_formulaire}
+\input{annexe_logique}
+\input{chap10_correctifs}
+
+\end{document}

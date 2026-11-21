@@ -1,0 +1,312 @@
+% ============================================================================
+% CHAPITRE 3 : EXPONENTIELLES ET LOGARITHMES : CALCULS, ÉQUATIONS ET BASES VARIABLES
+% ============================================================================
+\chapter{Exponentielles et Logarithmes : Calculs, Équations et Bases Variables}
+
+Chaque questionnaire d'Algèbre de l'examen d'admission comporte à la Question~1 au moins une équation exponentielle ou une équation logarithmique (et parfois les deux), tandis que la Question~2 porte fréquemment sur une inéquation logarithmique avec paramètre (que nous approfondirons au Chapitre~7). L'examen se déroulant \textbf{sans calculatrice}, toutes ces questions sont conçues pour se résoudre exactement grâce aux règles algébriques des puissances, des logarithmes et de la formule de changement de base.
+
+% ----------------------------------------------------------------------------
+\section{Fonctions exponentielles et règles des puissances}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition, propriétés algébriques et monotonie de $a^x$}
+
+\begin{definition}[Exponentielle de base $a$]
+Soit $a \in \R_0^+$ un réel strictement positif et différent de $1$ ($a > 0, a \neq 1$). La fonction \textbf{exponentielle de base $a$} associe à tout réel $x \in \R$ le réel strictement positif $a^x = e^{x \ln a} > 0$.
+\end{definition}
+
+\begin{theoreme}[Lois fondamentales des exposants]
+Pour toutes bases $a > 0$, $b > 0$ et tous exposants réels $x, y \in \R$ :
+\[
+    \boxed{a^0 = 1, \;\; a^1 = a, \;\; a^{-x} = \frac{1}{a^x}, \;\; a^{x+y} = a^x \cdot a^y, \;\; a^{x-y} = \frac{a^x}{a^y}, \;\; \bigl(a^x\bigr)^y = a^{x \cdot y}, \;\; (a\cdot b)^x = a^x \cdot b^x}.
+\]
+Pour les exposants fractionnaires ($n \in \N_0$, $p \in \Z$) :
+\[
+    \boxed{a^{\frac{1}{n}} = \sqrt[n]{a} \qquad \text{et} \qquad a^{\frac{p}{n}} = \sqrt[n]{a^p} = \bigl(\sqrt[n]{a}\bigr)^p}.
+\]
+\end{theoreme}
+
+\begin{theoreme}[Positivité, injectivité et sens de variation de $x \mapsto a^x$]
+\begin{enumerate}
+    \item \textbf{Positivité stricte :} Pour tout $x \in \R$, on a toujours $\boxed{a^x > 0}$. En particulier, une équation de la forme $a^x = k$ avec $k \le 0$ n'admet \textbf{aucune solution réelle}.
+    \item \textbf{Injectivité (égalité de deux puissances de même base $a > 0, a \neq 1$) :}
+    \[
+        \boxed{a^{u(x)} = a^{v(x)} \iff u(x) = v(x)}.
+    \]
+    \item \textbf{Sens de variation (pour les inéquations exponentielles) :}
+    \begin{itemize}
+        \item Si la base est \textbf{supérieure à $1$ ($a > 1$)}, $x \mapsto a^x$ est \textbf{strictement croissante} (l'ordre est \textbf{conservé}) :
+        \[
+            \boxed{a^{u(x)} < a^{v(x)} \iff u(x) < v(x) \qquad (\text{pour } a > 1)}.
+        \]
+        \item Si la base est \textbf{comprise entre $0$ et $1$ ($0 < a < 1$)}, $x \mapsto a^x$ est \textbf{strictement décroissante} (l'ordre est \textbf{inversé}) :
+        \[
+            \boxed{a^{u(x)} < a^{v(x)} \iff u(x) > v(x) \qquad (\text{pour } 0 < a < 1)}.
+        \]
+    \end{itemize}
+\end{enumerate}
+\end{theoreme}
+
+% ----------------------------------------------------------------------------
+\section{Logarithmes en base quelconque et changement de base}
+% ----------------------------------------------------------------------------
+
+\subsection{Définition et identités de réciprocité}
+
+\begin{definition}[Logarithme en base $a$ ($a > 0, a \neq 1$)]
+Pour tout réel \textbf{strictement positif} $y > 0$, le \textbf{logarithme en base $a$ de $y$}, noté $\log_a(y)$, est l'unique exposant réel $x$ auquel il faut élever la base $a$ pour obtenir $y$ :
+\[
+    \boxed{x = \log_a(y) \iff a^x = y \qquad (\text{avec } y > 0 \text{ et } a > 0, a \neq 1)}.
+\]
+\begin{itemize}
+    \item Lorsque la base est le nombre d'Euler $e \approx 2,71828$, on parle de \textbf{logarithme népérien}, noté $\ln(y) = \log_e(y)$.
+    \item Lorsque la base est $10$, on parle de \textbf{logarithme décimal}, souvent noté $\log_{10}(y)$ ou simplement $\log(y)$.
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Valeurs particulières et identités de réciprocité]
+Pour toute base $a > 0, a \neq 1$ :
+\[
+    \boxed{\log_a(1) = 0, \qquad \log_a(a) = 1, \qquad \log_a(a^x) = x \quad (\forall x \in \R), \qquad a^{\log_a(y)} = y \quad (\forall y > 0)}.
+\]
+\end{theoreme}
+
+\subsection{Propriétés algébriques et formule de changement de base}
+
+\begin{theoreme}[Règles de calcul des logarithmes]
+Pour toute base $a > 0, a \neq 1$, tous réels \textbf{strictement positifs} $u > 0, v > 0$ et tout exposant $p \in \R$ :
+\begin{enumerate}
+    \item \textbf{Logarithme d'un produit :} $\boxed{\log_a(u \cdot v) = \log_a(u) + \log_a(v)}$.
+    \item \textbf{Logarithme d'un inverse et d'un quotient :}
+    \[
+        \boxed{\log_a\left(\frac{1}{v}\right) = -\log_a(v)} \qquad \text{et} \qquad \boxed{\log_a\left(\frac{u}{v}\right) = \log_a(u) - \log_a(v)}.
+    \]
+    \item \textbf{Logarithme d'une puissance et d'une racine :}
+    \[
+        \boxed{\log_a\bigl(u^p\bigr) = p \cdot \log_a(u)} \qquad \text{et en particulier } \log_a\bigl(\sqrt{u}\bigr) = \frac{1}{2}\log_a(u).
+    \]
+    \item \textbf{Formule de changement de base (passage de la base $a$ à une base $b$ quelconque, ou à $\ln$) :}
+    \[
+        \boxed{\log_a(u) = \frac{\ln(u)}{\ln(a)} = \frac{\log_b(u)}{\log_b(a)}}, \qquad \boxed{\log_a(b) \cdot \log_b(a) = 1} \quad \text{et} \quad \boxed{\log_{a^k}(u) = \frac{1}{k}\log_a(u)}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{attention}[Trois pièges mortels sur les logarithmes !]
+\begin{enumerate}
+    \item \textbf{Il n'existe aucune formule pour le logarithme d'une somme :} $\ln(u + v) \neq \ln(u) + \ln(v)$ et $\ln(u)\cdot\ln(v) \neq \ln(u+v)$ !
+    \item \textbf{Ne confondez pas $\ln(x^2)$ et $(\ln x)^2 = \ln^2(x)$ :}
+    \begin{itemize}
+        \item Dans $\ln(x^2)$, le carré porte sur $x$ : pour $x > 0$, $\ln(x^2) = 2\ln(x)$ (et pour $x \neq 0$ quelconque, $\ln(x^2) = 2\ln|x|$).
+        \item Dans $(\ln x)^2$, c'est tout le logarithme qui est élevé au carré : $(\ln x)^2 = (\ln x)\cdot(\ln x) \neq 2\ln x$.
+    \end{itemize}
+    \item \textbf{Changement de sens dans une inéquation logarithmique lorsque la base $a$ est entre $0$ et $1$ :}
+    \begin{center}
+    \begin{tikzpicture}[scale=0.95, >=Stealth]
+        % Base a > 1
+        \begin{scope}[shift={(0,0)}]
+            \draw[->, thick, darkgray] (-0.3,0) -- (3.4,0) node[right] {\small $x$};
+            \draw[->, thick, darkgray] (0,-1.4) -- (0,1.6) node[above] {\small $\log_a(x)$};
+            \draw[very thick, uclblue, domain=0.25:3.2, samples=60] plot (\x, {ln(\x)/ln(2)});
+            \fill[warnred] (1,0) circle (2pt) node[below right] {\small $1$};
+            \node[uclblue, font=\small\bfseries] at (2.2,1.35) {Base $a > 1$ (croissante)};
+            \node[defgreen, font=\footnotesize] at (2.3,0.4) {$\log_a(x) > 0 \iff x > 1$};
+            \node[warnred, font=\footnotesize] at (1.5,-0.9) {$\log_a(x) < 0 \iff 0 < x < 1$};
+        \end{scope}
+        % Base 0 < a < 1
+        \begin{scope}[shift={(7.5,0)}]
+            \draw[->, thick, darkgray] (-0.3,0) -- (3.4,0) node[right] {\small $x$};
+            \draw[->, thick, darkgray] (0,-1.4) -- (0,1.6) node[above] {\small $\log_a(x)$};
+            \draw[very thick, exorange, domain=0.25:3.2, samples=60] plot (\x, {-ln(\x)/ln(2)});
+            \fill[warnred] (1,0) circle (2pt) node[above right] {\small $1$};
+            \node[exorange, font=\small\bfseries] at (2.2,1.35) {Base $0 < a < 1$ (décroissante)};
+            \node[defgreen, font=\footnotesize] at (1.6,0.95) {$\log_a(x) > 0 \iff 0 < x < 1$};
+            \node[warnred, font=\footnotesize] at (2.3,-0.45) {$\log_a(x) < 0 \iff x > 1$};
+        \end{scope}
+    \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+\end{attention}
+
+\begin{exemple}[Simplification par changement de base -- UCLouvain, Juillet 2021, Q1.1]
+\textbf{Énoncé :} Simplifier l'opération $\log_a(27)\cdot\log_3(a)$ (où $a > 0, a \neq 1$).
+
+\textbf{Résolution :} Passons tout en logarithme népérien (ou en base $3$) grâce à la formule de changement de base et au fait que $27 = 3^3$ :
+\[
+    \log_a(27)\cdot\log_3(a) = \frac{\ln(27)}{\ln(a)} \cdot \frac{\ln(a)}{\ln(3)} = \frac{\ln(3^3)}{\ln(3)} = \frac{3\ln(3)}{\ln(3)} = \boxed{3}.
+\]
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Méthodes de résolution des équations exponentielles}
+% ----------------------------------------------------------------------------
+
+Les équations exponentielles posées à l'examen d'entrée de l'UCLouvain se répartissent en trois grandes familles que l'on reconnaît au premier coup d'œil :
+
+\begin{astuce}[Les 3 familles d'équations exponentielles à l'examen]
+\begin{enumerate}
+    \item \textbf{Type 1 -- Produit de puissances égal à une constante ($a^{x+p}\cdot b^{x+q} = C$) :} On utilise $a^{x+p} = a^p \cdot a^x$ pour isoler $(a\cdot b)^x$, ou on décompose la constante $C$ en facteurs premiers ($C = a^\alpha \cdot b^\beta$).
+    \item \textbf{Type 2 -- Équation trinôme en $a^x$ ($A \cdot a^{2x} + B \cdot a^x + C = 0$ ou $A \cdot a^x + B \cdot a^{-x} = C$) :}
+    On pose l'\textbf{inconnue auxiliaire strictement positive $\boxed{t = a^x > 0}$} (avec $a^{2x} = (a^x)^2 = t^2$ et $a^{-x} = \frac{1}{t}$). On résout l'équation du second degré en $t$, on \textbf{rejette toute racine $t \le 0$}, puis pour chaque racine $t > 0$ on résout $a^x = t \iff x = \log_a(t)$.
+    \item \textbf{Type 3 -- Puissances de logarithmes ($a^{\log_b(u)} = c$) :} On réécrit la base $a$ comme une puissance de $b$ (par exemple $4^{\log_2(6)} = (2^2)^{\log_2(6)} = \bigl(2^{\log_2(6)}\bigr)^2 = 6^2 = 36$).
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Les cinq équations exponentielles des annales (2023--2026)]
+\begin{enumerate}
+    \item \textbf{Juillet 2023 -- Série 1, Q1.4 :} \emph{Résoudre dans $\R$ l'équation $4^{\log_2(6)} - 25^{\log_5(3x)} = 0$.}\\
+    Condition d'existence du logarithme : $3x > 0 \iff x > 0$.
+    Remarquons que $4 = 2^2$ et $25 = 5^2$. Grâce à l'identité $b^{\log_b(y)} = y$ :
+    \begin{align*}
+        4^{\log_2(6)} &= (2^2)^{\log_2(6)} = \bigl(2^{\log_2(6)}\bigr)^2 = 6^2 = 36, \\
+        25^{\log_5(3x)} &= (5^2)^{\log_5(3x)} = \bigl(5^{\log_5(3x)}\bigr)^2 = (3x)^2 = 9x^2.
+    \end{align*}
+    L'équation se réduit donc à $36 - 9x^2 = 0 \iff x^2 = 4 \iff x = \pm 2$. Comme la C.E. impose $x > 0$, on rejette $-2$ et il reste :
+    \[
+        \boxed{x = 2}.
+    \]
+
+    \item \textbf{Septembre 2023, Q1.4 :} \emph{Résoudre dans $\R$ l'équation $3^{2x+1} - 8\cdot 3^{x+1} = 3^3$.}\\
+    Détachons le $+1$ dans les exposants ($3^{2x+1} = 3\cdot (3^x)^2$ et $3^{x+1} = 3\cdot 3^x$) puis divisons toute l'équation par $3$ :
+    \[
+        3\cdot(3^x)^2 - 8\cdot 3\cdot 3^x = 27 \iff (3^x)^2 - 8\cdot 3^x - 9 = 0.
+    \]
+    Posons $t = 3^x > 0$ : l'équation devient $t^2 - 8t - 9 = 0 \iff (t - 9)(t + 1) = 0$, soit $t = 9$ ou $t = -1$.
+    Puisque $t = 3^x > 0$, la valeur $t = -1$ est impossible. Il reste $3^x = 9 = 3^2 \iff \boxed{x = 2}$.
+
+    \item \textbf{Juillet 2025, Q1.3 :} \emph{Résolvez dans $\R$ l'équation $16^x - 4^x = 2$.}\\
+    Comme $16^x = (4^2)^x = (4^x)^2$, posons $t = 4^x > 0$. On obtient :
+    \[
+        t^2 - t - 2 = 0 \iff (t - 2)(t + 1) = 0 \implies t = 2 \quad (\text{car } t > 0).
+    \]
+    On revient à $x$ : $4^x = 2 \iff (2^2)^x = 2^{2x} = 2^1 \iff 2x = 1 \iff \boxed{x = \dfrac{1}{2}}$.
+
+    \item \textbf{Septembre 2025, Q1.1 :} \emph{Résoudre dans $\R$ l'équation $9^x + 1 = 10\cdot 3^{x-1}$.}\\
+    Écrivons $9^x = (3^x)^2$ et $3^{x-1} = \frac{3^x}{3}$, puis multiplions par $3$ et posons $t = 3^x > 0$ :
+    \[
+        3t^2 - 10t + 3 = 0 \iff (3t - 1)(t - 3) = 0 \iff t = \frac{1}{3} = 3^{-1} \;\text{ ou }\; t = 3 = 3^1.
+    \]
+    Les deux racines en $t$ sont strictement positives ! Elles donnent toutes deux une solution en $x$ :
+    \[
+        3^x = 3^{-1} \;\text{ ou }\; 3^x = 3^1 \iff \boxed{x = -1 \quad \text{ou} \quad x = 1 \quad (x = \pm 1)}.
+    \]
+
+    \item \textbf{Juillet 2026, Q1.1 :} \emph{Résoudre dans $\R$ l'équation $3^{x+1}\cdot 5^{x-1} + 1 = 2026$.}\\
+    En soustrayant $1$ aux deux membres : $3^{x+1}\cdot 5^{x-1} = 2025$.
+    \begin{itemize}
+        \item \textbf{Méthode 1 (Décomposition en facteurs premiers de $2025$) :} $2025 = 45^2 = (9 \times 5)^2 = (3^2 \times 5)^2 = 3^4 \cdot 5^2$.
+        En identifiant les exposants de $3$ et de $5$ dans $3^{x+1}\cdot 5^{x-1} = 3^4 \cdot 5^2$, on voit immédiatement que $x + 1 = 4$ et $x - 1 = 2$, ce qui donne $\boxed{x = 3}$.
+        \item \textbf{Méthode 2 (Regroupement sous un seul exposant $x$) :}
+        \[
+            3^{x+1}\cdot 5^{x-1} = \frac{3}{5}\cdot 15^x = 2025 \iff 15^x = \frac{5 \times 2025}{3} = 3375 = 15^3 \iff \boxed{x = 3}.
+        \]
+    \end{itemize}
+
+    \item \textbf{Septembre 2026, Q1.1 :} \emph{Trouvez tous les réels $x$ tels que $2^x + 2^{3-x} = 6$.}\\
+    Écrivons $2^{3-x} = \dfrac{2^3}{2^x} = \dfrac{8}{2^x}$ et posons $t = 2^x > 0$ :
+    \[
+        t + \frac{8}{t} = 6 \iff t^2 - 6t + 8 = 0 \iff (t - 2)(t - 4) = 0 \iff t = 2 \;\text{ ou }\; t = 4.
+    \]
+    En revenant à $2^x = t$ ($2^x = 2^1$ ou $2^x = 2^2$), on obtient les deux solutions réelles :
+    \[
+        \boxed{x = 1 \quad \text{ou} \quad x = 2}.
+    \]
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Méthodes de résolution des équations logarithmiques}
+% ----------------------------------------------------------------------------
+
+\begin{astuce}[Méthodologie en 3 étapes pour toute équation logarithmique]
+\begin{enumerate}
+    \item \textbf{Étape 1 -- Conditions d'existence (C.E.) :} Avant toute transformation algébrique, imposez que l'argument de \textbf{chaque} logarithme présent dans l'énoncé initial soit \textbf{strictement positif} (le domaine de $\log_a(u) + \log_a(v)$ est $\{u > 0 \text{ et } v > 0\}$, plus restreint que celui de $\log_a(u\cdot v)$ !).
+    \item \textbf{Étape 2 -- Réduction :}
+    \begin{itemize}
+        \item \emph{Cas A (Combinaison linéaire de logarithmes) :} Utilisez $\log_a(u) + \log_a(v) = \log_a(uv)$ et $\log_a(u) - \log_a(v) = \log_a(u/v)$ pour ramener l'équation à la forme $\log_a\bigl(A(x)\bigr) = \log_a\bigl(B(x)\bigr) \iff A(x) = B(x)$ (ou $\log_a\bigl(A(x)\bigr) = k \iff A(x) = a^k$).
+        \item \emph{Cas B (Polynôme en $\log_a(x)$ avec un terme $(\log_a x)^2$) :} Posez l'inconnue auxiliaire $t = \log_a(x) \in \R$ (attention, ici $t$ peut être de signe quelconque dans $\R$ !), résolvez en $t$, puis revenez à $x = a^t$.
+    \end{itemize}
+    \item \textbf{Étape 3 -- Filtrage par les C.E. :} Testez chaque solution candidate dans les conditions d'existence de l'Étape~1 et éliminez les valeurs interdites.
+\end{enumerate}
+\end{astuce}
+
+\begin{exemple}[Les cinq équations logarithmiques des annales (2021--2024)]
+\begin{enumerate}
+    \item \textbf{Juillet 2022, Q1.1 :} \emph{Résoudre dans $\R$ l'équation $\log_4(8x^2) + \log_4(4x) = 1$.}\\
+    \textbf{C.E. :} $8x^2 > 0$ et $4x > 0 \iff \mathbf{x > 0}$.
+    Regroupons la somme des deux logarithmes en un seul logarithme de produit :
+    \[
+        \log_4\bigl(8x^2 \cdot 4x\bigr) = 1 \iff \log_4\bigl(32x^3\bigr) = 1 \iff 32x^3 = 4 \iff x^3 = \frac{1}{8} = \left(\frac{1}{2}\right)^3.
+    \]
+    On en tire $x = \frac{1}{2}$, qui vérifie bien la C.E. $x > 0$. Donc $\boxed{x = \dfrac{1}{2}}$.
+
+    \item \textbf{Juillet 2023 -- Série 2, Q1.4 :} \emph{Résoudre dans $\R$ l'équation $\log_5(x) + \log_5(x - 4) = 1$.}\\
+    \textbf{C.E. :} $x > 0$ et $x - 4 > 0 \iff \mathbf{x > 4}$.
+    En regroupant :
+    \[
+        \log_5\bigl(x(x - 4)\bigr) = 1 \iff x(x - 4) = 5 \iff x^2 - 4x - 5 = 0 \iff (x - 5)(x + 1) = 0.
+    \]
+    On obtient deux candidats : $x = 5$ et $x = -1$. La condition d'existence $x > 4$ \textbf{élimine $x = -1$} (pour lequel $\log_5(-1)$ n'existe pas dans $\R$ !) et conserve l'unique solution :
+    \[
+        \boxed{x = 5}.
+    \]
+
+    \item \textbf{Juillet 2024, Q1.2 :} \emph{Résoudre dans $\R$ l'équation $\log x^2 - \log 2x + \log 3 = \log 4$ (où $\log$ est en base $10$).}\\
+    \textbf{C.E. :} $x^2 > 0$ et $2x > 0 \iff \mathbf{x > 0}$.
+    En combinant les logarithmes du membre de gauche ($\log u - \log v + \log w = \log\frac{uw}{v}$) :
+    \[
+        \log\left(\frac{3x^2}{2x}\right) = \log(4) \iff \frac{3x}{2} = 4 \iff \boxed{x = \frac{8}{3}} \quad (\text{qui vérifie bien } x > 0).
+    \]
+
+    \item \textbf{Septembre 2024, Q1.6 :} \emph{Résolvez dans $\R$ l'équation $\log(x^2) + \log x - (\log x)^2 = \log(100)$ (où $\log$ est le logarithme en base $10$).}\\
+    \textbf{C.E. :} $x > 0$. Pour $x > 0$, on a $\log(x^2) = 2\log x$ et $\log(100) = \log(10^2) = 2$. L'équation devient :
+    \[
+        2\log x + \log x - (\log x)^2 = 2 \iff (\log x)^2 - 3\log x + 2 = 0.
+    \]
+    Posons $t = \log x \in \R$ : on obtient $t^2 - 3t + 2 = 0 \iff (t - 1)(t - 2) = 0 \iff t = 1 \text{ ou } t = 2$.
+    En revenant à $x = 10^t$ :
+    \[
+        \log_{10}(x) = 1 \iff x = 10^1 = 10 \qquad \text{ou} \qquad \log_{10}(x) = 2 \iff x = 10^2 = 100.
+    \]
+    Les deux valeurs sont strictement positives : $\boxed{x = 10 \quad \text{et} \quad x = 100}$.
+
+    \item \textbf{Septembre 2021, Q2.2 :} \emph{Résoudre dans $\R$ l'équation $\log_5(1 + 5^x) = \log_5(10) - x - 1$.}\\
+    \textbf{C.E. :} Comme $5^x > 0$ pour tout $x \in \R$, on a toujours $1 + 5^x > 1 > 0$, donc $\dom = \R$.
+    Exprimons $x + 1$ comme un logarithme en base $5$ : $x + 1 = \log_5\bigl(5^{x+1}\bigr)$. Le membre de droite s'écrit :
+    \[
+        \log_5(10) - \log_5\bigl(5^{x+1}\bigr) = \log_5\left(\frac{10}{5^{x+1}}\right) = \log_5\left(\frac{2}{5^x}\right).
+    \]
+    Par injectivité de $\log_5$, l'équation équivaut à :
+    \[
+        1 + 5^x = \frac{2}{5^x} \iff (5^x)^2 + 5^x - 2 = 0.
+    \]
+    En posant $y = 5^x > 0$, on a $y^2 + y - 2 = (y - 1)(y + 2) = 0$. Comme $y > 0$, on rejette $y = -2$ et on garde $y = 1$, soit $5^x = 1 \iff \boxed{x = 0}$.
+\end{enumerate}
+\end{exemple}
+
+% ----------------------------------------------------------------------------
+\section{Exercices d'entraînement du Chapitre 3}
+% ----------------------------------------------------------------------------
+
+\emph{Les corrigés détaillés de tous ces exercices se trouvent au Chapitre~10.}
+
+\begin{enumerate}[label=\textbf{Exercice 3.\arabic* :}, leftmargin=*]
+    \item \textbf{(Calculs logarithmiques sans calculatrice)} Simplifier les nombres suivants sous forme d'un entier ou d'une fraction irréductible :
+    \begin{enumerate}[label=(\alph*)]
+        \item $A = \log_2(24) - \log_2(3) + \log_4(9) - \log_2(\sqrt{3})$
+        \item $B = \log_3(5)\cdot\log_5(7)\cdot\log_7(81)$
+        \item $C = 9^{\log_3(5)} - 8^{\log_2(3)}$
+    \end{enumerate}
+    \item \textbf{(Équations exponentielles type Question 1)} Résoudre dans $\R$ les équations suivantes :
+    \begin{enumerate}[label=(\alph*)]
+        \item $4^{x+1} - 9\cdot 2^x + 2 = 0$
+        \item $3^x + 3^{2-x} = 10$
+        \item $2^{x+2}\cdot 3^{x-1} = 144$
+    \end{enumerate}
+    \item \textbf{(Équations logarithmiques type Question 1)} Résoudre dans $\R$ les équations suivantes :
+    \begin{enumerate}[label=(\alph*)]
+        \item $\log_3(x + 2) + \log_3(x - 4) = 3$
+        \item $\ln^2(x) - \ln(x^4) + 3 = 0$
+        \item $\log_2(x) + \log_x(2) = \dfrac{5}{2}$
+    \end{enumerate}
+\end{enumerate}

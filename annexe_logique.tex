@@ -1,0 +1,66 @@
+% ============================================================================
+% ANNEXE A : LOGIQUE, ENSEMBLES ET MÉTHODES DE RAISONNEMENT EN ALGÈBRE
+% ============================================================================
+\chapter*{Annexe A : Raisonnement Logique, Ensembles et Pièges Classiques en Algèbre}
+\addcontentsline{toc}{chapter}{Annexe A : Raisonnement Logique, Ensembles et Pièges Classiques en Algèbre}
+\markboth{Annexe A : Logique et Raisonnement}{Annexe A : Logique et Raisonnement}
+
+\emph{Bien que la logique formelle ne fasse pas l'objet d'une question théorique isolée à l'examen d'admission, la maîtrise des connecteurs logiques (« et », « ou », $\implies$, $\iff$), des opérations sur les intervalles ($\cap$, $\cup$, complémentaire) et des conditions d'équivalence lors de la résolution d'équations ou d'inéquations paramétriques est indispensable pour éviter de perdre des solutions ou d'introduire des solutions parasites.}
+
+% ----------------------------------------------------------------------------
+\section*{A.1 Connecteurs logiques, ensembles et lois de De Morgan}
+% ----------------------------------------------------------------------------
+
+À chaque propriété algébrique $P(x)$ portant sur une variable réelle $x \in \R$ correspond l'\textbf{ensemble des solutions} $E_P = \{x \in \R \mid P(x) \text{ est vraie}\}$. Les opérations logiques sur les propositions se traduisent directement par des opérations ensemblistes sur les intervalles de $\R$ :
+
+\begin{theoreme}[Correspondance Logique $\longleftrightarrow$ Ensembles et Lois de De Morgan]
+Soient $P(x)$ et $Q(x)$ deux conditions portant sur $x \in \R$, d'ensembles de solutions respectifs $A$ et $B$ :
+\begin{enumerate}
+    \item \textbf{Négation ($\text{non } P$) $\longleftrightarrow$ Complémentaire ($\R \setminus A$) :} Ensemble des $x$ qui ne vérifient pas $P(x)$.
+    \item \textbf{Conjonction (« $P(x) \text{ \textbf{et} } Q(x)$ », notée par une accolade système $\begin{cases} P(x) \\ Q(x) \end{cases}$) $\longleftrightarrow$ Intersection ($A \cap B$) :}
+    Ensemble des réels $x$ appartenant \textbf{simultanément} à $A$ et à $B$.
+    \item \textbf{Disjonction (« $P(x) \text{ \textbf{ou} } Q(x)$ ») $\longleftrightarrow$ Union ($A \cup B$) :}
+    Ensemble des réels $x$ appartenant à \textbf{au moins l'un} des deux ensembles $A$ ou $B$.
+    \item \textbf{Lois de De Morgan :}
+    \[
+        \boxed{\text{non}(P \text{ ou } Q) \iff (\text{non } P) \text{ et } (\text{non } Q)} \qquad \text{et} \qquad \boxed{\text{non}(P \text{ et } Q) \iff (\text{non } P) \text{ ou } (\text{non } Q)}.
+    \]
+\end{enumerate}
+\end{theoreme}
+
+\begin{attention}[Ne confondez jamais l'accolade « ET » ($\cap$) avec le « OU » ($\cup$) !]
+\begin{itemize}
+    \item Pour un \textbf{produit nul} : $A(x)\cdot B(x) = 0 \iff A(x) = 0 \;\text{ \textbf{ou} }\; B(x) = 0$ (on fait l'\textbf{union} $\cup$ des racines).
+    \item Pour un \textbf{dénominateur non nul} (C.E. de $\frac{1}{A(x)B(x)}$) : par la loi de De Morgan,
+    \[
+        A(x)\cdot B(x) \neq 0 \iff A(x) \neq 0 \;\text{ \textbf{et} }\; B(x) \neq 0 \iff \begin{cases} A(x) \neq 0 \\ B(x) \neq 0 \end{cases}.
+    \]
+    \item Pour une \textbf{inéquation logarithmique} $\ln\bigl(U(x)\bigr) < 0$ : il faut la condition d'existence $U(x) > 0$ \textbf{ET} l'inégalité $U(x) < 1$, ce qui correspond à l'\textbf{intersection} $\{U(x) > 0\} \cap \{U(x) < 1\} = \{0 < U(x) < 1\}$.
+\end{itemize}
+\end{attention}
+
+% ----------------------------------------------------------------------------
+\section*{A.2 Implication ($\implies$) vs Équivalence ($\iff$) dans les équations et inéquations}
+% ----------------------------------------------------------------------------
+
+Résoudre une équation ou une inéquation $E(x)$ dans $\R$, c'est transformer $E(x)$ par une chaîne d'\textbf{équivalences logiques} ($\iff$) jusqu'à isoler $x$. Or, trois opérations algébriques très courantes ne sont \textbf{pas} des équivalences si l'on n'ajoute pas une condition de signe ou de non-nullité :
+
+\begin{theoreme}[Les 3 règles d'équivalence qui sauvent vos points à l'examen]
+\begin{enumerate}
+    \item \textbf{Multiplication ou simplification par une expression $C(x, m)$ :}
+    \begin{itemize}
+        \item Dans une \textbf{équation} : on ne peut diviser ou simplifier par $C(x,m)$ que si $\boxed{C(x,m) \neq 0}$. Si $C(x,m)$ peut s'annuler, il faut \textbf{factoriser} ($A\cdot C = B\cdot C \iff C\cdot(A - B) = 0 \iff C = 0 \text{ ou } A = B$) ! Simplifier sauvagement par $z$ dans $(z-2)z^* = -iz$ ferait perdre la solution $z = 0$ !
+        \item Dans une \textbf{inéquation} : on ne multiplie \textbf{jamais} par $C(x,m)$ si son signe dépend de $x$. Si $C(m)$ ne dépend que du paramètre $m$ (ex. $\ln(a - 1)$ en Juillet~2026 Q2), il faut \textbf{distinguer deux cas} : le cas $C(m) > 0$ (sens conservé) et le cas $C(m) < 0$ (sens inversé !).
+    \end{itemize}
+    \item \textbf{Élévation au carré des deux membres d'une équation :}
+    L'implication $A(x) = B(x) \implies \bigl(A(x)\bigr)^2 = \bigl(B(x)\bigr)^2$ n'est une équivalence que si $A(x)$ et $B(x)$ ont le \textbf{même signe} :
+    \[
+        \boxed{\sqrt{A(x)} = B(x) \iff \begin{cases} B(x) \ge 0 \\ A(x) = \bigl(B(x)\bigr)^2 \end{cases}}.
+    \]
+    \item \textbf{Regroupement de logarithmes $\log_a\bigl(U(x)\bigr) + \log_a\bigl(V(x)\bigr) = \log_a\bigl(U(x)V(x)\bigr)$ :}
+    Cette transformation élargit le domaine (car $U(x)V(x) > 0$ autorise $U(x) < 0$ et $V(x) < 0$ simultanément, ce qui est interdit dans l'équation initiale !). L'équivalence exacte est :
+    \[
+        \boxed{\log_a\bigl(U(x)\bigr) + \log_a\bigl(V(x)\bigr) = k \iff \begin{cases} U(x) > 0 \text{ et } V(x) > 0 \\ U(x)\cdot V(x) = a^k \end{cases}}.
+    \]
+\end{enumerate}
+\end{theoreme}
