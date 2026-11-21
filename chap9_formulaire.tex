@@ -220,7 +220,7 @@
     \item \textbf{Tirage simultané sans remise (urne / cartes) :} Utiliser les combinaisons $\binom{N}{k}$ en haut et en bas.
     \item \textbf{Moyenne et Écart-type ($N = \sum n_i$) :}
     \[
-        \bar{x} = \frac{1}{N}\sum n_i x_i, \qquad \sigma = \sqrt{\frac{1}{N}\sum n_i(x_i - \bar{x})^2} = \sqrt{\overline{x^2} - \bar{x}^2}.
+        \bar{x} = \frac{1}{N}\sum n_i x_i, \quad \sigma = \sqrt{\frac{1}{N}\sum n_i(x_i - \bar{x})^2} = \sqrt{\overline{x^2} - \bar{x}^2}.
     \]
 \end{itemize}
 
@@ -379,9 +379,8 @@ Lorsque chaque individu appartient à au moins un des $3$ ensembles :
     \]
     \item \textbf{Formule du crible de Poincaré (Inclusion-Exclusion) :}
     \begin{align*}
-        \text{card}(C \cup A \cup L) &= \text{Tot}_C + \text{Tot}_A + \text{Tot}_L \\
-        &\quad - \bigl(\text{card}(C\cap A) + \text{card}(C\cap L) + \text{card}(A\cap L)\bigr) \\
-        &\quad + \text{card}(C \cap A \cap L).
+        \text{card}(C \cup A \cup L) &= \text{Tot}_C + \text{Tot}_A + \text{Tot}_L + \text{card}(C \cap A \cap L) \\
+        &\quad - \text{card}(C\cap A) - \text{card}(C\cap L) - \text{card}(A\cap L).
     \end{align*}
 \end{itemize}
 

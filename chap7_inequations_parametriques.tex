@@ -296,7 +296,7 @@ Trois sessions récentes (\textbf{Septembre 2022 Q2}, \textbf{Septembre 2023 Q2}
     \item \textbf{Septembre 2023, Q2 :} \emph{Résoudre dans $\R$ et discuter selon $a \in \R$ : $\log_2\left(\dfrac{x + a}{x - 1}\right) < 1$.}\\
     Puisque la base $2 > 1$ est strictement croissante et $2^1 = 2$, l'inéquation équivaut au système ($x \neq 1$) :
     \[
-        0 < \frac{x + a}{x - 1} < 2 \iff \begin{cases} \dfrac{x + a}{x - 1} > 0 & (1) \\[1.8ex] \dfrac{x + a}{x - 1} - 2 < 0 \iff \dfrac{-x + a + 2}{x - 1} < 0 \iff \dfrac{x - (a + 2)}{x - 1} > 0 & (2) \end{cases}
+        0 < \frac{x + a}{x - 1} < 2 \iff \begin{cases} \dfrac{x + a}{x - 1} > 0 & (1) \\[1.8ex] \dfrac{-x + a + 2}{x - 1} < 0 \iff \dfrac{x - (a + 2)}{x - 1} > 0 & (2) \end{cases}
     \]
     Chaque fraction $\frac{x - r}{x - 1}$ est strictement positive à l'\textbf{extérieur} de l'intervalle borné par $r$ et $1$. Comparons les racines $-a$ et $a + 2$ avec $1$ (elles se croisent toutes les deux en $1$ lorsque $\mathbf{a = -1}$ !) :
     \begin{itemize}
@@ -317,7 +317,7 @@ Trois sessions récentes (\textbf{Septembre 2022 Q2}, \textbf{Septembre 2023 Q2}
         \item \textbf{Cas 1 : $a > 2$ (donc $a - 1 > 1$, base croissante, $\ln(a - 1) > 0$).}\\
         L'inéquation équivaut à $\ln(x^2 - 2ax + 1) > 0 \iff x^2 - 2ax + 1 > 1$ (ce qui garantit automatiquement la C.E. $> 0$). En simplifiant :
         \[
-            x^2 - 2ax > 0 \iff x(x - 2a) > 0 \iff \mathbf{S = \,]-\infty, 0[ \,\cup\, ]2a, +\infty[} \quad (\text{car } 2a > 4 > 0).
+            x^2 - 2ax > 0 \iff x(x - 2a) > 0 \iff \mathbf{S = \,]-\infty, 0[ \,\cup\, ]2a, +\infty[}.
         \]
         \item \textbf{Cas 2 : $1 < a < 2$ (donc $0 < a - 1 < 1$, base décroissante, $\ln(a - 1) < 0$).}\\
         En multipliant par $\ln(a - 1) < 0$, le sens s'inverse : $\ln(x^2 - 2ax + 1) < 0$, ce qui impose la double inégalité :

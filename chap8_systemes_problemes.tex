@@ -88,7 +88,7 @@ Plutôt que d'écrire tout de suite des équations compliquées en $b, c, f, p$,
     \item \textbf{Bouteille vide et casier vide :} $f = 40b \iff 40b = 10 \iff \mathbf{b = 0,25\text{ kg}}$. Puis de $C_{\text{vide}} = c + 24b = 9$, on tire $c = 9 - 24(0,25) = 9 - 6 = \mathbf{3\text{ kg}}$.
     \item \textbf{Camion de Laurent ($3$ palettes + $8$ fûts pleins + $120$ casiers pleins) :}
     \[
-        3p + 8\,F_{\text{plein}} + 120\,C_{\text{plein}} = 2370 \iff 3p + 480 + 1800 = 2370 \iff 3p = 90 \iff \mathbf{p = 30\text{ kg}}.
+        3p + 8\,F_{\text{plein}} + 120\,C_{\text{plein}} = 2370 \iff 3p + 2280 = 2370 \iff \mathbf{p = 30\text{ kg}}.
     \]
 \end{enumerate}
 Réponses : $\boxed{b = 0,25\text{ kg},\quad c = 3\text{ kg},\quad f = 10\text{ kg},\quad p = 30\text{ kg}}$.
@@ -126,7 +126,9 @@ Combien de sièges chaque parti a-t-il obtenus ?
     \item \textbf{Déduction en cascade de toutes les autres inconnues :}
     $D = 2B = \mathbf{20}$, $C = \frac{10 + 6}{2} = \mathbf{8}$, $E = 3C = \mathbf{24}$, $N = \frac{15}{2}(10) = \mathbf{75}$ (et $M = \frac{75+1}{2} = 38$), puis enfin $A = N - (B + C + D + E) = 75 - (10 + 8 + 20 + 24) = 75 - 62 = \mathbf{13}$.
 \end{enumerate}
-Réponses : $\boxed{A = 13,\quad B = 10,\quad C = 8,\quad D = 20,\quad E = 24 \quad (\text{total } N = 75,\text{ majorité } M = 38)}$.
+\[
+    \boxed{A = 13,\quad B = 10,\quad C = 8,\quad D = 20,\quad E = 24 \quad (\text{total } N = 75,\text{ majorité } M = 38)}.
+\]
 \end{exemple}
 
 \begin{exemple}[Trois autres problèmes de systèmes linéaires et flux (Juillet 2025, Septembre 2025, Septembre 2026)]
@@ -136,9 +138,9 @@ Réponses : $\boxed{A = 13,\quad B = 10,\quad C = 8,\quad D = 20,\quad E = 24 \q
     \textbf{Étape 1 (Système $3 \times 3$ pour le nombre d'oranges $x, y, z$) :}
     \[
         \begin{cases}
-            x + y + z = 185 & (1) \text{ [Nombre d'oranges]} \\
-            15x + 10y + 10z = 2350 \iff 3x + 2(y + z) = 470 & (2) \text{ [Volume de jus en cL]} \\
-            150x + 200y + 120z = 30\,000 \iff 15x + 20y + 12z = 3000 & (3) \text{ [Masse totale en g]}
+            x + y + z = 185 & (1) \text{ [Oranges]} \\
+            15x + 10y + 10z = 2350 \iff 3x + 2(y + z) = 470 & (2) \text{ [Jus en cL]} \\
+            150x + 200y + 120z = 30\,000 \iff 15x + 20y + 12z = 3000 & (3) \text{ [Masse en g]}
         \end{cases}
     \]
     De $(1)$, $y + z = 185 - x$. En injectant dans $(2)$ : $3x + 2(185 - x) = 470 \iff x + 370 = 470 \iff \mathbf{x = 100\text{ Valencia}}$ !
@@ -309,7 +311,7 @@ Notons $x = CL$ le nombre de photos avec Charles et Laurent seuls (donc $2x$ ave
     \begin{itemize}
         \item \emph{1. Hauteur sous plafond $h$ (suite arithmétique des barres d'escalier) :} La hauteur $h$ est divisée en $16$ hauteurs de marche égales à $r = \frac{h}{16}$. Les longueurs d'une rangée de $15$ barres forment la suite arithmétique $u_1 = r,\; u_2 = 2r,\; \dots,\; u_{15} = 15r$, dont la somme vaut $\frac{42}{2} = 21\text{ m}$ :
         \[
-            S_{15} = \frac{15 \times 16}{2}\,r = 120\,r = 21 \implies r = \frac{21}{120} = \frac{7}{40}\text{ m} \implies h = 16\,r = \frac{14}{5} = \mathbf{2,8\text{ m}}.
+            S_{15} = 120\,r = 21 \implies r = \frac{21}{120} = \frac{7}{40}\text{ m} \implies h = 16\,r = \frac{14}{5} = \mathbf{2,8\text{ m}}.
         \]
         \item \emph{2. Dimensions $x$ et $y$ de la pièce (Somme-Produit !) :} On a $x + y = \frac{25}{2} = 12,5$ et $xy = 36$. Les dimensions sont les racines de $Y^2 - \frac{25}{2}Y + 36 = 0 \iff 2Y^2 - 25Y + 72 = 0$ ($\Delta = 625 - 576 = 49 = 7^2$), ce qui donne $\mathbf{y = 8\text{ m}}$ (la longueur) et $\mathbf{x = 4,5\text{ m}}$ (la largeur).
         \emph{Astuce remarquable :} pour la surface des 4 murs $2h(x + y) = 2,8 \times 25 = 70\text{ m}^2$, on avait déjà $2(x + y) = 25\text{ m}$ sans même résoudre le second degré, mais il fallait connaître la longueur $y = 8\text{ m}$ pour calculer la surface de la fenêtre !
